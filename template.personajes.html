@@ -1,0 +1,385 @@
+<div class="personajes" >
+    <div class="lista">
+        <ul>
+            <li ng-repeat="personaje in campania.personajes track by $index" ng-class="{'active':personaje == personajeseleccionado}" >
+
+                <a  ng-click="selecciona(personaje)" class="pointer">
+                    <span class="circulo">{{$index+1}} </span>
+                    {{personaje.nombre}}
+                </a>
+            </li>
+            <li >
+                <a ng-click="agregaPersonaje()" class="button">Agregar personaje</a>
+            </li>
+        </ul>
+    </div>
+    <div class="detalle" ng-if="personajeseleccionado" >
+        <div class="opciones">
+            <div class="alRight">
+                <a class="button bred" ng-click="eliminaPersonaje()">eliminar personaje</a>
+                <a class="button bred" ng-click="copiarPersonaje()">Copiar</a>
+
+            </div>
+            <div class="alLeft">
+                <input type="text" ng-model="personajeseleccionado.nombre" class="sinborde principal">
+            </div>
+        </div>
+
+        <hr>
+        <div class="caja">
+            <h3>Puntos</h3>
+            <table>
+                <tr>
+                    <th></th>
+                    <th class="alCenter" width="80">valor</th>
+                </tr>
+                <tr>
+                    <td>Nivel</td>
+                    <td>{{getNivelTotal()}}</td>
+                </tr>
+                <tr>
+                    <td>PG</td>
+                    <td>{{getPGTotales()}}</td>
+                </tr>
+                <tr>
+                    <td>*Daño</td>
+                    <td><input type="text" ng-model="personajeseleccionado.danio" class="sinborde" placeholder="0"></td>
+                </tr>
+                <tr class="sep">
+                    <td>CA</td>
+                    <td><b>{{getCABase()}}</b></td>
+                </tr>
+                <tr>
+                    <td>CA Toque</td>
+                    <td>{{getCAToque()}}</td>
+                </tr>
+                <tr>
+                    <td>CA Desprevenido</td>
+                    <td>{{getCADesprevenido()}}</td>
+                </tr>
+                <tr class="sep">
+                    <td>Iniciativa</td>
+                    <td>{{getTotalModsCaracteristica('iniciativa') + getCharMod(getTotalCaracteristica('des'))}}</td>
+                </tr>
+
+
+                <!-- <tr ng-repeat="char in principales" ng-class="{'sep':char.id!='-'}">
+                    <th ng-if="char.id!='-'">{{char.nombre}}</th>
+                    <td ng-if="char.id!='-'"><input type="text" ng-model="personajeseleccionado[char.id]" class="sinborde" placeholder="0"></td>
+                    <th ng-if="char.id=='-'" colspan="2"></th>
+                </tr> -->
+
+            </table>
+            <h3>Tiradas de ataque</h3>
+            <table>
+                <tr>
+                    <th> </th>
+                    <th class="alCenter" width="80">tirada</th>
+                </tr>
+                <tr>
+                    <td>Base</td>
+                    <td>{{ getAtaqueBase(0) }}</td>
+                </tr>
+                <tr>
+                    <td>Melee (FRZ)</td>
+                    <td>{{ getAtaqueMelee().join(' / ') }}</td>
+                </tr>
+                <tr>
+                    <td>Rango (DES)</td>
+                    <td>{{ getAtaqueRango().join(' / ') }}</td>
+                </tr>
+
+            </table>
+            <h3>Tiradas de salvación</h3>
+            <table>
+                <tr>
+                    <th> </th>
+                    <th class="alCenter"  width="80">Base</th>
+                    <th class="alCenter"  width="80">+Mod</th>
+                </tr>
+                <tr ng-repeat="char in salvacion" >
+                    <td >{{char.nombre}}</td>
+                    <td >{{ getTS(char.id)}}</td>
+                    <td ><b>{{ getTS(char.id)+getCharMod(getTotalCaracteristica(char.charId))  }}</b></td>
+                </tr>
+
+            </table>
+            <h3>Caracteristicas</h3>
+            <table>
+                <tr>
+                    <th style="width:50%;"></th>
+                    <th class="alCenter ">Base</th>
+                    <th class="">mods</th>
+                    <th class="alCenter ">Total</th>
+                    <th class="alCenter">mod car</th>
+                </tr>
+                <tr ng-repeat="char in caracteristicas" >
+                    <td >{{char.nombre}}</td>
+                    <td ><input type="text" ng-model="personajeseleccionado[char.id]" class="sinborde" placeholder="0"></td>
+                    <td >{{ getTotalModsCaracteristica(char.id) }}</td>
+                    <th  class="alCenter">{{ getTotalCaracteristica(char.id) }}</th>
+                    <td >{{ getCharMod(getTotalCaracteristica(char.id)) }}</td>
+                </tr>
+
+            </table>
+
+
+        </div>
+
+        <div class="cajadoble" ng-init="paginaActiva = 1">
+            <ul class="menu">
+                <li ng-class="{'active':paginaActiva === 1}" ng-click="paginaActiva = 1">Clases y Mods</li>
+                <li ng-class="{'active':paginaActiva === 2}" ng-click="paginaActiva = 2">Habilidades</li>
+                <li ng-class="{'active':paginaActiva === 3}" ng-click="paginaActiva = 3">Dotes y Equipo</li>
+                <li ng-class="{'active':paginaActiva === 4}" ng-click="paginaActiva = 4">Conjuros</li>
+            </ul>
+            <div class="pagina" ng-show="paginaActiva === 1">
+                <h3>Clases y Experiencia</h3>
+                <div>
+                    <table>
+                        <tr>
+                            <td>Raza:</td>
+                            <td>
+                                <input type="text" ng-model="personajeseleccionado.raza">
+                            </td>
+                            <td>Experiencia:</td>
+                            <td>
+                                <input type="text" ng-model="personajeseleccionado.experiencia">
+                            </td>
+                            <td>
+                                <b>Nivel</b>
+                            </td>
+                            <td>
+                                {{getNivelPersonaje()}}
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <hr>
+                <table>
+                    <tr>
+                        <th>clase</th>
+                        <th>DG</th>
+                        <th>Avance ataque</th>
+                        <th>TS For</th>
+                        <th>TS Ref</th>
+                        <th>TS Vol</th>
+                        <th>Nivel</th>
+                    </tr>
+
+                    <tr ng-repeat="clase in personajeseleccionado.clases">
+                        <td>
+                            <input type="text" ng-model="clase.nombre" class="sinborde alLeft bold">
+                        </td>
+                        <td><select ng-model="clase.dado">
+                                <option value="4">d4</option>
+                                <option value="6">d6</option>
+                                <option value="8">d8</option>
+                                <option value="10">d10</option>
+                                <option value="12">d12</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select ng-model="clase.ataquebase">
+                                <option ng-repeat="(key, val) in ataqueBase" value="{{key}}">{{key}}</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select ng-model="clase.tsForBase">
+                                <option ng-repeat="(key, val) in salvacionBase" value="{{key}}">{{key}}</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select ng-model="clase.tsRefBase">
+                                <option ng-repeat="(key, val) in salvacionBase" value="{{key}}">{{key}}</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select ng-model="clase.tsVolBase">
+                                <option ng-repeat="(key, val) in salvacionBase" value="{{key}}">{{key}}</option>
+                            </select>
+                        </td>
+
+
+                        <td>
+                            <select ng-model="clase.nivel">
+                                <option value="{{$index}}" ng-repeat="num in niveles">{{$index}}</option>
+                            </select>
+                        </td>
+
+                    </tr>
+                </table>
+                <br/>
+                <a  class="button" ng-click="agregaClase()">Agrega clase</a>
+                <hr>
+                <h3>Modificadores</h3>
+                <table>
+                    <tr>
+                        <th >Activo</th>
+                        <th ></th>
+                        <th class="alLeft">caracteristica</th>
+                        <th class="alLeft">cantidad</th>
+                    </tr>
+
+                    <tr ng-repeat="modificador in personajeseleccionado.modificadores | orderBy:'objetivo' track by $index">
+
+                        <td width="10">
+                            <input type="checkbox" ng-model="modificador.activo">
+                        </td>
+                        <td><input type="text" ng-model="modificador.nombre" class="sinborde alLeft bold"></td>
+
+                        <td width="190">
+                            <select ng-model="modificador.objetivo" >
+                                <option value="{{objetivo.id}}" ng-repeat="objetivo in modObjetivos">{{objetivo.nombre}}</option>
+                            </select>
+                        </td>
+                        <td width="10">
+                            <select ng-model="modificador.mod">
+                                <option value="{{num}}" ng-repeat="num in nummodificadores">{{num}}</option>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+                <br/>
+                <a  class="button" ng-click="agregaModificador()">Agregar modificador</a>
+
+            </div>
+            <div class="pagina" ng-show="paginaActiva === 2" >
+                <h3>Habilidades <small>({{getTotalPuntosHabilidad()}} puntos)</small></h3>
+                <table class="c1">
+                    <thead>
+                        <tr>
+                            <th width="15"></th>
+                            <th width="200"></th>
+                            <th class="alCenter">Puntos</th>
+                            <th class="alCenter">MChar</th>
+                            <th class="alCenter">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody class="scrollpane">
+                        <tr ng-repeat="char in habilidades | orderBy: 'nombre'" ng-if="$index <= habilidades.length /2">
+                            <td><input type="checkbox" ng-model="personajeseleccionado.habilidadesclaseas[char.id]"/></td>
+                            <td  class="alLeft">{{char.nombre}} <small>({{char.charId}})</small></td>
+                            <td ><input type="text" ng-model="personajeseleccionado[char.id]" class="sinborde" placeholder="0"></td>
+                            <td >{{ getCharMod(getTotalCaracteristica(char.charId)) }}</td>
+                            <th class="alCenter" ><b>{{ getTotalHabilidad(char) }}</b></th>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <table class="c1">
+                    <thead>
+                        <tr>
+                            <th width="15"> </th>
+                            <th width="200"> </th>
+                            <th class="alCenter">Puntos</th>
+                            <th class="alCenter">MChar</th>
+                            <th class="alCenter">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody class="scrollpane">
+                        <tr ng-repeat="char in habilidades | orderBy: 'nombre'" ng-if="$index > habilidades.length /2">
+                            <td><input type="checkbox" ng-model="personajeseleccionado.habilidadesclaseas[char.id]"/></td>
+                            <td  class="alLeft">{{char.nombre}} <small>({{char.charId}})</small></td>
+                            <td ><input type="text" ng-model="personajeseleccionado[char.id]" class="sinborde" placeholder="0"></td>
+                            <td >{{ getCharMod(getTotalCaracteristica(char.charId)) }}</td>
+                            <th class="alCenter"><b>{{ getTotalHabilidad(char) }}</b></th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="pagina" ng-show="paginaActiva === 3">
+                <h3>Dotes y Aptitudes especiales</h3>
+                <textarea ng-model="personajeseleccionado.dotes" rows="15" class="fill sinborde" placeholder="dotes"></textarea>
+                <hr>
+                <h3>Equipo</h3>
+                <table>
+                    <tr>
+                        <td>PPT</td>
+                        <td><input type="text" ng-model="personajeseleccionado.pPT"/></td>
+                        <td>PO</td>
+                        <td><input type="text" ng-model="personajeseleccionado.pPO"/></td>
+                        <td>PP</td>
+                        <td><input type="text" ng-model="personajeseleccionado.pPP"/></td>
+                        <td>PC</td>
+                        <td><input type="text" ng-model="personajeseleccionado.pPC"/></td>
+                    </tr>
+                </table>
+                <textarea ng-model="personajeseleccionado.equipo" rows="17" class="fill sinborde" placeholder="objetos"></textarea>
+            </div>
+            <div class="pagina" ng-show="paginaActiva === 4">
+
+            <h3>Conjuros</h3>
+
+            <div class="conjuroSeleccionado" ng-show="conjuroSeleccionado">
+                <table>
+                        <tr>
+                            <td>nombre</td>
+                            <td>Clase</td>
+                            <td>nivel</td>
+                        </tr>
+
+                    <tr>
+                        <td>
+                            <span class="nombre"><input type="text" ng-model="conjuroSeleccionado.nombre" class="sinborde alLeft" placeholder="nombre"  /></span>
+                        </td>
+                        <td>
+                            <span class="clase"><input type="text" ng-model="conjuroSeleccionado.clase" class="sinborde"  placeholder="tipo"/></span>
+                        </td>
+                        <td>
+                            <select ng-model="conjuroSeleccionado.nivel"><option value="{{$index}}" ng-repeat="num in nivelesConjuro track by $index">niv. {{$index}}</option></select>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td colspan="3">
+                            <textarea ng-model="conjuroSeleccionado.desc" class="fill sinborde" rows="4" placeholder="descripcion"></textarea>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <br>
+            <table >
+                <tr>
+                    <th colspan="2"></th>
+                    <th>clase</th>
+                    <th>nivel</th>
+                    <th>cantidad</th>
+                    <th></th>
+                </tr>
+                <tr class="pointer" ng-repeat="conjuro in personajeseleccionado.listaconjuros | orderBy: ['clase','nivel'] track by $index" >
+                    <td  width="20">
+                        <input type="radio" name="s" ng-click="$parent.conjuroSeleccionado = conjuro" ng-checked="$parent.conjuroSeleccionado == conjuro"/>
+                    </td>
+                    <td  class="alLeft" ng-click="$parent.conjuroSeleccionado = conjuro" >
+                        {{conjuro.nombre}}
+                    </td>
+                    <td  width="20" ng-click="$parent.conjuroSeleccionado = conjuro" >
+                        {{conjuro.clase}}
+                    </td>
+                    <td ng-click="$parent.conjuroSeleccionado = conjuro" >
+                        {{conjuro.nivel}}
+                    </td>
+                    <td  width="20">
+                        <input type="text" ng-model="conjuro.cantidad" class="sinborde cantidad" placeholder="0"  />
+                    </td>
+                    <td width="20">
+                        <a class="pointer hover" ng-click="eliminaConjuro(conjuro)"> <span class="typcn typcn-trash"></span> </a>
+                    </td>
+                </tr>
+
+
+            </table>
+            <a  class="button" ng-click="agregaConjuro()">Agregar conjuro</a>
+
+
+
+            </div>
+        </div>
+
+
+
+
+
+    </div>
+</div>

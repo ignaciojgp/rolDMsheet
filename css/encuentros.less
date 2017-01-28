@@ -1,0 +1,188 @@
+// main: styles.less
+@anchoEtiquetas:150px;
+
+.enfrentamientos{
+    .campo{
+        display: inline-block;
+    }
+
+    
+
+    .tabla{
+        padding-top: 1em;
+
+        .separador{
+            background: white !important;
+            border-color: transparent !important;
+        }
+        .etiquetas{
+
+            float: left;
+            width: @anchoEtiquetas;
+            padding-top: 0px;
+
+            box-sizing: border-box;
+            .name{
+                height: 147px;
+            }
+            div{
+                padding: 10px 10px 7px 10px;
+                border-top: #ccc solid 1px;
+
+                font-weight: bold;
+                -webkit-border-top-left-radius: 5px;
+                -webkit-border-bottom-left-radius: 5px;
+                -moz-border-radius-topleft: 5px;
+                -moz-border-radius-bottomleft: 5px;
+                border-top-left-radius: 5px;
+                border-bottom-left-radius: 5px;
+
+                &:first-child{
+                    border-bottom: none;
+
+                }
+
+                &.tipo2{
+                    font-size: 0.8em;
+                    line-height: 1.5em;
+                    font-weight: normal;
+
+                    &:nth-child(even) {background: #ededed}
+                    &:nth-child(odd) {background: #ddd}
+
+
+                }
+                &.tipo1{
+
+                    &:nth-child(even) {
+                        background: lighten(@color-secondary-1-0,20%);
+                    }
+                    &:nth-child(odd) {
+                        background: lighten(@color-secondary-1-0,40%);
+                    }
+                }
+                &.tipo3{
+                    &:nth-child(even) {
+                        background: lighten(@color-primary-1,20%);
+                    }
+                    &:nth-child(odd) {
+                        background: lighten(@color-primary-1,10%);
+                    }
+                }
+                &.tipo6{
+                    background: lighten(red,30%);
+                }
+
+
+            }
+        }
+
+        .valores{
+            overflow-x: auto;
+            margin-left: @anchoEtiquetas;
+
+            .panel{
+                background: #ededed;
+                overflow: hidden;
+            }
+            .oponente{
+
+                width: 100px;
+                float: left;
+                position: relative;
+                &:nth-child(even) {background: #fff}
+                &:nth-child(odd) {background: #ededed}
+
+                &.active{
+                    z-index: 10;
+                    box-shadow: 0px 0px 10px gray;
+                    background: lighten(@color-secondary-1-0,60%);
+
+                }
+
+
+                box-sizing: border-box;
+
+                .name{
+
+                    height: 165px;
+                    position: relative;
+
+
+                    .val{
+                        input{
+
+                            width: 160px;
+                            position: relative;
+                            -webkit-transform: rotate(-90deg);
+
+
+                            text-align: left;
+                            position: absolute;
+                            bottom: 50%;
+                            left: 50%;
+                            margin-left: -80px;
+                            margin-bottom: -10px;
+
+
+                            font-size: 1.1em;
+                            font-weight: bold;
+                            text-align: left;
+                        }
+
+
+
+                    }
+
+                }
+
+                .val{
+                    padding: 1em 0.5em 0 0.5em;
+                    border-top: #ccc solid 1px;
+
+                    &.separador{
+                        min-height: 3px;
+                        border-top: #ccc solid 1px !important;
+                    }
+
+                    input{
+                        margin: 0;
+                        padding: 2px 0  2px 0 ;
+                        display: block;
+                        border:none;
+                        background: transparent;
+                        width: 100%;
+                        text-align: center;
+                        position: relative;
+                        top: -5px;
+
+                        &:active{
+                            border: none;
+                            outline: none;
+                        }
+                        &:focus{
+                            border: none;
+                            outline: none;
+                        }
+                    }
+                }
+
+                .options{
+                    position: absolute;
+                    top: 5px;
+                    right: 0;
+                    left: 0;
+                    font-size: 1.3em;
+                    text-align: center;
+                    display: none;
+                }
+
+                &:hover .options{
+                    display: block;
+                }
+
+            }
+
+        }
+    }
+}

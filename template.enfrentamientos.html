@@ -1,0 +1,77 @@
+<div class="enfrentamientos" >
+
+
+    <div class="lista">
+        <ul>
+            <li ng-repeat="encuentro in campania.encuentros track by $index" ng-class="{'active':encuentro == encuentroseleccionado}" >
+
+                <a  ng-click="selecciona(encuentro)" class="pointer">
+                    <span class="circulo">{{$index+1}} </span>
+                    {{encuentro.nombre}}
+                </a>
+            </li>
+            <li >
+                <a ng-click="agregaEncuentro()" class="button">Agregar encuentro</a>
+            </li>
+        </ul>
+    </div>
+    <div class="detalle" ng-if="encuentroseleccionado">
+
+        <div class="opciones">
+            <div class="alRight">
+                <a class="button" ng-click="agregarOponente()">agregar</a>
+                <a class="button" ng-click="pegarOponente()">pegar</a>
+                <a class="button bred" ng-click="eliminaEncuentro()">eliminar encuentro</a>
+            </div>
+            <div class="alLeft">
+                <input type="text" ng-model="encuentroseleccionado.nombre" class="fill sinborde principal" >
+            </div>
+        </div>
+        <hr/>
+
+        <div class="tabla">
+            <div class="etiquetas">
+                <div class="name">&nbsp;</div>
+
+                <div ng-repeat="valor in campos" class="tipo{{valor.tipo}}" ng-class="{'separador':valor.id == '-'}">
+                    <span class="nom" ng-if="valor.id != '-'" >{{valor.nombre}}</span>
+                </div>
+
+            </div>
+            <div class="valores">
+                <div class="panel" style="{{anchoPanel}}">
+
+                    <div class="oponente"
+                         ng-class="{'active':encuentroseleccionado.oponenteseleccionado === $index }"
+                         ng-click="encuentroseleccionado.oponenteseleccionado = $index"
+                         ng-repeat="oponente in encuentroseleccionado.oponentes track by $index"
+
+                         >
+                        <div class="name">
+                            <div class="val">
+                                <input type="text" ng-model="oponente.nombre"/>
+                            </div>
+                            <div class="options">
+                                <a class="pointer hover" ng-click="eliminaOponente($index)">
+                                    <span class="typcn typcn-trash"></span>
+                                </a>
+
+                            </div>
+                        </div>
+                        <div ng-repeat="valor in campos" class="val" ng-class="{'separador':valor.id == '-'}">
+
+                            <input type="text" ng-if="valor.id != '-'" ng-model="oponente[valor.id]" placeholder="0"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+        </div>
+
+
+    </div>
+</div>

@@ -1,0 +1,180 @@
+// main: styles.less
+
+
+.nodoHistoria{
+    clear: both;
+    position: relative;
+    padding-left: 2em;
+    padding-bottom: 1em;
+
+    .typcn{
+
+        position: relative;
+
+
+    }
+
+
+
+    &::before {
+        content: "--------";
+        border-top: #ccc solid 1px;
+        position: absolute;
+        left:0em;
+        top:0.5em;
+        width: 3m;
+        display: block;
+        color: transparent;
+    }
+
+    input{
+        margin-left: 1em;
+    }
+
+    .opciones{
+        position: relative;
+        left:13px;
+        margin-bottom: -7px;
+
+        .typcn{
+            color:@color-secondary-1-1;
+            font-size: 1.4em;
+            vertical-align: middle;
+
+            &.active{
+                color:@color-secondary-2-1;
+            }
+        }
+    }
+
+    ul{
+        border-left: #ccc dotted 1px;
+        margin: 0 0 0 1.5em;
+        padding: 0;
+
+
+        li{
+            list-style: none;
+            position: relative;
+            top: 9px;
+            margin-top: 0.5em;
+
+            .bola3{
+                display: none;
+            }
+
+            &:hover>{
+                &>.bola3{
+                    display: inline-block;
+                }
+            }
+
+        }
+
+        .text{
+            padding-left: 1em;
+
+            textarea{
+                width: 100%;
+
+                font-family: Arial;
+                padding:0.5em;
+                border:none;
+                border-left: #ddd solid 0.3em;
+                &:active{
+                    border: none;
+                    outline: none;
+                    border-left: #ddd solid 0.3em;
+                }
+                &:focus{
+                    border: none;
+                    outline: none;
+                    border-left: #ddd solid 0.3em;
+                }
+            }
+        }
+
+        .discreto{
+
+
+            &::before {
+                content: "--------";
+                border-top: #ededed solid 1px;
+                position: absolute;
+                left:0em;
+                top:0.5em;
+                width: 3m;
+                display: block;
+                color: transparent;
+            }
+            position: relative;
+            color: #ededed;
+            padding-left: 3em;
+
+            a{
+                cursor: pointer;
+            }
+
+        }
+
+
+    }
+
+    .bola{
+        background: @color-primary-2;
+        color:white;
+        display: inline-block;
+        padding: 0 6px;
+        border-radius: 10px;
+        z-index: 1;
+        position: relative;
+        top: 15px;
+        left: -8px;
+
+        cursor: pointer;
+
+    }
+    .bola2{
+        background: @color-secondary-1-1;
+        color:white;
+        display: inline-block;
+        padding: 3px 5px;
+        border-radius: 10px;
+        z-index: 1;
+
+        font-size: 0.7em;
+
+        cursor: pointer;
+
+        &.active{
+            background-color: @color-secondary-2-1;
+        }
+    }
+    .bola3{
+        background: red;
+        color:white;
+        display: inline-block;
+        padding: 0 1px;
+        border-radius: 10px;
+        z-index: 1;
+        position: absolute;;
+        top: 13px;
+        left: 15px;
+        cursor: pointer;
+        font-size: 1.2em;
+        transparent:0.1;
+
+    }
+
+    .bolagris{
+        background: #ccc;
+        border-radius: 10px;
+        padding: 3px;
+        line-height: 1em;
+        font-size: 10px;
+        position: relative;
+        top: -2px;
+        left: -2px;
+    }
+
+}

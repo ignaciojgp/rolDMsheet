@@ -1,0 +1,29 @@
+<div class="notas">
+    <div class="lista">
+        <ul>
+            <li ng-repeat="item in campania.notas" ng-class="{'active':item == notaseleccionada}"  >
+                <a ng-click="seleccionanota(item)" >
+                    <span class="circulo">{{$index+1}} </span>
+                    {{item.titulo}}
+                </a>
+            </li>
+        </ul>
+        <a ng-click="agregaNota()" class="button">Agregar nota</a>
+    </div>
+    <div class="detalle">
+        <div class="opciones">
+            <div class="alRight">
+                <a class="button bred" ng-click="eliminaNota()">eliminar nota</a>
+
+            </div>
+            <div class="alLeft">
+                <input type="text" ng-model="notaseleccionada.titulo" class="fill sinborde principal">
+            </div>
+        </div>
+        <hr>
+        <div>
+            <textarea ckeditor="options" ng-model="notaseleccionada.content" class="cajaNotas" rows="1000" ></textarea>
+        </div>
+    </div>
+
+</div>

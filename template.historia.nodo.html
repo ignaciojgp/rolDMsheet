@@ -1,0 +1,27 @@
+<div class="nodoHistoria">
+    <div class="fill">
+        <input type="text" ng-model="nodo.titulo" class="sinborde "/>
+
+    </div>
+    <div class="opciones">
+        <a class="bola2" ng-class="{'active':nodo.nodosvisibles}" ng-click="nodo.nodosvisibles= !nodo.nodosvisibles; nodo.textovisible=false">{{nodo.nodos.length}}</a>
+        <a ng-click="nodo.textovisible= !nodo.textovisible"><span class="typcn typcn-document-text pointer" ng-class="{'active':nodo.textovisible}" ></span></a>
+    </div>
+    <ul dnd-list="list">
+        <li class="text" ng-show="nodo.textovisible">
+
+            <textarea name="name" ng-model="nodo.descripcion" rows="4" placeholder="descripción"></textarea>
+        </li>
+        <li ng-repeat="subnodo in nodo.nodos" ng-show="nodo.nodosvisibles" >
+            <a class="bola" >&nbsp;</a>
+            <a class="bola3" ng-click="deleteNode($index)">
+                <span class="typcn typcn-trash"></span>
+            </a>
+            <nodo-historia nodo="subnodo"></nodo-historia>
+        </li>
+        <li class="discreto" ng-show="nodo.nodosvisibles" >
+            <a ng-click="addNode()" class="bolagris" ><span class="typcn typcn-plus"></span>
+</a>
+        </li>
+    </ul>
+</div>
