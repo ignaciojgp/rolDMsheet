@@ -307,7 +307,7 @@
 
 
                 habilidades.forEach(function(o,i,a){
-                    paraEnfrentamiento[o.id] = getTotalHabilidad(o.id);
+                    paraEnfrentamiento[o.id] = $scope.getTotalHabilidad(o);
                 });
 
                 console.log(paraEnfrentamiento);
