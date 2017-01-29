@@ -1,8 +1,8 @@
 (function(){
-    var module =  angular.module("manger",['historia','enfrentamientos','personajes','notas']);
+    var module =  angular.module("manger",['historia','enfrentamientos','personajes','notas','ui.bootstrap']);
 
 
-    module.controller("rolController",function($scope){
+    module.controller("rolController",function($scope, $uibModal){
 
         $scope.algo="una cosa de angular";
         $scope.agregaCampania = agregaCampania;
@@ -10,7 +10,9 @@
         $scope.guardar = guardar;
         $scope.fileSelected = fileSelected;
         $scope.exportar = exportar;
+        $scope.ejecutaComando = ejecutaComando;
         $scope.campanias = localStorage.campanias === undefined ? [] : JSON.parse(localStorage.campanias);
+        $scope.myPopoverTemplate = "myPopoverTemplate.html";
         $scope.menu = [
             {id:"historia",label:"Historia"},
             {id:"enfrentamientos",label:"Enfrentamientos"},
@@ -94,6 +96,31 @@
             // }
 
         }
+
+        function ejecutaComando(){
+            if(!$scope.command){
+                return;
+            }
+
+
+            $scope.resultadoComando = tiraDados($scope.command);
+            $scope.popoverIsOpen = true;
+
+            console.log($scope.resultadoComando);
+
+            // $uibModal.open({
+            //       animation: true,
+            //       ariaLabelledBy: 'modal-title-bottom',
+            //       ariaDescribedBy: 'modal-body-bottom',
+            //       templateUrl: 'template.tiradaDados.html',
+            //       size: 'sm',
+            //       controller: function($scope) {
+            //         $scope.name = 'bottom';
+            //       }
+            //     });
+        }
+
+
 
     });
 

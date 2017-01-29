@@ -5,7 +5,6 @@ function tiraDados(cadena){
   tiradas.forEach(function(o,i,a){
     var res = tirada(o);
     fullRess.push(res);
-    console.log(res);
   });
 
   return fullRess;
@@ -13,7 +12,7 @@ function tiraDados(cadena){
 
 function tirada(cadena){
 
-  var reg = /(\d)(d\d+)([\+|\-][\d]+)*(\*\d)*/g;
+  var reg = /(\d+)(d\d+)([\+|\-][\d]+)*(\*\d+)*/g;
 
   var m = reg.exec(cadena);
   if(m){

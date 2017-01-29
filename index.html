@@ -17,21 +17,30 @@
         <title>Rol manager</title>
         <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
         <script type="text/javascript" src="bower_components/ckeditor/ckeditor.js"></script>
+        <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+        <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
+
         <script type="text/javascript" src="bower_components/angular-ckeditor/angular-ckeditor.js"></script>
 
 
 
         <script type="text/javascript" src="js/vars.js"></script>
+        <script type="text/javascript" src="js/tiradas.js"></script>
         <script type="text/javascript" src="js/module.manager.js"></script>
         <script type="text/javascript" src="js/module.historia.js"></script>
         <script type="text/javascript" src="js/module.enfrentamientos.js"></script>
         <script type="text/javascript" src="js/module.personajes.js"></script>
         <script type="text/javascript" src="js/module.notas.js"></script>
         <link rel="stylesheet" href="bower_components/typicons.font/src/font/typicons.css" media="screen" />
+        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" media="screen" >
         <link rel="stylesheet" href="css/styles.css" media="screen" >
     </head>
     <body ng-controller="rolController" ng-init="vista='historia'">
         <div class="wrapper">
+
+            <!-- topBar     -->
+
             <div class="topBar">
                 <span>Campaña</span>
                 <select ng-model="campaniaseleccionada" ng-options="item.titulo for item in campanias"></select>
@@ -48,6 +57,9 @@
 
 
             </div>
+
+            <!-- left -->
+
             <div class="left">
 
                 <ul class="mainMenu">
@@ -58,6 +70,10 @@
             <div class="center">
                 <a ng-click="showMenu = !showMenu" class="burgerMenu"><span class="typcn typcn-th-menu"></span></a>
             </div>
+
+
+            <!-- right -->
+
             <div class="right" ng-if="campaniaseleccionada" ng-class="{'showMenu':showMenu}">
                 <div historia ng-if="vista=='historia'" campania="campaniaseleccionada"></div>
                 <div enfrentamientos ng-if="vista=='enfrentamientos'" campania="campaniaseleccionada"></div>
@@ -66,7 +82,62 @@
 
 
             </div>
+
+
+            <!-- comandos -->
+
+            <div class="commands">
+                <div class="resultados">
+
+                </div>
+                <table uib-popover-template="myPopoverTemplate" popover-is-open="popoverIsOpen" popover-trigger="'none'" >
+                    <tr>
+                        <td><input type="text" ng-model="command" class="sinborde" placeholder="Escribe una tirada, ejmp. 1d6 ó 2d8+1 ó 3d6+4*3"> </td>
+                        <td width="100"><a ng-click="ejecutaComando()" class="button">Ejecutar</a></td>
+                    </tr>
+                </table>
+
+            </div>
+
+
+
         </div>
 
     </body>
+
+    <!-- templates -->
+
+    <script type="text/ng-template" id="template.tiradaDados.html">
+        <div class="modal-header">
+           <h3 class="modal-title" id="modal-title-{{name}}">The {{name}} modal!</h3>
+        </div>
+        <div class="modal-body" id="modal-body-{{name}}">
+           Having multiple modals open at once is probably bad UX but it's technically possible.
+        </div>
+
+    </script>
+
+    <script type="text/ng-template" id="myPopoverTemplate.html">
+       <!-- <div>{{resultadoComando}}</div> -->
+       <div ng-repeat="tirada in resultadoComando" style="min-width=800px">
+           <div>
+               Tirada: <b>{{tirada.cadena}}</b> =
+
+                <span ng-repeat="tiro in tirada.tiradas  track by $index" class="tiros">
+                    <span ng-if="$index>0">+</span>
+                    (
+
+                    <span ng-repeat="dado in tiro.dados track by $index">[ {{dado}} ]</span>
+                    <span ng-if="tiro.modificador">+{{tiro.modificador}}</span>
+                    )</span>
+
+             = <b>{{tirada.total}}</b>
+          </div>
+
+       </div>
+
+
+   </script>
+
+
 </html>

@@ -43,6 +43,7 @@
 
 @menuwidth:200px;
 @topbarHeight:60px;
+@alturaCommandos:40px;
 
 body{
     background: #ededed;
@@ -127,7 +128,7 @@ body{
             position: absolute;
             left: 0;
             top:110px;
-            bottom: 0;right: 0;
+            bottom: @alturaCommandos;right: 0;
             background: white;
             padding: 1em;
             overflow-y: auto;
@@ -174,6 +175,7 @@ body{
         font-weight: bold;
         vertical-align: middle;
         line-height: 1em;
+        box-sizing: content-box;
     }
     .alCenter{
         text-align: center !important;
@@ -296,6 +298,41 @@ body{
     .cajaNotas{
         min-height: 600px;
     }
+
+    .commands{
+        height: @alturaCommandos;
+        position: absolute;
+        bottom: 0;left: 0;right: 0;
+        z-index: 100;
+        background: #ededed;
+
+        table{
+            width: 100%;
+            input{
+                width: 100%;
+                padding: 0.5em;
+                box-sizing: border-box;
+            }
+            .button{
+                width: 100%;
+                box-sizing: border-box;
+                text-align: center;
+            }
+        }
+    }
+
+    .tiros{
+        color:#aaa;
+        font-size: 0.9em;
+        display: inline-block;
+        vertical-align: middle;
+        line-height: 0.9em;
+        padding-bottom: 3px;
+    }
+}
+
+.popover{
+    max-width: 100%; /* Max Width of the popover (depending on the container!) */
 }
 
 @import "historia.less";
