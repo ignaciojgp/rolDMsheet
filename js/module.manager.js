@@ -10,6 +10,7 @@
         $scope.guardar = guardar;
         $scope.fileSelected = fileSelected;
         $scope.exportar = exportar;
+        $scope.keyCommand = keyCommand;
         $scope.ejecutaComando = ejecutaComando;
         $scope.campanias = localStorage.campanias === undefined ? [] : JSON.parse(localStorage.campanias);
         $scope.myPopoverTemplate = "myPopoverTemplate.html";
@@ -19,6 +20,13 @@
             {id:"personajes",label:"PNJs y monstruos"},
             {id:"notas",label:"Notas"}
         ];
+
+
+        $scope.vista= sessionStorage.ultimaPestania? sessionStorage.ultimaPestania:"personajes" ;
+
+        $scope.$watch("vista",function(){
+            sessionStorage.ultimaPestania = $scope.vista;
+        },true);
 
 
         $scope.campaniaseleccionada = $scope.campanias[$scope.campanias.length-1] ;
@@ -120,7 +128,11 @@
             //     });
         }
 
-
+        function keyCommand(e){
+            if(e.charCode === 13){
+                ejecutaComando();
+            }
+        }
 
     });
 
