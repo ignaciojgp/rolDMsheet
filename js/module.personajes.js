@@ -289,6 +289,7 @@
             function copiarPersonaje(){
                 var p = JSON.stringify($scope.personajeseleccionado);
                 var paraEnfrentamiento = {
+                    nombre: $scope.personajeseleccionado.nombre,
                     Nivel: getNivelTotal(),
                     DG: getNivelTotal(),
                     PG: getPGTotales(),

@@ -93,6 +93,8 @@
                 <table uib-popover-template="myPopoverTemplate" popover-is-open="popoverIsOpen" popover-trigger="'none'" >
                     <tr>
                         <td><input type="text" ng-model="command" class="sinborde" placeholder="Escribe una tirada, ejmp. 1d6 ó 2d8+1 ó 3d6+4*3" ng-keypress="keyCommand($event)"/> </td>
+                        <td width="20">CD:</td>
+                        <td width="90"><input type="text" ng-model="dificultad" class="sinborde" placeholder="dificultad" ng-keypress="keyCommand($event)"/> </td>
                         <td width="100"><a ng-click="ejecutaComando()" class="button">Ejecutar</a></td>
                     </tr>
                 </table>
