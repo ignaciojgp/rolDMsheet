@@ -42,17 +42,17 @@
             <!-- topBar     -->
 
             <div class="topBar">
-                <span>Campaña</span>
-                <select ng-model="campaniaseleccionada" ng-options="item.titulo for item in campanias"></select>
-                <div class="button" ng-click="agregaCampania()">Agregar</div> |
+                <h4 ng-show="campaniaseleccionada">
+                    <span>Campaña:</span>
+                    <input type="text" ng-model="campaniaseleccionada.titulo" class="sinborde"/>
+                </h4>
 
 
-                <input type="text" ng-model="campaniaseleccionada.titulo" class="sinborde"/>
 
+                <div class="options" ng-show="campaniaseleccionada">
 
-                <div class="options">
-                    <input type="file" custom-on-change="fileSelected" />
-                    <a class="button" ng-click="exportar()">exportar</a>
+                    <a class="button" ng-click="exportar()"><span class="typcn typcn-download"></span> Descargar</a>
+                    <a class="button" ng-click="cerrar()"><span class="typcn typcn-delete"></span> Cerrar</a>
                 </div>
 
 
@@ -62,8 +62,10 @@
 
             <div class="left">
 
-                <ul class="mainMenu">
-                    <li ng-repeat="item in menu" ng-class="{'active':vista === item.id}"><a ng-click="cambiarVista(item)">{{item.label}}</a></li>
+                <ul class="mainMenu" ng-show="campaniaseleccionada">
+                    <li ng-repeat="item in menu" ng-class="{'active':vista === item.id}">
+                        <a ng-click="cambiarVista(item)">{{item.label}}</a>
+                    </li>
 
                 </ul>
             </div>
@@ -74,13 +76,49 @@
 
             <!-- right -->
 
-            <div class="right" ng-if="campaniaseleccionada" ng-class="{'showMenu':showMenu}">
-                <div historia ng-if="vista=='historia'" campania="campaniaseleccionada"></div>
-                <div enfrentamientos ng-if="vista=='enfrentamientos'" campania="campaniaseleccionada"></div>
-                <div personajes ng-if="vista=='personajes'" campania="campaniaseleccionada"></div>
-                <div notas ng-if="vista=='notas'" campania="campaniaseleccionada"></div>
+            <div class="right"  ng-class="{'showMenu':showMenu}">
+                <div ng-if="campaniaseleccionada">
+                  <div historia ng-if="vista=='historia'" campania="campaniaseleccionada"></div>
+                  <div enfrentamientos ng-if="vista=='enfrentamientos'" campania="campaniaseleccionada" comando="command"></div>
+                  <div personajes ng-if="vista=='personajes'" campania="campaniaseleccionada"></div>
+                  <div notas ng-if="vista=='notas'" campania="campaniaseleccionada"></div>
+                </div>
+                <div ng-if="!campaniaseleccionada">
 
+                    <br>
+                    <br>
+                    <br>
 
+                    <div class="misCampanias">
+                        <h3>Mis campañas</h3>
+                        <hr>
+                        <ul class="listaCampanias">
+                            <li ng-repeat="item in campanias" ng-click="seleccionar(item)">
+                                <span class="circulo ng-binding">{{$index+1}}</span>
+                                <span class="options"><span class="typcn typcn-trash" ng-click="eliminarCampania($index,$event)"></span></span>
+                                {{item.titulo}}
+                            </li>
+                        </ul>
+                        <hr>
+
+                        <p>
+                            <table  class="fill">
+                                <tr>
+
+                                    <td width="48%">
+                                        <label for="fileSelecter" class="button fill tcenter">Importar campaña</label>
+                                        <input type="file" id="fileSelecter" custom-on-change="fileSelected" class="fileSelected" />
+                                    </td>
+                                    <td width="4%">&nbsp;</td>
+                                    <td width="48%">
+                                        <label class="button fill tcenter" ng-click="agregaCampania()">Nueva campaña</label>
+                                    </td>
+                                </tr>
+                            </table>
+                        </p>
+                    </div>
+
+                </div>
             </div>
 
 
@@ -121,21 +159,32 @@
 
     <script type="text/ng-template" id="myPopoverTemplate.html">
        <!-- <div>{{resultadoComando}}</div> -->
-       <div ng-repeat="tirada in resultadoComando" style="min-width=800px">
-           <div>
-               Tirada: <b>{{tirada.cadena}}</b> =
+       <div><span class="typcn typcn-delete decoradorDerecho" ng-click="closePopupResultados()"></span></div>
 
-                <span ng-repeat="tiro in tirada.tiradas  track by $index" class="tiros">
-                    <span ng-if="$index>0">+</span>
-                    (
+       <div>
+           <div ng-repeat="tirada in resultadoComando" style="min-width=800px" class="tiradaDeDados">
 
-                    <span ng-repeat="dado in tiro.dados track by $index">[ {{dado}} ]</span>
-                    <span ng-if="tiro.modificador">+{{tiro.modificador}}</span>
-                    )</span>
+               <div>
+                   <span class="circulo">{{$index+1}}</span>
+                   Tirada: <b>{{tirada.cadena}}</b> =
 
-             = <b>{{tirada.total}}</b>
-          </div>
+                    <span ng-repeat="tiro in tirada.tiradas  track by $index" class="tiros">
+                        <span ng-if="$index>0">+</span>
+                        (
 
+                        <span ng-repeat="dado in tiro.dados track by $index">[ {{dado}} ]</span>
+                        <span ng-if="tiro.modificador">+{{tiro.modificador}}</span>
+                        )</span>
+
+                 = <b>{{tirada.total}} </b>
+                 <span ng-if="dificultad">
+                   <span class="typcn typcn-thumbs-ok" ng-if="tirada.total > dificultad"></span>
+                   <span class="typcn typcn-thumbs-down" ng-if="tirada.total < dificultad"></span>
+                 </span>
+
+              </div>
+
+           </div>
        </div>
 
 

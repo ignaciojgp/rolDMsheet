@@ -10,6 +10,18 @@
 
     .tabla{
         padding-top: 1em;
+        .options{
+            position: absolute;
+            top: 110px;
+            right: 1.5em;
+            z-index: 100;
+            .button{
+                display: block;
+                font-size: 2em;
+                border-radius: 2em;
+                margin-bottom: 0.3em;
+            }
+        }
 
         .separador{
             background: white !important;
@@ -26,6 +38,7 @@
             box-sizing: border-box;
             .name{
                 height: 165px;
+                border-top-color: white;
             }
             div{
               padding: 10px 10px 8px 10px;
@@ -82,10 +95,13 @@
         .valores{
             overflow-x: auto;
             margin-left: @anchoEtiquetas;
+            position: relative;
 
             .panelOponentes{
-                background: #ededed;
+
                 overflow: hidden;
+                position: relative;
+
             }
             .oponente{
 
@@ -94,6 +110,13 @@
                 position: relative;
                 &:nth-child(even) {background: #fff}
                 &:nth-child(odd) {background: #ededed}
+                border-right: #ccc solid 1px;
+                box-sizing: border-box;
+
+                &:first-child{
+
+                    border-left: #ccc solid 1px;
+                }
 
                 &.active{
                     z-index: 10;
@@ -105,6 +128,13 @@
 
                 box-sizing: border-box;
 
+                .numero{
+                    position: absolute;
+                    left: 0;
+                    right: 0;
+                    text-align: center;
+                    margin-top: 150px;
+                }
                 .name{
 
                     height: 165px;

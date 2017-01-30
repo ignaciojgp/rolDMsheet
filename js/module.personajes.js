@@ -6,6 +6,7 @@
         templateUrl: 'template.personajes.html',
         controller: function($scope){
 
+
             $scope.agregaPersonaje = agregaPersonaje;
             $scope.selecciona = selecciona;
             $scope.getCharMod = getCharMod;
@@ -48,7 +49,10 @@
             }
 
             $scope.modObjetivos = [].concat(caracteristicas,miscelaneos,armadura,salvacion,habilidades);
-            $scope.personajeseleccionado = $scope.campania.personajes !== undefined ? $scope.campania.personajes[0]:null;
+
+            $scope.$watch("campania",function(){
+              $scope.personajeseleccionado = $scope.campania.personajes !== undefined ? $scope.campania.personajes[0]:null;
+            },true);
 
 
             $scope.principales = principales;

@@ -11,7 +11,11 @@
         $scope.fileSelected = fileSelected;
         $scope.exportar = exportar;
         $scope.keyCommand = keyCommand;
+        $scope.closePopupResultados = closePopupResultados;
         $scope.ejecutaComando = ejecutaComando;
+        $scope.eliminarCampania = eliminarCampania;
+        $scope.seleccionar = seleccionar;
+        $scope.cerrar = cerrar;
         $scope.campanias = localStorage.campanias === undefined ? [] : JSON.parse(localStorage.campanias);
         $scope.myPopoverTemplate = "myPopoverTemplate.html";
         $scope.menu = [
@@ -29,8 +33,7 @@
         },true);
 
 
-        $scope.campaniaseleccionada = $scope.campanias[$scope.campanias.length-1] ;
-
+        $scope.campaniaseleccionada = sessionStorage.campaniaSeleccionada ? $scope.campanias[parseInt(sessionStorage.campaniaSeleccionada)]:null ;
 
         $scope.$watch("campanias",guardar,true);
 
@@ -38,11 +41,21 @@
             $scope.campanias.push({titulo:"sin titulo",historia:{titulo:"raiz", nodos:[]}});
             $scope.nuevaCampania = null;
             $scope.campaniaseleccionada = $scope.campanias[$scope.campanias.length-1] ;
+            sessionStorage.campaniaSeleccionada = $scope.campanias.length-1;
+        }
+
+        function seleccionar(campania){
+            $scope.campaniaseleccionada = campania;
+            sessionStorage.campaniaSeleccionada = $scope.campanias.indexOf(campania);
         }
 
         function guardar(){
              localStorage.campanias = JSON.stringify($scope.campanias);
+        }
 
+        function cerrar(){
+            $scope.campaniaseleccionada = null;
+            sessionStorage.campaniaSeleccionada = null;
         }
 
         function exportar(){
@@ -79,18 +92,12 @@
         }
 
         function fileSelected(e,i,a){
-            // debugger;
 
             var file = e.currentTarget.files[0];
-            alert(file.type);
 
-            // if (file.type == "application/json") {
                 var reader = new FileReader();
 
                 reader.onload = function(e) {
-
-                    // debugger;
-                    // fileDisplayArea.innerText = reader.result;
 
                     var nuevaCampania  = JSON.parse(reader.result);
 
@@ -99,9 +106,6 @@
                 };
 
                 reader.readAsText(file);
-            // } else {
-            //     alert("archivo no soportado");
-            // }
 
         }
 
@@ -111,26 +115,31 @@
             }
 
 
-            $scope.resultadoComando = tiraDados($scope.command);
+            $scope.resultadoComando = tiraDados($scope.command.trim());
             $scope.popoverIsOpen = true;
 
             console.log($scope.resultadoComando);
 
-            // $uibModal.open({
-            //       animation: true,
-            //       ariaLabelledBy: 'modal-title-bottom',
-            //       ariaDescribedBy: 'modal-body-bottom',
-            //       templateUrl: 'template.tiradaDados.html',
-            //       size: 'sm',
-            //       controller: function($scope) {
-            //         $scope.name = 'bottom';
-            //       }
-            //     });
         }
 
         function keyCommand(e){
             if(e.charCode === 13){
                 ejecutaComando();
+            }
+        }
+
+        function closePopupResultados(){
+            $scope.popoverIsOpen = false;
+        }
+
+        function eliminarCampania(index,even){
+
+
+            if(confirm("¿Estás seguro?")){
+                $scope.campanias.splice(index,1);
+            }else{
+                even.stopImmediatePropagation();
+
             }
         }
 

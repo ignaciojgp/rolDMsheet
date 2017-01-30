@@ -19,8 +19,7 @@
 
         <div class="opciones">
             <div class="alRight">
-                <a class="button" ng-click="agregarOponente()">agregar</a>
-                <a class="button" ng-click="pegarOponente()">pegar</a>
+
                 <a class="button bred" ng-click="eliminaEncuentro()">eliminar encuentro</a>
             </div>
             <div class="alLeft">
@@ -34,19 +33,25 @@
                 <div class="name">&nbsp;</div>
 
                 <div ng-repeat="valor in campos" class="tipo{{valor.tipo}}" ng-class="{'separador':valor.id == '-'}">
-                    <span class="nom" ng-if="valor.id != '-'" >{{valor.nombre}}</span>
+                    <span class="nom pointer" ng-if="valor.id != '-'" ng-click="tiradaMultiple(valor.id)"   title="tirar 1d20" >{{valor.nombre}}</span>
                 </div>
 
             </div>
+            <div class="options">
+                <a class="button" ng-click="agregarOponente()" title="nuevo oponente"><span class="typcn typcn-user-add"></span></a>
+                <a class="button" ng-click="pegarOponente()" title="pegar" ng-show="hayClipboard"><span class="typcn typcn-pin"></span></a>
+            </div>
             <div class="valores">
                 <div class="panelOponentes" style="{{anchoPanel}}">
-
                     <div class="oponente"
                          ng-class="{'active':encuentroseleccionado.oponenteseleccionado === $index }"
                          ng-click="encuentroseleccionado.oponenteseleccionado = $index"
                          ng-repeat="oponente in encuentroseleccionado.oponentes track by $index"
 
                          >
+                         <span class="numero">
+                             <span class="circulo">{{$index+1}}</span>
+                         </span>
                         <div class="name">
                             <div class="val">
                                 <input type="text" ng-model="oponente.nombre"/>
