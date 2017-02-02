@@ -28,7 +28,7 @@
 
             $scope.$watch("campania",function(){
               $scope.encuentroseleccionado  = $scope.campania.encuentros !== undefined ? $scope.campania.encuentros[0]:null;
-            },true);
+            });
 
             function agregaEncuentro(){
 

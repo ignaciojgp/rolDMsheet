@@ -1,27 +1,34 @@
-<div class="nodoHistoria">
+<div class="nodoHistoria" >
     <div class="fill">
-        <input type="text" ng-model="nodo.titulo" class="sinborde "/>
+        <input type="text" ng-model="nodo.titulo" class="sinborde fill"  ng-class="{'inputSeleccionado':nodo.seleccionado}"/>
 
     </div>
     <div class="opciones">
         <a class="bola2" ng-class="{'active':nodo.nodosvisibles}" ng-click="nodo.nodosvisibles= !nodo.nodosvisibles; nodo.textovisible=false">{{nodo.nodos.length}}</a>
-        <a ng-click="nodo.textovisible= !nodo.textovisible"><span class="typcn typcn-document-text pointer" ng-class="{'active':nodo.textovisible}" ></span></a>
+        <a ng-click="nodo.textovisible= !nodo.textovisible" title="ver texto">
+            <span class="typcn typcn-document-text pointer" ng-class="{'active':nodo.textovisible}" ></span>
+        </a>
+        <a ng-click="copiar()" title="copiar">
+            <span class="typcn typcn-clipboard"></span>
+        </a>
+
     </div>
-    <ul dnd-list="list">
+    <ul dnd-list="list" class="listaNodos">
         <li class="text" ng-show="nodo.textovisible">
 
-            <textarea name="name" ng-model="nodo.descripcion" rows="4" placeholder="descripción"></textarea>
+            <textarea name="name" ng-model="nodo.descripcion" rows="4" placeholder="descripción" ckeditor="options"></textarea>
         </li>
-        <li ng-repeat="subnodo in nodo.nodos" ng-show="nodo.nodosvisibles" >
-            <a class="bola" >&nbsp;</a>
+        <li ng-repeat="subnodo in nodo.nodos" ng-show="nodo.nodosvisibles" ng-class="{'seleccionado':subnodo.seleccionado, 'descartado':subnodo.descartado}" >
+            <a class="bola" ng-click="subnodo.seleccionado = !subnodo.seleccionado" >&nbsp; <span class="typcn typcn-tick" ng-show="subnodo.seleccionado"></span></a>
             <a class="bola3" ng-click="deleteNode($index)">
                 <span class="typcn typcn-trash"></span>
             </a>
-            <nodo-historia nodo="subnodo"></nodo-historia>
+
+            <nodo-historia nodo="subnodo" hermanos="nodo.nodos"></nodo-historia>
         </li>
-        <li class="discreto" ng-show="nodo.nodosvisibles" >
-            <a ng-click="addNode()" class="bolagris" ><span class="typcn typcn-plus"></span>
-</a>
+        <li class="discreto" ng-show="nodo.nodosvisibles " >
+            <a ng-click="addNode()" class="bolagris" title="agregar nuevo"><span class="typcn typcn-plus"></span></a>
+            <a ng-click="pegar()" class="bolagris" title="pegar nodo"><span class="typcn typcn-pin"></span></a>
         </li>
     </ul>
 </div>

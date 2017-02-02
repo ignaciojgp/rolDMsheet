@@ -32,6 +32,11 @@
             $scope.salvacionBase = salvacionBase;
             $scope.eliminaPersonaje = eliminaPersonaje;
             $scope.getNivelPersonaje = getNivelPersonaje;
+            $scope.agregarArma = agregarArma;
+            $scope.eliminaArma = eliminaArma;
+            $scope.ejecutaTiradaDeDanio = ejecutaTiradaDeDanio;
+            $scope.ejecutaTiradaDeAtaque = ejecutaTiradaDeAtaque;
+            $scope.getTiradaAtaque = getTiradaAtaque;
             $scope.niveles = [];
             $scope.nummodificadores = [];
             $scope.nivelesConjuro = [];
@@ -51,8 +56,8 @@
             $scope.modObjetivos = [].concat(caracteristicas,miscelaneos,armadura,salvacion,habilidades);
 
             $scope.$watch("campania",function(){
-              $scope.personajeseleccionado = $scope.campania.personajes !== undefined ? $scope.campania.personajes[0]:null;
-            },true);
+               $scope.personajeseleccionado = $scope.campania.personajes !== undefined ? $scope.campania.personajes[0]:null;
+            });
 
 
             $scope.principales = principales;
@@ -116,7 +121,7 @@
                 if($scope.personajeseleccionado.clases){
 
                     $scope.personajeseleccionado.clases.forEach(function(o,i,a){
-                        n += (parseInt(o.nivel) *  parseInt(o.dado))  + getCharMod($scope.personajeseleccionado.con);
+                        n += parseInt(o.nivel) * (parseInt(o.dado)  + getCharMod(getTotalCaracteristica("con")));
                     });
                 }
 
@@ -148,7 +153,7 @@
                         }
 
 
-                        n += salvacionBase[base][o.nivel];
+                        if(base) n += salvacionBase[base][o.nivel];
                     });
                 }
 
@@ -173,16 +178,18 @@
 
                 if($scope.personajeseleccionado.clases){
                     $scope.personajeseleccionado.clases.forEach(function(o,i,a){
-                        n += ataqueBase[o.ataquebase][o.nivel];
+
+
+                        if(o.ataquebase) n += ataqueBase[o.ataquebase][o.nivel];
                     });
                 }
 
-                return n+mod;
+                return n;
 
             }
 
-            function getAtaqueMelee(){
-                var mod = getCharMod($scope.personajeseleccionado.frz);
+            function getAtaqueMelee(adicional){
+                var mod = getCharMod(getTotalCaracteristica("frz"))+parseInt(adicional);
                 var base =  getAtaqueBase(0);
 
                 var tiradas = [];
@@ -194,8 +201,8 @@
                 return tiradas;
             }
 
-            function getAtaqueRango(){
-                var mod = getCharMod($scope.personajeseleccionado.des);
+            function getAtaqueRango(adicional){
+                var mod = getCharMod(getTotalCaracteristica('des'))+parseInt(adicional);
                 var base =  getAtaqueBase(0);
 
                 var tiradas = [];
@@ -321,6 +328,45 @@
 
 
 
+            }
+
+            function agregarArma(){
+                if($scope.personajeseleccionado.armas === undefined) $scope.personajeseleccionado.armas = [];
+
+                $scope.personajeseleccionado.armas.push({});
+            }
+            function eliminaArma(index){
+
+                if(confirm("¿estás seguro?")){
+
+                    $scope.personajeseleccionado.armas.splice(index,1);
+                }
+            }
+            function getTiradaAtaque(arma){
+
+                if(arma.tipo == "melee"){
+                    return getAtaqueMelee(arma.mod);
+                }else{
+                    return getAtaqueRango(arma.mod);
+                }
+
+            }
+
+            function ejecutaTiradaDeDanio(arma){
+                $scope.$parent.$parent.$parent.command = arma.danio;
+                $scope.$parent.$parent.$parent.ejecutaComando();
+            }
+
+            function ejecutaTiradaDeAtaque(arma){
+                var comando = "";
+                var tirada =  getTiradaAtaque(arma);
+
+                for(var i in tirada){
+                    comando += "1d20+"+tirada[i]+" ";
+                }
+
+                $scope.$parent.$parent.$parent.command = comando;
+                $scope.$parent.$parent.$parent.ejecutaComando();
             }
 
         },

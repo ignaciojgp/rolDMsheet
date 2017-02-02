@@ -16,6 +16,8 @@
 
 
 
+
+
     &::before {
         content: "--------";
         border-top: #ccc solid 1px;
@@ -29,6 +31,7 @@
 
     input{
         margin-left: 1em;
+        color: #999;
     }
 
     .opciones{
@@ -47,6 +50,12 @@
         }
     }
 
+    .seleccionado>.fill>input{
+
+        font-weight: bold;
+        color:@color-primary-0;
+    }
+
     ul{
         border-left: #ccc dotted 1px;
         margin: 0 0 0 1.5em;
@@ -54,6 +63,8 @@
 
 
         li{
+
+
             list-style: none;
             position: relative;
             top: 9px;
@@ -95,6 +106,7 @@
         }
 
         .discreto{
+            opacity: 0.2;
 
 
             &::before {
@@ -117,6 +129,10 @@
 
         }
 
+        .listaNodos:hover>.discreto{
+            opacity: 1;
+        }
+
 
     }
 
@@ -132,6 +148,13 @@
         left: -8px;
 
         cursor: pointer;
+        margin-right: 10px;
+        .typcn{
+            left: -5px;
+            margin-right: -17px;
+            margin-left: -6px;
+
+        }
 
     }
     .bola2{
@@ -176,5 +199,15 @@
         top: -2px;
         left: -2px;
     }
+    .listaNodos li.seleccionado{
 
+    }
+
+    .inputSeleccionado{
+        font-weight: bold;
+        color: black;
+    }
+    .listaNodos li.descartado{
+        display: none;
+    }
 }

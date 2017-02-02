@@ -93,7 +93,7 @@
                         <h3>Mis campañas</h3>
                         <hr>
                         <ul class="listaCampanias">
-                            <li ng-repeat="item in campanias" ng-click="seleccionar(item)">
+                            <li ng-repeat="item in campanias track by $index" ng-click="seleccionar(item)">
                                 <span class="circulo ng-binding">{{$index+1}}</span>
                                 <span class="options"><span class="typcn typcn-trash" ng-click="eliminarCampania($index,$event)"></span></span>
                                 {{item.titulo}}
