@@ -126,13 +126,13 @@
 
         </div>
 
-        <div class="cajadoble" ng-init="paginaActiva = 3">
+        <div class="cajadoble" ng-init="paginaActiva = 4">
             <ul class="menu">
                 <li ng-class="{'active':paginaActiva === 1}" ng-click="paginaActiva = 1">Clases y Mods</li>
                 <li ng-class="{'active':paginaActiva === 2}" ng-click="paginaActiva = 2">Habilidades</li>
                 <li ng-class="{'active':paginaActiva === 3}" ng-click="paginaActiva = 3">Equipo</li>
                 <li ng-class="{'active':paginaActiva === 4}" ng-click="paginaActiva = 4">Conjuros</li>
-                <li ng-class="{'active':paginaActiva === 4}" ng-click="paginaActiva = 5">Dotes</li>
+                <li ng-class="{'active':paginaActiva === 5}" ng-click="paginaActiva = 5">Dotes</li>
             </ul>
             <div class="pagina" ng-show="paginaActiva === 1">
                 <h3>Clases y Experiencia</h3>
@@ -162,9 +162,10 @@
                         <th>clase</th>
                         <th>DG</th>
                         <th>Avance ataque</th>
-                        <th>TS For</th>
-                        <th>TS Ref</th>
-                        <th>TS Vol</th>
+                        <th title="Tirada de salvacion de fortaleza">TS For</th>
+                        <th title="Tirada de salvacion de reflejos">TS Ref</th>
+                        <th title="Tirada de salvacion de voluntad">TS Vol</th>
+                        <th title="Puntos de habilidad por nivel">P.Hab/N</th>
                         <th>Nivel</th>
                     </tr>
 
@@ -200,14 +201,16 @@
                                 <option ng-repeat="(key, val) in salvacionBase" value="{{key}}">{{key}}</option>
                             </select>
                         </td>
-
+                        <td width="30"><input type="number" ng-model="clase.puntohabilidad" class="fill sinborde" placeholder="0"></td>
 
                         <td>
                             <select ng-model="clase.nivel">
                                 <option value="{{$index}}" ng-repeat="num in niveles">{{$index}}</option>
                             </select>
                         </td>
-
+                        <td>
+                            <a class="pointer hover" ng-click="eliminaClase($index)"> <span class="typcn typcn-trash"></span> </a>
+                        </td>
                     </tr>
                 </table>
                 <br/>
@@ -239,6 +242,9 @@
                                 <option value="{{num}}" ng-repeat="num in nummodificadores">{{num}}</option>
                             </select>
                         </td>
+                        <td>
+                            <a class="pointer hover" ng-click="eliminaModificador(modificador)"> <span class="typcn typcn-trash"></span> </a>
+                        </td>
                     </tr>
                 </table>
                 <br/>
@@ -246,7 +252,7 @@
 
             </div>
             <div class="pagina" ng-show="paginaActiva === 2" >
-                <h3>Habilidades <small>({{getTotalPuntosHabilidad()}} puntos)</small></h3>
+                <h3>Habilidades <small>({{getTotalPuntosHabilidad()}} puntos / {{getMaxPuntosHabilidad()}})</small></h3>
                 <table class="c1">
                     <thead>
                         <tr>
@@ -261,7 +267,7 @@
                         <tr ng-repeat="char in habilidades | orderBy: 'nombre'" ng-if="$index <= habilidades.length /2">
                             <td><input type="checkbox" ng-model="personajeseleccionado.habilidadesclaseas[char.id]"/></td>
                             <td  class="alLeft">{{char.nombre}} <small>({{char.charId}})</small></td>
-                            <td ><input type="text" ng-model="personajeseleccionado[char.id]" class="sinborde" placeholder="0"></td>
+                            <td ><input type="number" ng-model="personajeseleccionado[char.id]" class="sinborde" placeholder="0"></td>
                             <td >{{ getCharMod(getTotalCaracteristica(char.charId)) }}</td>
                             <th class="alCenter" ><b>{{ getTotalHabilidad(char) }}</b></th>
                         </tr>
@@ -282,7 +288,7 @@
                         <tr ng-repeat="char in habilidades | orderBy: 'nombre'" ng-if="$index > habilidades.length /2">
                             <td><input type="checkbox" ng-model="personajeseleccionado.habilidadesclaseas[char.id]"/></td>
                             <td  class="alLeft">{{char.nombre}} <small>({{char.charId}})</small></td>
-                            <td ><input type="text" ng-model="personajeseleccionado[char.id]" class="sinborde" placeholder="0"></td>
+                            <td ><input type="number" ng-model="personajeseleccionado[char.id]" class="sinborde" placeholder="0"></td>
                             <td >{{ getCharMod(getTotalCaracteristica(char.charId)) }}</td>
                             <th class="alCenter"><b>{{ getTotalHabilidad(char) }}</b></th>
                         </tr>
@@ -350,20 +356,20 @@
                 <div class="conjuroSeleccionado" ng-show="conjuroSeleccionado">
                     <table>
                             <tr>
+                                <td>nivel</td>
                                 <td>nombre</td>
                                 <td>Clase</td>
-                                <td>nivel</td>
                             </tr>
 
                         <tr>
+                            <td>
+                                <select ng-model="conjuroSeleccionado.nivel"><option value="{{$index}}" ng-repeat="num in nivelesConjuro track by $index">niv. {{$index}}</option></select>
+                            </td>
                             <td>
                                 <span class="nombre"><input type="text" ng-model="conjuroSeleccionado.nombre" class="sinborde alLeft" placeholder="nombre"  /></span>
                             </td>
                             <td>
                                 <span class="clase"><input type="text" ng-model="conjuroSeleccionado.clase" class="sinborde"  placeholder="tipo"/></span>
-                            </td>
-                            <td>
-                                <select ng-model="conjuroSeleccionado.nivel"><option value="{{$index}}" ng-repeat="num in nivelesConjuro track by $index">niv. {{$index}}</option></select>
                             </td>
 
                         </tr>
@@ -375,15 +381,18 @@
                     </table>
                 </div>
                 <br>
-                <table >
+                <table class="conjuros">
                     <tr>
+                        <th>nivel</th>
                         <th colspan="2"></th>
                         <th>clase</th>
-                        <th>nivel</th>
                         <th>cantidad</th>
                         <th></th>
                     </tr>
-                    <tr class="pointer" ng-repeat="conjuro in personajeseleccionado.listaconjuros | orderBy: ['clase','nivel'] track by $index" >
+                    <tr class="pointer n{{conjuro.nivel}}" ng-repeat="conjuro in personajeseleccionado.listaconjuros | orderBy: ['clase','nivel','nombre'] track by $index" >
+                        <td ng-click="$parent.conjuroSeleccionado = conjuro" width="30" >
+                            {{conjuro.nivel}}
+                        </td>
                         <td  width="20">
                             <input type="radio" name="s" ng-click="$parent.conjuroSeleccionado = conjuro" ng-checked="$parent.conjuroSeleccionado == conjuro"/>
                         </td>
@@ -393,9 +402,7 @@
                         <td  width="20" ng-click="$parent.conjuroSeleccionado = conjuro" >
                             {{conjuro.clase}}
                         </td>
-                        <td ng-click="$parent.conjuroSeleccionado = conjuro" >
-                            {{conjuro.nivel}}
-                        </td>
+
                         <td  width="20">
                             <input type="text" ng-model="conjuro.cantidad" class="sinborde cantidad" placeholder="0"  />
                         </td>

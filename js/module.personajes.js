@@ -24,6 +24,7 @@
             $scope.getTotalPuntosHabilidad = getTotalPuntosHabilidad;
             $scope.agregaConjuro = agregaConjuro;
             $scope.eliminaConjuro = eliminaConjuro;
+            $scope.eliminaModificador = eliminaModificador;
             $scope.getCABase = getCABase;
             $scope.getCAToque = getCAToque;
             $scope.getCADesprevenido = getCADesprevenido;
@@ -37,6 +38,8 @@
             $scope.ejecutaTiradaDeDanio = ejecutaTiradaDeDanio;
             $scope.ejecutaTiradaDeAtaque = ejecutaTiradaDeAtaque;
             $scope.getTiradaAtaque = getTiradaAtaque;
+            $scope.eliminaClase = eliminaClase;
+            $scope.getMaxPuntosHabilidad = getMaxPuntosHabilidad;
             $scope.niveles = [];
             $scope.nummodificadores = [];
             $scope.nivelesConjuro = [];
@@ -89,7 +92,7 @@
 
                 if(!isClasea) puntos /=2;
 
-                var mod = getCharMod(getTotalCaracteristica(habilidad.charId));
+                var mod = getCharMod(getTotalCaracteristica(habilidad.charId)) + getTotalModsCaracteristica(habilidad.id);
 
                 return puntos+mod;
 
@@ -367,6 +370,31 @@
 
                 $scope.$parent.$parent.$parent.command = comando;
                 $scope.$parent.$parent.$parent.ejecutaComando();
+            }
+            function eliminaClase(index){
+                if(confirm("¿estás seguro?")){
+
+                    $scope.personajeseleccionado.clases.splice(index,1);
+                }
+            }
+            function eliminaModificador(modificador){
+                if(confirm("¿estás seguro?")){
+                    var index = $scope.personajeseleccionado.modificadores.indexOf(modificador);
+                    $scope.personajeseleccionado.modificadores.splice(index,1);
+                }
+            }
+
+            function getMaxPuntosHabilidad(){
+
+                var p = 0;
+                for(var i in $scope.personajeseleccionado.clases){
+                    if(parseInt($scope.personajeseleccionado.clases[i].nivel)>0){
+
+                        p+= (parseInt($scope.personajeseleccionado.clases[i].puntohabilidad) + getCharMod(getTotalCaracteristica("int")))* parseInt($scope.personajeseleccionado.clases[i].nivel)+3;
+                    }
+                }
+
+                return p;
             }
 
         },
