@@ -222,7 +222,8 @@
                         <th >Activo</th>
                         <th ></th>
                         <th class="alLeft">caracteristica</th>
-                        <th class="alLeft">cantidad</th>
+                        <th class="alLeft">mod</th>
+                        <th></th>
                     </tr>
 
                     <tr ng-repeat="modificador in personajeseleccionado.modificadores | orderBy:'objetivo' track by $index">
@@ -232,12 +233,12 @@
                         </td>
                         <td><input type="text" ng-model="modificador.nombre" class="sinborde alLeft bold"></td>
 
-                        <td width="190">
+                        <td width="150">
                             <select ng-model="modificador.objetivo" >
                                 <option value="{{objetivo.id}}" ng-repeat="objetivo in modObjetivos">{{objetivo.nombre}}</option>
                             </select>
                         </td>
-                        <td width="10">
+                        <td width="50">
                             <select ng-model="modificador.mod">
                                 <option value="{{num}}" ng-repeat="num in nummodificadores">{{num}}</option>
                             </select>
@@ -303,9 +304,9 @@
                         <td>nombre</td>
                         <td>tipo de ataque</td>
                         <td>modificador</td>
-                        <td>alcance</td>
                         <td colspan="2">tirada</td>
                         <td colspan="2">Daño</td>
+                        <td>alcance</td>
                         <td></td>
                     </tr>
                     <tr ng-repeat="arma in personajeseleccionado.armas track by $index">
@@ -321,11 +322,11 @@
                                 <option value="{{num}}" ng-repeat="num in nummodificadores">{{num}}</option>
                             </select>
                         </td>
-                        <td width="70"><input type="text" ng-model="arma.alcance" class="fill sinborde" placeholder="0"></td>
                         <td>{{getTiradaAtaque(arma).join('/')}}</td>
                         <td><span class="typcn typcn-arrow-forward pointer" ng-click="ejecutaTiradaDeAtaque(arma)" ></span></td>
                         <td><input type="text" ng-model="arma.danio" class="sinborde fill" placeholder="daño"></td>
                         <td><span class="typcn typcn-arrow-forward" ng-click="ejecutaTiradaDeDanio(arma)"></span></td>
+                        <td width="70"><input type="text" ng-model="arma.alcance" class="fill sinborde" placeholder="0"></td>
                         <td><a class="pointer hover" ng-click="eliminaArma($index)"> <span class="typcn typcn-trash"></span> </a></td>
                     </tr>
                 </table>
