@@ -1,5 +1,5 @@
 (function(){
-    var module = angular.module("enfrentamientos",[]);
+    var module = angular.module("enfrentamientos",['utils']);
 
     module.directive('enfrentamientos', function() {
       return {

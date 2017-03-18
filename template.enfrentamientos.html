@@ -44,7 +44,7 @@
             <div class="valores">
                 <div class="panelOponentes" style="{{anchoPanel}}">
                     <div class="oponente"
-                         ng-class="{'active':encuentroseleccionado.oponenteseleccionado === $index }"
+                         ng-class="{'active':encuentroseleccionado.oponenteseleccionado === $index, 'muerto':oponente['Daño'] > oponente['PG'] }"
                          ng-click="encuentroseleccionado.oponenteseleccionado = $index"
                          ng-repeat="oponente in encuentroseleccionado.oponentes track by $index"
 
@@ -63,9 +63,10 @@
 
                             </div>
                         </div>
+                        <div>{{}}</div>
                         <div ng-repeat="valor in campos" class="val" ng-class="{'separador':valor.id == '-'}">
 
-                            <input type="text" ng-if="valor.id != '-'" ng-model="oponente[valor.id]" placeholder="0"/>
+                            <input type="text" ng-if="valor.id != '-'" ng-model="oponente[valor.id]" placeholder="0" calculadora />
                         </div>
                     </div>
                 </div>
