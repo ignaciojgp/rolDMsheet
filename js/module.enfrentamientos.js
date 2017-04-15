@@ -25,6 +25,9 @@
 
             $scope.campos = tiradas;
 
+            $scope.isDead = function(oponente){
+                return parseInt(oponente["PG"]) < parseInt(oponente["Daño"]);
+            }
 
             $scope.$watch("campania",function(){
               $scope.encuentroseleccionado  = $scope.campania.encuentros !== undefined ? $scope.campania.encuentros[0]:null;

@@ -1,10 +1,10 @@
 (function(){
     var module = angular.module("personajes",[]);
 
-    module.directive('personajes', function() {
+    module.directive('personajes', function($uibModal) {
       return {
         templateUrl: 'template.personajes.html',
-        controller: function($scope){
+        link: function($scope, el, attrs){
 
 
             $scope.agregaPersonaje = agregaPersonaje;
@@ -39,10 +39,14 @@
             $scope.ejecutaTiradaDeAtaque = ejecutaTiradaDeAtaque;
             $scope.getTiradaAtaque = getTiradaAtaque;
             $scope.eliminaClase = eliminaClase;
+            $scope.eliminaClaseConjuro = eliminaClaseConjuro;
             $scope.getMaxPuntosHabilidad = getMaxPuntosHabilidad;
+            $scope.agregarClaseConjurador = agregarClaseConjurador;
+            $scope.detalleConjuro = detalleConjuro;
             $scope.niveles = [];
             $scope.nummodificadores = [];
             $scope.nivelesConjuro = [];
+            $scope.nivelAgregar = 3;
 
             for(var i = 0; i<30;i++){
                 $scope.niveles.push(i);
@@ -258,11 +262,26 @@
 
 
             }
+            function agregarClaseConjurador(){
 
-            function agregaConjuro(){
+                if($scope.personajeseleccionado.clasesConjurador == undefined){
+                    $scope.personajeseleccionado.clasesConjurador = new Array();
+                }
+                $scope.personajeseleccionado.clasesConjurador.push({clase:"nombre clase", conjurosdiarios:[]});
+
+
+            }
+            function eliminaClaseConjuro(index){
+
+                if(confirm("¿estas seguro?")){
+
+                    $scope.personajeseleccionado.clasesConjurador.splice(index,1);
+                }
+
+            }
+            function agregaConjuro(nivel, clase){
                 if($scope.personajeseleccionado.listaconjuros === undefined) $scope.personajeseleccionado.listaconjuros = [];
-
-                $scope.conjuroSeleccionado = {nombre:"Sin nombre",nivel:0};
+                $scope.conjuroSeleccionado = {nombre:"Sin nombre",nivel: nivel, clase:clase};
                 $scope.personajeseleccionado.listaconjuros.push($scope.conjuroSeleccionado);
 
 
@@ -397,6 +416,44 @@
                 return p;
             }
 
+
+            function detalleConjuro(conjuro){
+
+
+                $uibModal.open({
+                     animation: true,
+                     ariaLabelledBy: 'modal-title-bottom',
+                     ariaDescribedBy: 'modal-body-bottom',
+                     templateUrl: 'stackedModal.html',
+
+                     controller: function($scope, item, nivelesConjuro) {
+                       $scope.name = 'bottom';
+
+                       $scope.conjuro = item;
+
+                       $scope.nivelesConjuro = nivelesConjuro
+
+                       $scope.options = {
+                          language: 'es',
+                          allowedContent: true,
+                          entities: false,
+                          height:215,
+                          toolbar: [
+                               ['Styles','Format','Font','FontSize','Bold','Italic','Underline','StrikeThrough','-','Undo','Redo','-','Cut','Copy','Paste','Find','Replace','-','Outdent','Indent','-','Print'],
+                               '/',
+                               ['NumberedList','BulletedList','-','JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock','Table','TextColor','BGColor']
+                            ]
+                        };
+                   },resolve: {
+                        item: function () {
+                          return conjuro;
+                      },
+                        nivelesConjuro: function () {
+                          return $scope.nivelesConjuro;
+                        }
+                      }
+                  });
+            }
         },
         scope:{
             "campania":"="

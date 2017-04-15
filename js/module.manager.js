@@ -3,7 +3,7 @@
 
 
     module.controller("rolController",function($scope, $uibModal){
-
+        $scope.modal = $uibModal;
         $scope.algo="una cosa de angular";
         $scope.agregaCampania = agregaCampania;
         $scope.cambiarVista = cambiarVista;

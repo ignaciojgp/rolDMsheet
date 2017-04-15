@@ -11,7 +11,7 @@
       };
     });
 
-    module.directive('nodoHistoria', function() {
+    module.directive('nodoHistoria', function($uibModal) {
       return {
         templateUrl: 'template.historia.nodo.html',
         controller: function($scope){
@@ -84,7 +84,34 @@
                     }
 
                 },true);
+                
+            $scope.mostrarNodo = function(nodo){
 
+                $uibModal.open({
+                     animation: true,
+                     ariaLabelledBy: 'modal-title-bottom',
+                     ariaDescribedBy: 'modal-body-bottom',
+                     templateUrl: 'detailNodo.html',
+
+                     controller: function($scope, nodo) {
+                         $scope.nodo=nodo;
+
+                       $scope.options = {
+                          language: 'es',
+                          allowedContent: true,
+                          size:'lg',
+                          entities: false,
+                          height:315
+                        };
+
+
+                   },resolve: {
+                        nodo: function () {
+                          return nodo;
+                        }
+                      }
+                  });
+            }
         },
         scope:{
             "nodo":"=",

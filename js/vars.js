@@ -11,6 +11,7 @@ var principales = [
     {nombre:"",                            tipo:2, id:"-"},
 
     {nombre:"Daño",                        tipo:6, id:"Daño"},
+    {nombre:"Atenuado",                        tipo:6, id:"Atenuado"},
 
     {nombre:"",                            tipo:2, id:"-"},
 

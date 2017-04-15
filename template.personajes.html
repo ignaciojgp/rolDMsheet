@@ -131,7 +131,7 @@
                 <li ng-class="{'active':paginaActiva === 1}" ng-click="paginaActiva = 1">Clases y Mods</li>
                 <li ng-class="{'active':paginaActiva === 2}" ng-click="paginaActiva = 2">Habilidades</li>
                 <li ng-class="{'active':paginaActiva === 3}" ng-click="paginaActiva = 3">Equipo</li>
-                <li ng-class="{'active':paginaActiva === 4}" ng-click="paginaActiva = 4">Conjuros</li>
+                <li ng-class="{'active':paginaActiva === 4}" ng-click="paginaActiva = 4">Magia</li>
                 <li ng-class="{'active':paginaActiva === 5}" ng-click="paginaActiva = 5">Dotes</li>
             </ul>
             <div class="pagina" ng-show="paginaActiva === 1">
@@ -352,9 +352,9 @@
             </div>
             <div class="pagina" ng-show="paginaActiva === 4">
 
-                <h3>Conjuros</h3>
+                <h3>Magia</h3>
 
-                <div class="conjuroSeleccionado" ng-show="conjuroSeleccionado">
+                <!-- <div class="conjuroSeleccionado" ng-show="conjuroSeleccionado">
                     <table>
                             <tr>
                                 <td>nivel</td>
@@ -380,32 +380,68 @@
                             </td>
                         </tr>
                     </table>
-                </div>
+                </div> -->
+                <!-- <br> -->
+                <h4>Conjuros diarios</h4>
+
+                <table ng-init="nivelesConjuros = [0,1,2,3,4,5,6,7,8,9]">
+
+                    <tr>
+                        <th>Clase</th>
+                        <th ng-repeat="i in nivelesConjuros" class="alCenter">{{i}}<th>
+                    </tr>
+                    <tr ng-repeat="clase in personajeseleccionado.clasesConjurador track by $index">
+                        <td width="100"><input type="text" class="sinborde alLeft" ng-model="clase.clase"></td>
+                        <td ng-repeat="i in nivelesConjuros" class="alCenter">
+                            <input type="text" class="sinborde" placeholder="0" ng-model="clase.conjurosdiarios[i]">
+                        </td>
+                        <td width="20">
+                            <a class="pointer hover" ng-click="eliminaClaseConjuro($index)"> <span class="typcn typcn-trash"></span> </a>
+                        </td>
+                    </tr>
+                </table>
                 <br>
+                <p class="alRight">
+                    <a ng-click="agregarClaseConjurador()" class="button">Agregar clase de conjurador</a>
+                </p>
+                <hr>
+
+                <h4>Lista de conjuros</h4>
+
                 <table class="conjuros">
                     <tr>
-                        <th>nivel</th>
-                        <th colspan="2"></th>
+                        <th></th>
                         <th>clase</th>
-                        <th>cantidad</th>
+                        <th>nivel</th>
+                        <th></th>
+                        <th>diarios</th>
+                        <th>varita</th>
+                        <th>perg</th>
                         <th></th>
                     </tr>
                     <tr class="pointer n{{conjuro.nivel}}" ng-repeat="conjuro in personajeseleccionado.listaconjuros | orderBy: ['clase','nivel','nombre'] track by $index" >
+                        <td  width="20">
+                            <a class="pointer hover" ng-click="detalleConjuro(conjuro)"> <span class="typcn typcn-info-large-outline"></span> </a>
+                        </td>
+                        <td  width="70" ng-click="$parent.conjuroSeleccionado = conjuro" >
+                            {{conjuro.clase}}
+                        </td>
                         <td ng-click="$parent.conjuroSeleccionado = conjuro" width="30" >
                             {{conjuro.nivel}}
                         </td>
-                        <td  width="20">
-                            <input type="radio" name="s" ng-click="$parent.conjuroSeleccionado = conjuro" ng-checked="$parent.conjuroSeleccionado == conjuro"/>
-                        </td>
                         <td  class="alLeft" ng-click="$parent.conjuroSeleccionado = conjuro" >
-                            {{conjuro.nombre}}
-                        </td>
-                        <td  width="20" ng-click="$parent.conjuroSeleccionado = conjuro" >
-                            {{conjuro.clase}}
+                            <input type="text" ng-model="conjuro.nombre" class="sinborde alLeft">
                         </td>
 
-                        <td  width="20">
-                            <input type="text" ng-model="conjuro.cantidad" class="sinborde cantidad" placeholder="0"  />
+
+                        <td  width="30">
+                            <input type="number" ng-model="conjuro.diarios" class="sinborde alCenter cantidad" placeholder="0"  />
+                        </td>
+                        <td  width="30">
+                            <input type="number" ng-model="conjuro.varita" class="sinborde alCenter cantidad" placeholder="0"  />
+                        </td>
+                        <td  width="30">
+                            <input type="number" ng-model="conjuro.pergamino" class="sinborde alCenter cantidad" placeholder="0"  />
                         </td>
                         <td width="20">
                             <a class="pointer hover" ng-click="eliminaConjuro(conjuro)"> <span class="typcn typcn-trash"></span> </a>
@@ -414,7 +450,14 @@
 
 
                 </table>
-                <a  class="button" ng-click="agregaConjuro()">Agregar conjuro</a>
+                <br>
+                <p class="alRight">
+
+                    Agregar conjuro de <input type="text" ng-model="claseConjuro" class="" placeholder="clase"/>
+                    nivel:
+                    <select ng-model="nivelAgregar"><option value="{{$index}}" ng-repeat="num in nivelesConjuro track by $index">niv. {{$index}}</option></select>
+                    <a  class="button" ng-click="agregaConjuro(nivelAgregar, claseConjuro)">Agregar</a>
+                </p>
 
             </div>
 
@@ -431,3 +474,22 @@
 
     </div>
 </div>
+<script type="text/ng-template" id="stackedModal.html">
+    <div class="modal-header">
+        <h3 class="modal-title" id="modal-title-{{name}}">
+            <input type="text" ng-model="conjuro.nombre" class="sinborde">
+        </h3>
+    </div>
+    <div class="modal-body" id="modal-body-{{name}}">
+        Clase: <input type="text" ng-model="conjuro.clase">
+
+        Nivel: <select ng-model="conjuro.nivel"><option value="{{$index}}" ng-repeat="num in nivelesConjuro track by $index">niv. {{$index}}</option></select>
+
+        Componentes: V <input type="checkbox" ng-model="conjuro.verbal" /> S<input type="checkbox" ng-model="conjuro.somatico" /> M<input type="checkbox" ng-model="conjuro.material" />
+
+        <hr>
+        <h4>Descripcion</h4>
+        <textarea ckeditor="options" ng-model="conjuro.descripcion" class="cajaNotas" rows="100" ></textarea>
+
+    </div>
+</script>

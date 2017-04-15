@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html ng-app="manger">
+    <head>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=false, max-scale=1, min-scale=1" />
+    	<meta name="mobileOptimized" content="width" />
+    	<meta name="handheldFriendly" content="true" />
+    	<meta name="apple-mobile-web-app-capable" content="yes" />
+    	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    	<meta name="format-detection" content="telephone=no" />
+
+
+        <link rel="manifest" href="manifest.json">
+
+
+        <meta charset="utf-8">
+        <title>Rol manager</title>
+        <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+        <script type="text/javascript" src="bower_components/ckeditor/ckeditor.js"></script>
+        <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+        <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
+
+        <script type="text/javascript" src="bower_components/angular-ckeditor/angular-ckeditor.js"></script>
+
+
+
+        <script type="text/javascript" src="js/vars.js"></script>
+        <script type="text/javascript" src="js/tiradas.js"></script>
+        <script type="text/javascript" src="js/module.utils.js"></script>
+        <script type="text/javascript" src="js/module.manager.js"></script>
+        <script type="text/javascript" src="js/module.historia.js"></script>
+        <script type="text/javascript" src="js/module.enfrentamientos.js"></script>
+        <script type="text/javascript" src="js/module.personajes.js"></script>
+        <script type="text/javascript" src="js/module.notas.js"></script>
+
+
+        <link rel="stylesheet" href="bower_components/typicons.font/src/font/typicons.css" media="screen" />
+        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" media="screen" >
+        <link rel="stylesheet" href="css/styles.css" media="screen" >
+    </head>
+    <body ng-controller="rolController" >
+        <div class="wrapper">
+
+            <!-- topBar     -->
+
+            <div class="topBar">
+                <h4 ng-show="campaniaseleccionada">
+                    <span>Campaña:</span>
+                    <input type="text" ng-model="campaniaseleccionada.titulo" class="sinborde"/>
+                </h4>
+
+
+
+                <div class="options" ng-show="campaniaseleccionada">
+
+                    <a class="button" ng-click="exportar()"><span class="typcn typcn-download"></span> Descargar</a>
+                    <a class="button" ng-click="cerrar()"><span class="typcn typcn-delete"></span> Cerrar</a>
+                </div>
+
+
+            </div>
+
+            <!-- left -->
+
+            <!-- <div class="left">
+
+                <ul class="mainMenu" ng-show="campaniaseleccionada">
+                    <li ng-repeat="item in menu" ng-class="{'active':vista === item.id}">
+                        <a ng-click="cambiarVista(item)">{{item.label}}</a>
+                    </li>
+
+                </ul>
+            </div> -->
+            <!-- <div class="center">
+                <a ng-click="showMenu = !showMenu" class="burgerMenu"><span class="typcn typcn-th-menu"></span></a>
+            </div> -->
+
+
+            <!-- right -->
+
+            <div class="right"  ng-class="{'showMenu':showMenu}" style="top:66px;">
+                <div ng-if="campaniaseleccionada">
+                  <div personajes ng-if="vista=='personajes'" campania="campaniaseleccionada"></div>
+
+                </div>
+                <div ng-if="!campaniaseleccionada">
+
+                    <br>
+                    <br>
+                    <br>
+
+                    <div class="misCampanias">
+                        <h3>Mis campañas</h3>
+                        <hr>
+                        <ul class="listaCampanias">
+                            <li ng-repeat="item in campanias track by $index" ng-click="seleccionar(item)">
+                                <span class="circulo ng-binding">{{$index+1}}</span>
+                                <span class="options"><span class="typcn typcn-trash" ng-click="eliminarCampania($index,$event)"></span></span>
+                                {{item.titulo}}
+                            </li>
+                        </ul>
+                        <hr>
+
+                        <p>
+                            <table  class="fill">
+                                <tr>
+
+                                    <td width="48%">
+                                        <label for="fileSelecter" class="button fill tcenter">Importar campaña</label>
+                                        <input type="file" id="fileSelecter" custom-on-change="fileSelected" class="fileSelected" />
+                                    </td>
+                                    <td width="4%">&nbsp;</td>
+                                    <td width="48%">
+                                        <label class="button fill tcenter" ng-click="agregaCampania()">Nueva campaña</label>
+                                    </td>
+                                </tr>
+                            </table>
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <!-- comandos -->
+
+            <div class="commands">
+                <div class="resultados">
+
+                </div>
+                <table uib-popover-template="myPopoverTemplate" popover-is-open="popoverIsOpen" popover-trigger="'none'" >
+                    <tr>
+                        <td><input type="text" ng-model="command" class="sinborde" placeholder="Escribe una tirada, ejmp. 1d6 ó 2d8+1 ó 3d6+4*3" ng-keypress="keyCommand($event)"/> </td>
+                        <td width="20">CD:</td>
+                        <td width="90"><input type="text" ng-model="dificultad" class="sinborde" placeholder="dificultad" ng-keypress="keyCommand($event)"/> </td>
+                        <td width="100"><a ng-click="ejecutaComando()" class="button">Ejecutar</a></td>
+                    </tr>
+                </table>
+
+            </div>
+
+
+
+        </div>
+
+    </body>
+
+    <!-- templates -->
+
+    <script type="text/ng-template" id="template.tiradaDados.html">
+        <div class="modal-header">
+           <h3 class="modal-title" id="modal-title-{{name}}">The {{name}} modal!</h3>
+        </div>
+        <div class="modal-body" id="modal-body-{{name}}">
+           Having multiple modals open at once is probably bad UX but it's technically possible.
+        </div>
+
+    </script>
+
+    <script type="text/ng-template" id="myPopoverTemplate.html">
+       <!-- <div>{{resultadoComando}}</div> -->
+       <div><span class="typcn typcn-delete decoradorDerecho" ng-click="closePopupResultados()"></span></div>
+
+       <div>
+           <div ng-repeat="tirada in resultadoComando" style="min-width=800px" class="tiradaDeDados">
+
+               <div>
+                   <span class="circulo">{{$index+1}}</span>
+                   Tirada: <b>{{tirada.cadena}}</b> =
+
+                    <span ng-repeat="tiro in tirada.tiradas  track by $index" class="tiros">
+                        <span ng-if="$index>0">+</span>
+                        (
+
+                        <span ng-repeat="dado in tiro.dados track by $index">[ {{dado}} ]</span>
+                        <span ng-if="tiro.modificador">+{{tiro.modificador}}</span>
+                        )</span>
+
+                 = <b>{{tirada.total}} </b>
+                 <span ng-if="dificultad">
+                   <span class="typcn typcn-thumbs-ok" ng-if="tirada.total > dificultad"></span>
+                   <span class="typcn typcn-thumbs-down" ng-if="tirada.total < dificultad"></span>
+                 </span>
+
+              </div>
+
+           </div>
+       </div>
+
+
+   </script>
+
+
+</html>

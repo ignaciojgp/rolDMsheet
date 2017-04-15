@@ -91,7 +91,38 @@
 
             }
         }
+        .oponentes{
 
+                tr{
+                        border-bottom: #ccc solid 1px;
+                        th{
+                            text-align: center;
+                        }
+                        td{
+                            input{
+                                padding: 1em;
+                                text-align: center;
+                            }
+                        }
+
+                        .separador{
+                            background-color: #ededed !important;
+                        }
+
+                        &.active{
+                            td,th{
+                                background-color: #ededed;
+                            }
+                            .separador{
+                                background-color: #ccc !important;
+                            }
+                        }
+                        &.muerto{
+                            opacity: 0.3;
+                        }
+                }
+
+        }
         .valores{
             overflow-x: auto;
             margin-left: @anchoEtiquetas;
