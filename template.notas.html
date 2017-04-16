@@ -10,10 +10,14 @@
         </ul>
         <a ng-click="agregaNota()" class="button">Agregar nota</a>
     </div>
-    <div class="detalle">
+    <div ng-if="!notaseleccionada" class="instruccion1">
+        <span class="typcn typcn-arrow-up-outline instructionIcon"></span>
+        Selecciona una nota
+    </div>
+    <div class="detalle" ng-if="notaseleccionada">
         <div class="opciones">
             <div class="alRight">
-                <a class="button bred" ng-click="eliminaNota()">eliminar nota</a>
+                <a class="button bred" ng-click="eliminaNota()"><span class="typcn typcn-trash" ng-click="eliminarCampania($index,$event)"></span><span class="noCell">eliminar nota</span></a>
 
             </div>
             <div class="alLeft">

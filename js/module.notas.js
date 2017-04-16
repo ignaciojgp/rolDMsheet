@@ -28,6 +28,8 @@
 
             $scope.seleccionanota = function(nota){
                 $scope.notaseleccionada = nota;
+                $scope.$parent.$parent.$parent.showMenu = false;
+
             };
 
             $scope.eliminaNota = function(){

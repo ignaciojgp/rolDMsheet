@@ -1,6 +1,14 @@
 // main: styles.less
 
 .personajes{
+    .gris{
+        color:#888;
+    }
+    .clasesConjuro{
+        .separador{
+            border-top: #333 solid 1px;
+        }
+    }
     .detalle{
 
 
@@ -19,9 +27,17 @@
                 }
                 &:hover {
                     background: @color-primary-1;
-
+                    color:white;
                     th{
                         background:  darken(@color-primary-1,10);
+                    }
+
+                    .sinborde{
+                        color:white;
+                    }
+
+                    .gris{
+                        color:#eee;
                     }
 
                 }
@@ -41,12 +57,25 @@
                         text-align: center;
                         color:@color-secondary-2-0;
                     }
+
+
+
+                }
+                select{
+                    width: 100%;
+                    color:@color-secondary-2-0;
+
+
+                }
+                &:hover{
                     select{
-                        width: 100%;
-                        color:@color-secondary-2-0;
+                        color:white !important;
+
+                        option{
+                            color: #666;
+                        }
+
                     }
-
-
                 }
 
                 td{
@@ -86,9 +115,10 @@
         width: 30%;
         margin: 1.5%;
         box-sizing: border-box;
-        @media(max-width: 601px){
+        @media(max-width: 640px){
             width: 100%;
             float: none;
+            margin: 0;
         }
     }
     .cajadoble{
@@ -99,13 +129,16 @@
         width: 63%;
         margin: 1.5%;
         box-sizing: border-box;
-        @media(max-width: 601px){
+
+        @media(max-width: 640px){
             width: 100%;
             float: none;
+            margin: 0
         }
     }
 
     .pagina{
+
         .c1{
             float: left;
             width: 48%;
@@ -139,6 +172,9 @@
             padding: 0.7em 1em;
             position: relative;
             cursor: pointer;
+            @media(max-width: 640px){
+                font-size: 10px;
+            }
 
             &.active{
                 font-weight: bold;

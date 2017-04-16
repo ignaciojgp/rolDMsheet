@@ -20,6 +20,7 @@
             $scope.agregaModificador = agregaModificador;
             $scope.getTotalCaracteristica = getTotalCaracteristica;
             $scope.getTotalModsCaracteristica = getTotalModsCaracteristica;
+            $scope.generarCaracteristicas = generarCaracteristicas;
             $scope.copiarPersonaje = copiarPersonaje;
             $scope.getTotalPuntosHabilidad = getTotalPuntosHabilidad;
             $scope.agregaConjuro = agregaConjuro;
@@ -82,6 +83,7 @@
             function selecciona(personaje){
 
                 $scope.personajeseleccionado = personaje;
+                $scope.$parent.$parent.$parent.showMenu = false;
 
             }
 
@@ -416,6 +418,12 @@
                 return p;
             }
 
+            function generarCaracteristicas(){
+
+                $scope.$parent.$parent.$parent.command = "caracteristicas";
+                $scope.$parent.$parent.$parent.ejecutaComando();
+                
+            }
 
             function detalleConjuro(conjuro){
 
@@ -426,12 +434,16 @@
                      ariaDescribedBy: 'modal-body-bottom',
                      templateUrl: 'stackedModal.html',
 
-                     controller: function($scope, item, nivelesConjuro) {
+                     controller: function($uibModalInstance,$scope, item, nivelesConjuro) {
                        $scope.name = 'bottom';
 
                        $scope.conjuro = item;
 
                        $scope.nivelesConjuro = nivelesConjuro
+
+                       $scope.dismiss = function(){
+                            $uibModalInstance.dismiss('cancel');
+                       }
 
                        $scope.options = {
                           language: 'es',

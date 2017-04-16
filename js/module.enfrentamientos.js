@@ -42,6 +42,8 @@
 
             function selecciona(encuentro){
                 $scope.encuentroseleccionado = encuentro;
+                $scope.$parent.$parent.$parent.showMenu = false;
+
             }
 
             function agregarOponente(){

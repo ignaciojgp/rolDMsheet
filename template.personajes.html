@@ -3,7 +3,7 @@
         <ul>
             <li ng-repeat="personaje in campania.personajes track by $index" ng-class="{'active':personaje == personajeseleccionado}" >
 
-                <a  ng-click="selecciona(personaje)" class="pointer">
+                <a  ng-click="selecciona(personaje);" class="pointer">
                     <span class="circulo">{{$index+1}} </span>
                     {{personaje.nombre}}
                 </a>
@@ -13,11 +13,15 @@
             </li>
         </ul>
     </div>
+    <div ng-if="!personajeseleccionado" class="instruccion1">
+        <span class="typcn typcn-arrow-up-outline instructionIcon"></span>
+        Selecciona un personaje
+    </div>
     <div class="detalle" ng-if="personajeseleccionado" >
         <div class="opciones">
             <div class="alRight">
-                <a class="button bred" ng-click="eliminaPersonaje()">eliminar personaje</a>
-                <a class="button bred" ng-click="copiarPersonaje()">Copiar</a>
+                <a class="button bred" ng-click="eliminaPersonaje()"><span class="typcn typcn-trash" ng-click="eliminarCampania($index,$event)"></span><span class="noCell">eliminar personaje</span></a>
+                <a class="button bred" ng-click="copiarPersonaje()"><span class="typcn typcn-clipboard" ng-click="eliminarCampania($index,$event)"></span><span class="noCell">Copiar</span></a>
 
             </div>
             <div class="alLeft">
@@ -104,7 +108,8 @@
                 </tr>
 
             </table>
-            <h3>Caracteristicas</h3>
+
+            <h3>Características <a style="cursor:pointer" ng-click="generarCaracteristicas()"><img src="images/dices.svg" style="height:19px; float:right" alt="" ></a></h3>
             <table>
                 <tr>
                     <th style="width:50%;"></th>
@@ -115,7 +120,7 @@
                 </tr>
                 <tr ng-repeat="char in caracteristicas" >
                     <td >{{char.nombre}}</td>
-                    <td ><input type="text" ng-model="personajeseleccionado[char.id]" class="sinborde" placeholder="0"></td>
+                    <td ><input type="number" ng-model="personajeseleccionado[char.id]" class="sinborde" placeholder="0"></td>
                     <td >{{ getTotalModsCaracteristica(char.id) }}</td>
                     <th  class="alCenter">{{ getTotalCaracteristica(char.id) }}</th>
                     <td >{{ getCharMod(getTotalCaracteristica(char.id)) }}</td>
@@ -126,7 +131,7 @@
 
         </div>
 
-        <div class="cajadoble" ng-init="paginaActiva = 4">
+        <div class="cajadoble" ng-init="paginaActiva = 1">
             <ul class="menu">
                 <li ng-class="{'active':paginaActiva === 1}" ng-click="paginaActiva = 1">Clases y Mods</li>
                 <li ng-class="{'active':paginaActiva === 2}" ng-click="paginaActiva = 2">Habilidades</li>
@@ -157,62 +162,65 @@
                     </table>
                 </div>
                 <hr>
-                <table>
-                    <tr>
-                        <th>clase</th>
-                        <th>DG</th>
-                        <th>Avance ataque</th>
-                        <th title="Tirada de salvacion de fortaleza">TS For</th>
-                        <th title="Tirada de salvacion de reflejos">TS Ref</th>
-                        <th title="Tirada de salvacion de voluntad">TS Vol</th>
-                        <th title="Puntos de habilidad por nivel">P.Hab/N</th>
-                        <th>Nivel</th>
-                    </tr>
+                <div class="desbordable">
+                    <table style="min-width:500px">
+                        <tr>
+                            <th>clase</th>
+                            <th>DG</th>
+                            <th>Avance ataque</th>
+                            <th title="Tirada de salvacion de fortaleza">TS For</th>
+                            <th title="Tirada de salvacion de reflejos">TS Ref</th>
+                            <th title="Tirada de salvacion de voluntad">TS Vol</th>
+                            <th title="Puntos de habilidad por nivel">P.Hab/N</th>
+                            <th>Nivel</th>
+                        </tr>
 
-                    <tr ng-repeat="clase in personajeseleccionado.clases">
-                        <td>
-                            <input type="text" ng-model="clase.nombre" class="sinborde alLeft bold">
-                        </td>
-                        <td><select ng-model="clase.dado">
-                                <option value="4">d4</option>
-                                <option value="6">d6</option>
-                                <option value="8">d8</option>
-                                <option value="10">d10</option>
-                                <option value="12">d12</option>
-                            </select>
-                        </td>
-                        <td>
-                            <select ng-model="clase.ataquebase">
-                                <option ng-repeat="(key, val) in ataqueBase" value="{{key}}">{{key}}</option>
-                            </select>
-                        </td>
-                        <td>
-                            <select ng-model="clase.tsForBase">
-                                <option ng-repeat="(key, val) in salvacionBase" value="{{key}}">{{key}}</option>
-                            </select>
-                        </td>
-                        <td>
-                            <select ng-model="clase.tsRefBase">
-                                <option ng-repeat="(key, val) in salvacionBase" value="{{key}}">{{key}}</option>
-                            </select>
-                        </td>
-                        <td>
-                            <select ng-model="clase.tsVolBase">
-                                <option ng-repeat="(key, val) in salvacionBase" value="{{key}}">{{key}}</option>
-                            </select>
-                        </td>
-                        <td width="30"><input type="number" ng-model="clase.puntohabilidad" class="fill sinborde" placeholder="0"></td>
+                        <tr ng-repeat="clase in personajeseleccionado.clases">
+                            <td>
+                                <input type="text" ng-model="clase.nombre" class="sinborde alLeft bold">
+                            </td>
+                            <td><select ng-model="clase.dado">
+                                    <option value="4">d4</option>
+                                    <option value="6">d6</option>
+                                    <option value="8">d8</option>
+                                    <option value="10">d10</option>
+                                    <option value="12">d12</option>
+                                </select>
+                            </td>
+                            <td>
+                                <select ng-model="clase.ataquebase">
+                                    <option ng-repeat="(key, val) in ataqueBase" value="{{key}}">{{key}}</option>
+                                </select>
+                            </td>
+                            <td>
+                                <select ng-model="clase.tsForBase">
+                                    <option ng-repeat="(key, val) in salvacionBase" value="{{key}}">{{key}}</option>
+                                </select>
+                            </td>
+                            <td>
+                                <select ng-model="clase.tsRefBase">
+                                    <option ng-repeat="(key, val) in salvacionBase" value="{{key}}">{{key}}</option>
+                                </select>
+                            </td>
+                            <td>
+                                <select ng-model="clase.tsVolBase">
+                                    <option ng-repeat="(key, val) in salvacionBase" value="{{key}}">{{key}}</option>
+                                </select>
+                            </td>
+                            <td width="30"><input type="number" ng-model="clase.puntohabilidad" class="fill sinborde" placeholder="0"></td>
 
-                        <td>
-                            <select ng-model="clase.nivel">
-                                <option value="{{$index}}" ng-repeat="num in niveles">{{$index}}</option>
-                            </select>
-                        </td>
-                        <td>
-                            <a class="pointer hover" ng-click="eliminaClase($index)"> <span class="typcn typcn-trash"></span> </a>
-                        </td>
-                    </tr>
-                </table>
+                            <td>
+                                <select ng-model="clase.nivel">
+                                    <option value="{{$index}}" ng-repeat="num in niveles">{{$index}}</option>
+                                </select>
+                            </td>
+                            <td>
+                                <a class="pointer hover" ng-click="eliminaClase($index)"> <span class="typcn typcn-trash"></span> </a>
+                            </td>
+                        </tr>
+                    </table>
+                    </div>
+
                 <br/>
                 <a  class="button" ng-click="agregaClase()">Agrega clase</a>
                 <hr>
@@ -297,109 +305,104 @@
                 </table>
             </div>
             <div class="pagina" ng-show="paginaActiva === 3">
-
+                <h3>Dinero</h3>
+                <div class="desbordable">
+                    <table style="min-width:500px">
+                        <tr>
+                            <td>PPT</td>
+                            <td><input type="text" ng-model="personajeseleccionado.pPT"/></td>
+                            <td>PO</td>
+                            <td><input type="text" ng-model="personajeseleccionado.pPO"/></td>
+                            <td>PP</td>
+                            <td><input type="text" ng-model="personajeseleccionado.pPP"/></td>
+                            <td>PC</td>
+                            <td><input type="text" ng-model="personajeseleccionado.pPC"/></td>
+                        </tr>
+                    </table>
+                </div>
+                <hr>
                 <h3>Armas y ataques</h3>
-                <table>
-                    <tr>
-                        <td>nombre</td>
-                        <td>tipo de ataque</td>
-                        <td>modificador</td>
-                        <td colspan="2">tirada</td>
-                        <td colspan="2">Daño</td>
-                        <td>alcance</td>
-                        <td></td>
-                    </tr>
-                    <tr ng-repeat="arma in personajeseleccionado.armas track by $index">
-                        <td><input type="text" ng-model="arma.nombre" class="sinborde fill" placeholder="nombre"></td>
-                        <td>
-                            <select ng-model="arma.tipo" >
-                                <option value="melee">Melee</option>
-                                <option value="rango">Rango</option>
-                            </select>
-                        </td>
-                        <td width="10">
-                            <select ng-model="arma.mod">
-                                <option value="{{num}}" ng-repeat="num in nummodificadores">{{num}}</option>
-                            </select>
-                        </td>
-                        <td>{{getTiradaAtaque(arma).join('/')}}</td>
-                        <td><span class="typcn typcn-arrow-forward pointer" ng-click="ejecutaTiradaDeAtaque(arma)" ></span></td>
-                        <td><input type="text" ng-model="arma.danio" class="sinborde fill" placeholder="daño"></td>
-                        <td><span class="typcn typcn-arrow-forward" ng-click="ejecutaTiradaDeDanio(arma)"></span></td>
-                        <td width="70"><input type="text" ng-model="arma.alcance" class="fill sinborde" placeholder="0"></td>
-                        <td><a class="pointer hover" ng-click="eliminaArma($index)"> <span class="typcn typcn-trash"></span> </a></td>
-                    </tr>
-                </table>
+                <div class="desbordable">
+                    <table style="min-width:500px">
+                        <tr>
+                            <td>nombre</td>
+                            <td>tipo de ataque</td>
+                            <td>modificador</td>
+                            <td colspan="2">tirada</td>
+                            <td colspan="2">Daño</td>
+                            <td>alcance</td>
+                            <td></td>
+                        </tr>
+                        <tr ng-repeat="arma in personajeseleccionado.armas track by $index">
+                            <td><input type="text" ng-model="arma.nombre" class="sinborde fill" placeholder="nombre"></td>
+                            <td>
+                                <select ng-model="arma.tipo" >
+                                    <option value="melee">Melee</option>
+                                    <option value="rango">Rango</option>
+                                </select>
+                            </td>
+                            <td width="10">
+                                <select ng-model="arma.mod">
+                                    <option value="{{num}}" ng-repeat="num in nummodificadores">{{num}}</option>
+                                </select>
+                            </td>
+                            <td>{{getTiradaAtaque(arma).join('/')}}</td>
+                            <td><span class="typcn typcn-arrow-forward pointer" ng-click="ejecutaTiradaDeAtaque(arma)" ></span></td>
+                            <td><input type="text" ng-model="arma.danio" class="sinborde fill" placeholder="daño"></td>
+                            <td><span class="typcn typcn-arrow-forward" ng-click="ejecutaTiradaDeDanio(arma)"></span></td>
+                            <td width="70"><input type="text" ng-model="arma.alcance" class="fill sinborde" placeholder="0"></td>
+                            <td><a class="pointer hover" ng-click="eliminaArma($index)"> <span class="typcn typcn-trash"></span> </a></td>
+                        </tr>
+                    </table>
+                </div>
                 <br>
                 <p class="opciones">
                     <a ng-click="agregarArma()" class="button">agregar arma</a>
                 </p>
+                <hr>
 
-                <h3>Equipo</h3>
-                <table>
-                    <tr>
-                        <td>PPT</td>
-                        <td><input type="text" ng-model="personajeseleccionado.pPT"/></td>
-                        <td>PO</td>
-                        <td><input type="text" ng-model="personajeseleccionado.pPO"/></td>
-                        <td>PP</td>
-                        <td><input type="text" ng-model="personajeseleccionado.pPP"/></td>
-                        <td>PC</td>
-                        <td><input type="text" ng-model="personajeseleccionado.pPC"/></td>
-                    </tr>
-                </table>
                 <textarea ng-model="personajeseleccionado.equipo" rows="17" class="fill sinborde" placeholder="objetos"></textarea>
             </div>
             <div class="pagina" ng-show="paginaActiva === 4">
 
                 <h3>Magia</h3>
 
-                <!-- <div class="conjuroSeleccionado" ng-show="conjuroSeleccionado">
-                    <table>
-                            <tr>
-                                <td>nivel</td>
-                                <td>nombre</td>
-                                <td>Clase</td>
-                            </tr>
+                <h4>Conjuros diarios</h4>
+                <div class="desbordable">
+                    <table style="min-width:500px" ng-init="nivelesConjuros = [0,1,2,3,4,5,6,7,8,9]" class="clasesConjuro">
 
                         <tr>
-                            <td>
-                                <select ng-model="conjuroSeleccionado.nivel"><option value="{{$index}}" ng-repeat="num in nivelesConjuro track by $index">niv. {{$index}}</option></select>
-                            </td>
-                            <td>
-                                <span class="nombre"><input type="text" ng-model="conjuroSeleccionado.nombre" class="sinborde alLeft" placeholder="nombre"  /></span>
-                            </td>
-                            <td>
-                                <span class="clase"><input type="text" ng-model="conjuroSeleccionado.clase" class="sinborde"  placeholder="tipo"/></span>
-                            </td>
-
+                            <th>Clase</th>
+                            <th>Car.</th>
+                            <th ng-repeat="i in nivelesConjuros" class="alCenter">N{{i}}</th>
+                            <th></th>
                         </tr>
-                        <tr>
-                            <td colspan="3">
-                                <textarea ng-model="conjuroSeleccionado.desc" class="fill sinborde" rows="4" placeholder="descripcion"></textarea>
+                        <tr ng-repeat-start="clase in personajeseleccionado.clasesConjurador track by $index" class="separador">
+                            <td width="100"><input type="text" class="sinborde alLeft" ng-model="clase.clase"></td>
+
+                            <td width="50">
+                                <select ng-model="clase.charId">
+                                    <option ng-repeat="caracteristica in caracteristicas" value="{{caracteristica.id}}" >{{caracteristica.id}}</option>
+                                </select>
                             </td>
+                            <td ng-repeat="i in nivelesConjuros" class="alCenter">
+                                <input type="number" class="sinborde" placeholder="0" ng-model="clase.conjurosdiarios[i]">
+                            </td>
+                            <td width="20" >
+                                <a class="pointer hover" ng-click="eliminaClaseConjuro($index)"> <span class="typcn typcn-trash"></span> </a>
+                            </td>
+                        </tr>
+                        <tr ng-repeat-end >
+                            <td class="alRight" colspan="2">
+                                <small class="gris">MOD CD TS:</small>
+                            </td>
+                            <td ng-repeat="i in nivelesConjuros" class="alCenter">
+                                {{i+getCharMod(getTotalCaracteristica(clase.charId))}}
+                            </td>
+                            <td></td>
                         </tr>
                     </table>
-                </div> -->
-                <!-- <br> -->
-                <h4>Conjuros diarios</h4>
-
-                <table ng-init="nivelesConjuros = [0,1,2,3,4,5,6,7,8,9]">
-
-                    <tr>
-                        <th>Clase</th>
-                        <th ng-repeat="i in nivelesConjuros" class="alCenter">{{i}}<th>
-                    </tr>
-                    <tr ng-repeat="clase in personajeseleccionado.clasesConjurador track by $index">
-                        <td width="100"><input type="text" class="sinborde alLeft" ng-model="clase.clase"></td>
-                        <td ng-repeat="i in nivelesConjuros" class="alCenter">
-                            <input type="text" class="sinborde" placeholder="0" ng-model="clase.conjurosdiarios[i]">
-                        </td>
-                        <td width="20">
-                            <a class="pointer hover" ng-click="eliminaClaseConjuro($index)"> <span class="typcn typcn-trash"></span> </a>
-                        </td>
-                    </tr>
-                </table>
+                </div>
                 <br>
                 <p class="alRight">
                     <a ng-click="agregarClaseConjurador()" class="button">Agregar clase de conjurador</a>
@@ -407,49 +410,60 @@
                 <hr>
 
                 <h4>Lista de conjuros</h4>
-
-                <table class="conjuros">
-                    <tr>
-                        <th></th>
-                        <th>clase</th>
-                        <th>nivel</th>
-                        <th></th>
-                        <th>diarios</th>
-                        <th>varita</th>
-                        <th>perg</th>
-                        <th></th>
-                    </tr>
-                    <tr class="pointer n{{conjuro.nivel}}" ng-repeat="conjuro in personajeseleccionado.listaconjuros | orderBy: ['clase','nivel','nombre'] track by $index" >
-                        <td  width="20">
-                            <a class="pointer hover" ng-click="detalleConjuro(conjuro)"> <span class="typcn typcn-info-large-outline"></span> </a>
-                        </td>
-                        <td  width="70" ng-click="$parent.conjuroSeleccionado = conjuro" >
-                            {{conjuro.clase}}
-                        </td>
-                        <td ng-click="$parent.conjuroSeleccionado = conjuro" width="30" >
-                            {{conjuro.nivel}}
-                        </td>
-                        <td  class="alLeft" ng-click="$parent.conjuroSeleccionado = conjuro" >
-                            <input type="text" ng-model="conjuro.nombre" class="sinborde alLeft">
-                        </td>
+                <div class="desbordable">
+                    <table style="min-width:500px" class="conjuros">
+                        <tr>
+                            <th></th>
+                            <th>clase</th>
+                            <th>nivel</th>
+                            <th></th>
+                            <th>diarios</th>
+                            <th>varita</th>
+                            <th>perg</th>
+                            <th></th>
+                        </tr>
 
 
-                        <td  width="30">
-                            <input type="number" ng-model="conjuro.diarios" class="sinborde alCenter cantidad" placeholder="0"  />
-                        </td>
-                        <td  width="30">
-                            <input type="number" ng-model="conjuro.varita" class="sinborde alCenter cantidad" placeholder="0"  />
-                        </td>
-                        <td  width="30">
-                            <input type="number" ng-model="conjuro.pergamino" class="sinborde alCenter cantidad" placeholder="0"  />
-                        </td>
-                        <td width="20">
-                            <a class="pointer hover" ng-click="eliminaConjuro(conjuro)"> <span class="typcn typcn-trash"></span> </a>
-                        </td>
-                    </tr>
+
+                        <tr class="pointer n{{conjuro.nivel}}" ng-repeat="conjuro in personajeseleccionado.listaconjuros | orderBy: ['clase','nivel','nombre'] track by $index" >
 
 
-                </table>
+
+                            <td  width="20" >
+                                <a class="pointer hover" ng-click="detalleConjuro(conjuro)"> <span class="typcn typcn-info-large-outline"></span> </a>
+                            </td>
+                            <td  width="70" ng-click="$parent.conjuroSeleccionado = conjuro" ng-init="pnivel = conjuro.nivel">
+                                {{conjuro.clase}}
+                            </td>
+                            <td ng-click="$parent.conjuroSeleccionado = conjuro" width="30" >
+                                {{conjuro.nivel}}
+                            </td>
+                            <td  class="alLeft" ng-click="$parent.conjuroSeleccionado = conjuro" >
+                                <input type="text" ng-model="conjuro.nombre" class="sinborde alLeft">
+                            </td>
+
+
+                            <td  width="50">
+                                <input type="number" ng-model="conjuro.diarios" class="sinborde alCenter cantidad" placeholder="0"  />
+                            </td>
+                            <td  width="50">
+                                <input type="number" ng-model="conjuro.varita" class="sinborde alCenter cantidad" placeholder="0"  />
+                            </td>
+                            <td  width="50">
+                                <input type="number" ng-model="conjuro.pergamino" class="sinborde alCenter cantidad" placeholder="0"  />
+                            </td>
+                            <td width="20">
+                                <a class="pointer hover" ng-click="eliminaConjuro(conjuro)"> <span class="typcn typcn-trash"></span> </a>
+                            </td>
+                        </tr>
+
+                        <tr>
+
+                        </tr>
+
+
+                    </table>
+                </div>
                 <br>
                 <p class="alRight">
 
@@ -476,6 +490,7 @@
 </div>
 <script type="text/ng-template" id="stackedModal.html">
     <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" ng-click="dismiss()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h3 class="modal-title" id="modal-title-{{name}}">
             <input type="text" ng-model="conjuro.nombre" class="sinborde">
         </h3>

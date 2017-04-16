@@ -15,12 +15,18 @@
             </li>
         </ul>
     </div>
+
+    <div ng-if="!encuentroseleccionado" class="instruccion1">
+        <span class="typcn typcn-arrow-up-outline instructionIcon"></span>
+        Selecciona un encuentro
+    </div>
+
     <div class="detalle" ng-if="encuentroseleccionado">
 
         <div class="opciones">
             <div class="alRight">
 
-                <a class="button bred" ng-click="eliminaEncuentro()">eliminar encuentro</a>
+                <a class="button bred" ng-click="eliminaEncuentro()"><span class="typcn typcn-trash" ng-click="eliminarCampania($index,$event)"></span><span class="noCell">eliminar encuentro</span></a>
             </div>
             <div class="alLeft">
                 <input type="text" ng-model="encuentroseleccionado.nombre" class="fill sinborde principal" >
@@ -72,7 +78,7 @@
                     </div>
                 </div> -->
 
-                <table class="oponentes">
+                <table class="oponentes" ng-show="encuentroseleccionado.oponentes.length > 0">
                     <tr>
                         <th colspan="3"></th>
                         <th ng-repeat="valor in campos" >

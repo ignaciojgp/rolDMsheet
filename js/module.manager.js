@@ -19,10 +19,10 @@
         $scope.campanias = localStorage.campanias === undefined ? [] : JSON.parse(localStorage.campanias);
         $scope.myPopoverTemplate = "myPopoverTemplate.html";
         $scope.menu = [
-            {id:"historia",label:"Historia"},
-            {id:"enfrentamientos",label:"Enfrentamientos"},
-            {id:"personajes",label:"PNJs y monstruos"},
-            {id:"notas",label:"Notas"}
+            {id:"historia",label:"Historia",icon:"images/history.svg"},
+            {id:"enfrentamientos",label:"Enfrentamientos",icon:"images/sword.svg"},
+            {id:"personajes",label:"PNJs y monstruos",icon:"images/characters.svg"},
+            {id:"notas",label:"Notas",icon:"images/notes.svg"}
         ];
 
 

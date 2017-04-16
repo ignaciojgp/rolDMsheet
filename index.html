@@ -34,7 +34,7 @@
         <script type="text/javascript" src="js/module.personajes.js"></script>
         <script type="text/javascript" src="js/module.notas.js"></script>
 
-        
+
         <link rel="stylesheet" href="bower_components/typicons.font/src/font/typicons.css" media="screen" />
         <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" media="screen" >
         <link rel="stylesheet" href="css/styles.css" media="screen" >
@@ -54,8 +54,8 @@
 
                 <div class="options" ng-show="campaniaseleccionada">
 
-                    <a class="button" ng-click="exportar()"><span class="typcn typcn-download"></span> Descargar</a>
-                    <a class="button" ng-click="cerrar()"><span class="typcn typcn-delete"></span> Cerrar</a>
+                    <a class="button" ng-click="exportar()"><span class="typcn typcn-download"></span> <span class="noCell">Descargar</span></a>
+                    <a class="button" ng-click="cerrar()"><span class="typcn typcn-delete"></span> <span class="noCell">Cerrar</span></a>
                 </div>
 
 
@@ -67,13 +67,18 @@
 
                 <ul class="mainMenu" ng-show="campaniaseleccionada">
                     <li ng-repeat="item in menu" ng-class="{'active':vista === item.id}">
-                        <a ng-click="cambiarVista(item)">{{item.label}}</a>
+                        <a ng-click="cambiarVista(item)">
+                            <img ng-src="{{item.icon}}" alt="" style="height:20px">
+                            <span class="noCell">{{item.label}}</span></a>
                     </li>
 
                 </ul>
             </div>
             <div class="center">
-                <a ng-click="showMenu = !showMenu" class="burgerMenu"><span class="typcn typcn-th-menu"></span></a>
+                <a ng-click="showMenu = !showMenu" class="burgerMenu">
+                    <span class="typcn typcn-th-menu" ng-hide="showMenu"></span>
+                    <span class="typcn typcn-times" ng-show="showMenu"></span>
+                </a>
             </div>
 
 
@@ -175,8 +180,8 @@
                         <span ng-if="$index>0">+</span>
                         (
 
-                        <span ng-repeat="dado in tiro.dados track by $index">[ {{dado}} ]</span>
-                        <span ng-if="tiro.modificador">+{{tiro.modificador}}</span>
+                        <span ng-repeat="dado in tiro.dados track by $index" ng-class="{'tachado':$index == tiro.ignore}">[ {{dado}} ]</span>
+                        <span ng-if="tiro.modificador"> <span ng-show="tiro.modificador>0">+</span> {{tiro.modificador}}</span>
                         )</span>
 
                  = <b>{{tirada.total}} </b>

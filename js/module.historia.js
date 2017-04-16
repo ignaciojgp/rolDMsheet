@@ -84,7 +84,7 @@
                     }
 
                 },true);
-                
+
             $scope.mostrarNodo = function(nodo){
 
                 $uibModal.open({
@@ -93,9 +93,11 @@
                      ariaDescribedBy: 'modal-body-bottom',
                      templateUrl: 'detailNodo.html',
 
-                     controller: function($scope, nodo) {
+                     controller: function($uibModalInstance,$scope, nodo) {
                          $scope.nodo=nodo;
-
+                         $scope.dismiss = function(){
+                              $uibModalInstance.dismiss('cancel');
+                         }
                        $scope.options = {
                           language: 'es',
                           allowedContent: true,
