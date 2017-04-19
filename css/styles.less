@@ -76,25 +76,53 @@ body{
         margin:0;
         position: fixed;
         top: 0;left: 0;right: 0;bottom: 0;
+
+        @speedConfig:1s;
         .topBar{
             left: 0;right: 0;height: @topbarHeight;
             background: #ccc;
             padding: 1em;
 
+            -webkit-transition: height @speedConfig; /* Safari */
+            transition: height @speedConfig;
+            .sinborde{
+                border-bottom: white solid 1px !important;
+                padding: 0.2em;
+                box-sizing: border-box;
+            }
+
+            table{
+                width: 100%;
+                margin-bottom: 1em;
+                td{
+                    width: 100px;
+                    padding: 0.5em;
+                }
+            }
             .options{
                 position: absolute;
                 top: 1em;right: 1em;
+                @media(max-width: 1001px){
+                    position: inherit;
+                }
             }
         }
+
+
+
         .left{
             position: absolute;
             left: 0;
-            top: @topbarHeight;
+            top: 0;
             bottom: 0;
             right: 0;
 
             background: #ededed;
             padding: 1em;
+
+            -webkit-transition: top @speedConfig; /* Safari */
+            transition: top @speedConfig;
+
 
             .mainMenu{
                 padding: 0;
@@ -125,17 +153,66 @@ body{
                     }
                 }
             }
+
+            .rightButton{
+                position: absolute;
+                right: 10px;
+                top: 10px;
+                font-size: 27px;
+                color: #888;
+            }
+
         }
+
 
         .right{
             position: absolute;
             left: 0;
-            top:110px;
+            top:51px;
             bottom: @alturaCommandos;right: 0;
             background: white;
             padding: 1em;
             overflow-y: auto;
 
+            -webkit-transition: top @speedConfig; /* Safari */
+            transition: top @speedConfig;
+
+
+        }
+
+        .burgerMenu{
+            position: absolute;
+            left: 0em;
+            top: 5px;
+            z-index: 100;
+            font-size: 20px;
+            color: #888;
+            padding: 0.5em;
+            width: 33px;
+            text-align: center;
+
+            display: none;
+
+            -webkit-transition: top @speedConfig; /* Safari */
+            transition: top @speedConfig;
+            @media(max-width: 1001px){
+                display: block;
+            }
+        }
+
+        &.config{
+            .topBar{
+                height: 300px;
+            }
+            .left{
+                top:300px;
+            }
+            .right{
+                top:351px;
+            }
+            .burgerMenu{
+                top:305px;
+            }
         }
 
     }
@@ -145,17 +222,23 @@ body{
     .sinborde{
         background: transparent;
         border: none;
+        border-bottom: #999 dotted 1px;
+        width: 100%;
         &:active{
             border: none;
             outline: none;
+            border-bottom: #999 dotted 1px;
         }
         &:focus{
             border: none;
+            border-bottom: #999 dotted 1px;
             outline: none;
         }
     }
 
     select{
+        padding-top: 1px;
+        padding-bottom: 2px;
         .sinborde;
     }
 
@@ -198,26 +281,11 @@ body{
         font-size: 20px;
     }
 
-    .burgerMenu{
-        position: absolute;
-        left: 0em;
-        top: 70px;
-        z-index: 100;
-        background: #444;
-        color: white;
-        padding: 0.5em;
-        width: 33px;
-        text-align: center;
 
-        display: none;
-        @media(max-width: 1001px){
-            display: block;
-        }
-    }
     .showMenu{
         .lista{
             @media(max-width: 1001px){
-                display: block;
+                left:0
             }
         }
     }
@@ -225,6 +293,8 @@ body{
         position: absolute;
         width: 200px;
         float: left;
+        -webkit-transition: left 0.5s; /* Safari */
+        transition: left 0.5s;
 
 
         @media(max-width: 1001px){
@@ -233,11 +303,10 @@ body{
             z-index: 10;
             background: white;
             padding: 1em;
-
             margin: 0;
-            left: 0;top: 0;bottom: 0;
+            top: 0;bottom: 0;
+            left: -300px;
             box-shadow: 0 1px 20px gray;
-            display: none;
 
         }
 
@@ -441,14 +510,18 @@ ul.listaCampanias{
     position: relative;
     top: -20px;
     color: gray;
+    @media(min-width: 1000px){
+        margin-left: 200px;
+    }
 }
 
 @keyframes iconAnimation {
-    0% {font-size: 40px;}
-    10% {font-size: 50px;}
-    100% {font-size: 40px;}
+    0% {color: white;}
+    50% {color: green;}
+    100% {color: white;}
 }
 .instructionIcon{
+    font-size: 50px;
     animation: iconAnimation  1s linear infinite;
 
 
@@ -462,9 +535,22 @@ ul.listaCampanias{
     -ms-transform: rotate(@rotation);
     transform: rotate(@rotation);
 
+    @media(min-width: 1000px){
+
+        -webkit-transform: rotate(270deg);
+        -moz-transform: rotate(270deg);
+        -o-transform: rotate(270deg);
+        -ms-transform: rotate(270deg);
+        transform: rotate(270deg);
+    }
 }
 .tachado{
     text-decoration: line-through;
+}
+
+.detalles{
+    color: #999;
+    padding-left: 25px !important;
 }
 @import "historia.less";
 @import "encuentros.less";

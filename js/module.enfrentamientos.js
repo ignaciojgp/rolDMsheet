@@ -1,7 +1,7 @@
 (function(){
     var module = angular.module("enfrentamientos",['utils']);
 
-    module.directive('enfrentamientos', function() {
+    module.directive('enfrentamientos', function($uibModal) {
       return {
         templateUrl: 'template.enfrentamientos.html',
         controller: function($scope){
@@ -13,6 +13,7 @@
             $scope.eliminaEncuentro = eliminaEncuentro;
             $scope.selecciona = selecciona;
             $scope.tiradaMultiple = tiradaMultiple;
+            $scope.detallePersonaje = detallePersonaje;
             $scope.algo = "asdasad";
 
             $scope.hayClipboard = sessionStorage.personajeCopiado ? true:false;
@@ -20,7 +21,7 @@
             $scope.$watch("encuentroseleccionado",calculaAncho,true);
 
 
-            var tiradas = [].concat(principales,[{nombre:"",tipo:2, id:"-"}],ataques,[{nombre:"",tipo:2, id:"-"}],salvacion,[{nombre:"",tipo:2, id:"-"}],habilidades);
+            var tiradas = [].concat(principales);
 
 
             $scope.campos = tiradas;
@@ -113,6 +114,36 @@
 
                 $scope.$parent.$parent.$parent.command = comando;
                 $scope.$parent.$parent.$parent.ejecutaComando();
+            }
+
+            function detallePersonaje(personaje){
+                $uibModal.open({
+                     animation: true,
+                     ariaLabelledBy: 'modal-title-bottom',
+                     ariaDescribedBy: 'modal-body-bottom',
+                     templateUrl: 'modalPersonaje.html',
+                     size: "lg",
+
+
+                     controller: function($uibModalInstance,$scope,personaje, campania) {
+
+                         $scope.personaje = personaje;
+                         $scope.campaniaseleccionada = campania;
+
+                         $scope.dismiss = function(){
+                              $uibModalInstance.dismiss('cancel');
+                         }
+
+
+                     },resolve: {
+                        personaje: function () {
+                          return personaje;
+                      },
+                      campania: function () {
+                        return $scope.campania;
+                      }
+                     }
+                 });
             }
 
         },

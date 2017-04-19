@@ -40,22 +40,33 @@
         <link rel="stylesheet" href="css/styles.css" media="screen" >
     </head>
     <body ng-controller="rolController" >
-        <div class="wrapper">
+        <div class="wrapper" ng-class="{'config':campaniaseleccionada.showConfig }">
 
             <!-- topBar     -->
 
             <div class="topBar">
                 <h4 ng-show="campaniaseleccionada">
-                    <span>Campaña:</span>
+                    <small>Campaña:</small><br>
                     <input type="text" ng-model="campaniaseleccionada.titulo" class="sinborde"/>
                 </h4>
+                <table >
+                    <tr>
+                        <th><small>Escenario</small></th>
+                        <th><small>Dia del año</small></th>
+                        <th><small>Jugadores</small></th>
+                    </tr>
+                    <tr>
+                        <td><input type="text" class="sinborde"></td>
+                        <td><input type="text" class="sinborde"></td>
+                        <td><input type="text" class="sinborde"></td>
+                    </tr>
 
-
+                </table>
 
                 <div class="options" ng-show="campaniaseleccionada">
 
-                    <a class="button" ng-click="exportar()"><span class="typcn typcn-download"></span> <span class="noCell">Descargar</span></a>
-                    <a class="button" ng-click="cerrar()"><span class="typcn typcn-delete"></span> <span class="noCell">Cerrar</span></a>
+                    <a class="button" ng-click="cerrar()"><span class="typcn typcn-chevron-left"></span> <span class="">Regresar</span></a>
+                    <a class="button" ng-click="exportar()"><span class="typcn typcn-download"></span> <span class="">Descargar</span></a>
                 </div>
 
 
@@ -64,18 +75,19 @@
             <!-- left -->
 
             <div class="left">
-
+                <a class="rightButton" ng-click="campaniaseleccionada.showConfig = !campaniaseleccionada.showConfig" ng-show="campaniaseleccionada">
+                    <span class="typcn typcn-cog"></span>
+                </a>
                 <ul class="mainMenu" ng-show="campaniaseleccionada">
                     <li ng-repeat="item in menu" ng-class="{'active':vista === item.id}">
                         <a ng-click="cambiarVista(item)">
                             <img ng-src="{{item.icon}}" alt="" style="height:20px">
                             <span class="noCell">{{item.label}}</span></a>
                     </li>
-
                 </ul>
             </div>
             <div class="center">
-                <a ng-click="showMenu = !showMenu" class="burgerMenu">
+                <a ng-click="showMenu = !showMenu " class="burgerMenu" ng-show="campaniaseleccionada">
                     <span class="typcn typcn-th-menu" ng-hide="showMenu"></span>
                     <span class="typcn typcn-times" ng-show="showMenu"></span>
                 </a>

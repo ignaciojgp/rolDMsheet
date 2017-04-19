@@ -64,7 +64,13 @@
             $scope.modObjetivos = [].concat(caracteristicas,miscelaneos,armadura,salvacion,habilidades);
 
             $scope.$watch("campania",function(){
-               $scope.personajeseleccionado = $scope.campania.personajes !== undefined ? $scope.campania.personajes[0]:null;
+                if($scope.personaje){
+
+                    $scope.personajeseleccionado = $scope.personaje;
+                }else{
+
+                    $scope.personajeseleccionado = $scope.campania.personajes !== undefined ? $scope.campania.personajes[0]:null;
+                }
             });
 
 
@@ -422,7 +428,7 @@
 
                 $scope.$parent.$parent.$parent.command = "caracteristicas";
                 $scope.$parent.$parent.$parent.ejecutaComando();
-                
+
             }
 
             function detalleConjuro(conjuro){
@@ -468,7 +474,8 @@
             }
         },
         scope:{
-            "campania":"="
+            "campania":"=",
+            "personaje":"="
         }
       };
     });

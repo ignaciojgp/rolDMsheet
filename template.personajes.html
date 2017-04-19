@@ -47,7 +47,7 @@
                 </tr>
                 <tr>
                     <td>*Daño</td>
-                    <td><input type="text" ng-model="personajeseleccionado.danio" class="sinborde" placeholder="0"></td>
+                    <td><input type="text" ng-model="personajeseleccionado.danio" class="sinborde" calculadora placeholder="0"></td>
                 </tr>
                 <tr class="sep">
                     <td>CA</td>
@@ -467,10 +467,21 @@
                 <br>
                 <p class="alRight">
 
-                    Agregar conjuro de <input type="text" ng-model="claseConjuro" class="" placeholder="clase"/>
-                    nivel:
-                    <select ng-model="nivelAgregar"><option value="{{$index}}" ng-repeat="num in nivelesConjuro track by $index">niv. {{$index}}</option></select>
-                    <a  class="button" ng-click="agregaConjuro(nivelAgregar, claseConjuro)">Agregar</a>
+                    <table>
+                        <tr>
+                            <td class="alRight">Agregar conjuro de</td>
+                            <td>
+                                <input type="text" ng-model="claseConjuro" class="sinborde" placeholder="clase"/>
+                            </td>
+                            <td>nivel:</td>
+                            <td>
+                                <select ng-model="nivelAgregar"><option value="{{$index}}" ng-repeat="num in nivelesConjuro track by $index">niv. {{$index}}</option></select>
+                            </td>
+                            <td>
+                                <a  class="button" ng-click="agregaConjuro(nivelAgregar, claseConjuro)">Agregar</a>
+                            </td>
+                        </tr>
+                    </table>
                 </p>
 
             </div>
@@ -496,11 +507,29 @@
         </h3>
     </div>
     <div class="modal-body" id="modal-body-{{name}}">
-        Clase: <input type="text" ng-model="conjuro.clase">
 
-        Nivel: <select ng-model="conjuro.nivel"><option value="{{$index}}" ng-repeat="num in nivelesConjuro track by $index">niv. {{$index}}</option></select>
-
-        Componentes: V <input type="checkbox" ng-model="conjuro.verbal" /> S<input type="checkbox" ng-model="conjuro.somatico" /> M<input type="checkbox" ng-model="conjuro.material" />
+        <table style="width:100%">
+            <tr>
+                <td>Clase:</td>
+                <td>
+                    <input type="text" ng-model="conjuro.clase" class="sinborde">
+                </td>
+                <td>Nivel:</td>
+                <td>
+                    <select ng-model="conjuro.nivel"><option value="{{$index}}" ng-repeat="num in nivelesConjuro track by $index">niv. {{$index}}</option></select>
+                </td>
+                <td>Componentes:</td>
+                <td>
+                    V <input type="checkbox" ng-model="conjuro.verbal" />
+                </td>
+                <td>
+                    S<input type="checkbox" ng-model="conjuro.somatico" />
+                </td>
+                <td>
+                    M<input type="checkbox" ng-model="conjuro.material" />
+                </td>
+            </tr>
+        </table>
 
         <hr>
         <h4>Descripcion</h4>
