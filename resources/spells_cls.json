@@ -1,0 +1,1682 @@
+[
+    {
+        "level": "0",
+        "spells": [
+            {
+                "clase": "clérigo",
+                "nombre": "Chispa ",
+                "englishname": "(Spark)",
+                "desc": " prende objetos inflamables"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Crear agua  ",
+                "englishname": "(Create Water)",
+                "desc": " Crea 2 galones/nivel de agua pura"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Detectar magia  ",
+                "englishname": "(Detect Magic)",
+                "desc": " detecta conjuros y objetos mágicos dentro de 60 pies"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Detectar veneno  ",
+                "englishname": "(Detect Poison)",
+                "desc": " detecta venenos en una criatura u objeto"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Estabilizar  ",
+                "englishname": "(Stabilize)",
+                "desc": " hace que una criatura moribunda se estabilize"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Leer magia ",
+                "englishname": "(Read Magic)",
+                "desc": " lees pergaminos y libros de conjuros"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Luz  ",
+                "englishname": "(Light)",
+                "desc": " un objeto brilla como una antorcha"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Orientación divina  ",
+                "englishname": "(Guidance)",
+                "desc": " +1 a una tirada de ataque, tirada de salvación o prueba de habilidad"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Purificar comida y bebida  ",
+                "englishname": "(Purify Food and Drink)",
+                "desc": " purifica 1 pie cúbico/nivel de comida o agua"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Remendar  ",
+                "englishname": "(Mending)",
+                "desc": " realiza reparaciones menores en un objeto"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Resistencia  ",
+                "englishname": "(Resistance)",
+                "desc": " el sujeto gana +1 en TS"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Sangrar  ",
+                "englishname": "(Bleed)",
+                "desc": " hace que una criatura estabilizada continúe muriendo"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Virtud  ",
+                "englishname": "(Virtue)",
+                "desc": " el sujeto gana 1 punto de golpe temporal"
+            }
+        ]
+    },
+    {
+        "level": "1",
+        "spells": [
+            {
+                "clase": "clérigo",
+                "nombre": "Arma mágica  ",
+                "englishname": "(Magic weapon)",
+                "desc": " un arma gana un bonificador +1"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Bendecir  ",
+                "englishname": "(Bless)",
+                "desc": " los aliados ganan un +1 a las tiradas de ataque y TS contra miedo"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Bendecir agua  ",
+                "englishname": "(Bless Water)",
+                "desc": " creas agua sagrada"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Causar miedo  ",
+                "englishname": "(Cause fear)",
+                "desc": " una criatura de 5 DG o menos huye durante 1d4 asaltos"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Capacidad de carga de la hormiga ",
+                "englishname": "(Ant Haul)",
+                "desc": " triplicas tu capacidad de carga"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Comprensión idiomática  ",
+                "englishname": "(Comprehend Languages)",
+                "desc": " entiendes todos los lenguajes hablados y escritos"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Convocar monstruo I  ",
+                "englishname": "(Summon Monster I)",
+                "desc": " convoca una criatura extraplanar que lucha por ti"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Convocar monstruo menor ",
+                "englishname": "(Summon minor monster)",
+                "desc": " convoca 1d3 animales menudos para que luchen por ti"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Curar heridas leves  ",
+                "englishname": "(máx +5)",
+                "desc": " cura 1d8 puntos de daño +1/nivel "
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Detectar bien/caos/ley/mal ",
+                "englishname": "(Detect Chaos/Evil/Good/Law)",
+                "desc": " revela criaturas, conjuros u objetos del alineamiento seleccionado"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Detectar muertos vivientes  ",
+                "englishname": "(Detect Undead)",
+                "desc": " revela muertos vivientes dentro de 30 pies"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Esconderse de los muertos vivientes  ",
+                "englishname": "(Hide from Undead)",
+                "desc": " los muertos vivientes no pueden percibir un objetivo/nivel"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Escudo de entropía  ",
+                "englishname": "(Entropic Shield)",
+                "desc": " los ataques a distancia contra ti tienen un 20% de probabilidad de fallo"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Escudo de la fe  ",
+                "englishname": "(Shield of Faith)",
+                "desc": " aura que garantiza un bonificador de desvío +2 o mayor"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Fatalidad  ",
+                "englishname": "(Doom)",
+                "desc": " un objetivo recibe -2 a las tiradas de ataque, tiradas de daño, salvaciones y pruebas"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Favor Divino  ",
+                "englishname": "(Divine Favor)",
+                "desc": " ganas +1 por cada tres niveles a tiradas de ataque y daño"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Infligir heridas leves  ",
+                "englishname": "(máximo +5)",
+                "desc": " tocar inflige 1d8 de daño + 1/nivel "
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Linterna danzante ",
+                "englishname": "(Dancing Lantern)",
+                "desc": " animas una linterna que te sigue"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Maldecir agua  ",
+                "englishname": "(Curse Water)",
+                "desc": " creas agua sacrílega"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Niebla de obscurecimiento  ",
+                "englishname": "(Obscuring Mist)",
+                "desc": " la niebla te rodea"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Orden imperiosa  ",
+                "englishname": "(Command)",
+                "desc": " un sujeto obecede la orden dada durante 1 asalto"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Perdición  ",
+                "englishname": "(Bane)",
+                "desc": " los enemigos reciben un -1 a las tiradas de ataque y TS contra miedo"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Piedra mágica  ",
+                "englishname": "(Magic Stone)",
+                "desc": " tres piedras ganan +1 al ataque, infligen 1d6 +1 de daño"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Protección contra el Bien/Caos/Ley/Mal ",
+                "englishname": "(Protection from Chaos/Evil/Good/Law)",
+                "desc": " +2 a la CA y salvaciones, además de la protección adicional contra el alineamiento seleccionado"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Quitar el miedo  ",
+                "englishname": "(Remove Fear)",
+                "desc": " elimina el miedo u otorga +4 a las salvaciones contra miedo para un objetivo + uno por cada cuatro niveles"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Santuario  ",
+                "englishname": "(Sanctuary)",
+                "desc": " los oponentes no te pueden atacar, y tú no puedes atacar"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Soportar los elementos ",
+                "englishname": "(Endure Elements)",
+                "desc": " te encuentras confortablemente en regiones cálidas o frías"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Visión de la muerte  ",
+                "englishname": "(Deathwatch)",
+                "desc": " revela cómo de cerca están de la muerte los sujetos dentro de 30 pies"
+            }
+        ]
+    },
+    {
+        "level": "2",
+        "spells": [
+            {
+                "clase": "clérigo",
+                "nombre": "Alineamiento indetectable ",
+                "englishname": "(Undetectable Alignment)",
+                "desc": " oculta el alineamiento durante 24 horas"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Alinear arma ",
+                "englishname": "(Align Weapon)",
+                "desc": " el alma se vuelve buena, caótica, legal o maligna "
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Arma amedrentadora ",
+                "englishname": "(Weapon of awe)",
+                "desc": " el arma obtiene +2 a las tiradas de daño"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Apacible descanso ",
+                "englishname": "(Gentle Repose)",
+                "desc": " preserva un cadáver"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Arma espiritual ",
+                "englishname": "(Spiritual Weapon)",
+                "desc": " arma mágica que ataca por sí misma"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Armadura instantánea ",
+                "englishname": "(Instant armor)",
+                "desc": " convoca armadura reemplazando temporalmente tu atuendo actual"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Augurio ",
+                "englishname": "(Augury)",
+                "desc": " averiguas si una acción va a ser buena o mala"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Auxilio divino ",
+                "englishname": "(máx. +10)",
+                "desc": " +1 a las tiradas de ataque y salvaciones contra miedo, 1d8 pg temporales +1/nivel "
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Calmar emociones ",
+                "englishname": "(Calm Emotions)",
+                "desc": " calma a las criaturas, anulando efectos emocionales"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Campanas fúnebres ",
+                "englishname": "(Death Knell)",
+                "desc": " mata a una criatura moribunda; tú ganas 1d8 pg temporales, +2 a Fue y +1 al nivel de lanzador"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Capacidad de carga de la hormiga común ",
+                "englishname": "(Ant haul, communal)",
+                "desc": " ..."
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Carga del oráculo ",
+                "englishname": "(Oracle's burden)",
+                "desc": " Oracle Only. Creature is affected by negative oracle's curse effects."
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Cautivar ",
+                "englishname": "(Enthrall)",
+                "desc": " cautiva a todos en un radio de 100' + 10'/nivel"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Compartir idioma ",
+                "englishname": "(Share language)",
+                "desc": " el objetivo comprende el idioma elegido"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Conferir competencia con un arma ",
+                "englishname": "(Bestow weapon proficiency)",
+                "desc": " concede a una criatura competencia en un arma durante un corto periodo de tiempo"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Consagrar ",
+                "englishname": "(Consecrate)",
+                "desc": " llena un área con energía positiva, debilitando a los muertos vivientes"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Convocar monstruo II ",
+                "englishname": "(Summon Monster II)",
+                "desc": " convoca a una criatura extraplanar para que luche por ti"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Curar heridas moderadas ",
+                "englishname": "(máx +10)",
+                "desc": " cura 2d8 de daño +1/nivel "
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Encontrar trampas ",
+                "englishname": "(Find Traps)",
+                "desc": " encuentras trampas como lo haría un pícaro"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Endecha azote de fantasmas ",
+                "englishname": "(Ghostbane dirge)",
+                "desc": " una criatura incorpórea recibe la mitad de daño de las armas no mágicas"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Escudar a otro ",
+                "englishname": "(Shield Other)",
+                "desc": " recibes la mitad del daño del receptor"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Esplendor de águila ",
+                "englishname": "(Eagle's Splendor)",
+                "desc": " el receptor gana +4 a Car durante 1 min./nivel"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Estallar ",
+                "englishname": "(Shatter)",
+                "desc": " vibración sónica que daña objetos y criaturas cristalinas"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Explosión de sonido ",
+                "englishname": "(Sound Burst)",
+                "desc": " causa 1d8 de daño sónico a los objetivos; puede aturdirlos"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Fuerza de toro ",
+                "englishname": "(Bull's Strength)",
+                "desc": " el receptor gana +4 a Fue durante 1 min./nivel"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Gracilidad ",
+                "englishname": "(Grace)",
+                "desc": " el movimiento no provoca ataques de oportunidad"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Infligir heridas moderadas ",
+                "englishname": "(máx +10)",
+                "desc": " ataque de toque, 2d8 de daño +1/nivel "
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Inmovilizar persona ",
+                "englishname": "(Hold Person)",
+                "desc": " paraliza a un humanoide durante 1 asalto/nivel"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Integrar ",
+                "englishname": "(Make Whole)",
+                "desc": " repara un objeto"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Lentificar veneno ",
+                "englishname": "(Delay Poison)",
+                "desc": " impide que el veneno dañe al receptor durante 1 hora/nivel"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Oscuridad ",
+                "englishname": "(Darkness)",
+                "desc": " oscuridad sobrenatural de 20' de radio"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Profanar ",
+                "englishname": "(Desecrate)",
+                "desc": " llena el área con energía negativa, haciendo más fuertes a los muertos vivientes"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Protección contra el Bien/Caos/Ley/Mal común ",
+                "englishname": "(Protection from Chaos/Evil/Good/Law, communal)",
+                "desc": " ..."
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Quitar parálisis ",
+                "englishname": "(Remove Paralysis)",
+                "desc": " libera a las criaturas de la parálisis o lentitud"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Resistencia de oso  ",
+                "englishname": "(Bear's Endurance)",
+                "desc": " El objetivo gana +4 a Con durante 1min./nivel "
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Resistir energía ",
+                "englishname": "(o más) puntos de daño/ataque de un tipo de energía específico",
+                "desc": " ignora 10 "
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Restablecimiento menor ",
+                "englishname": "(Restoration, Lesser)",
+                "desc": " disipa un penalizador de característica o repara 1d4 de daño de característica"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Sabiduría de búho ",
+                "englishname": "(Owl's Wisdom)",
+                "desc": " el receptor gana +4 a Sab durante 1 min/nivel"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Silencio ",
+                "englishname": "(Silence)",
+                "desc": " anula el sonido en 20' de radio"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Situación ",
+                "englishname": "(Status)",
+                "desc": " controla posición y condición de los aliados"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Soportar los elementos común ",
+                "englishname": "(Endure elements, communal)",
+                "desc": " ..."
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Zona de verdad ",
+                "englishname": "(Zone of Truth)",
+                "desc": " los objetivos dentro del alcance no pueden mentir              "
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Bendición de coraje y vida ",
+                "englishname": "(Blessing of courage and life)",
+                "desc": " +2 a salvaciones contra miedo y muerte"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Arma retornante ",
+                "englishname": "(Returning weapon)",
+                "desc": " Grants a weapon the returning special weapon quality"
+            }
+        ]
+    },
+    {
+        "level": "3",
+        "spells": [
+            {
+                "clase": "clérigo",
+                "nombre": "Arma retornante comunitario ",
+                "englishname": "(Returning weapon, communal)",
+                "desc": " como <em>arma retornante</em>, pero puedes dividir la duración entre las armas tocadas"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Biografía sanguínea ",
+                "englishname": "(Blood biography)",
+                "desc": " aprendes sobre una criatura a partir de su sangre"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Caminar sobre las aguas ",
+                "englishname": "(Water Walk)",
+                "desc": " el objetivo pisa sobre el agua como si fuera sólida"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Ceguera/Sordera ",
+                "englishname": "(Blindness/Deafness)",
+                "desc": " deja al objetivo cegado o ensordecido"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Círculo mágico contra el Bien/Caos/Ley/Mal ",
+                "englishname": "(Magic Circle against Chaos/Evil/Good/Law)",
+                "desc": " como los conjuros de <em>protección</em>, pero con 10' de radio y 10 min./nivel"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Compartir idioma común ",
+                "englishname": "(Share language, communal)",
+                "desc": " como <em>compartir idioma</em>, pero puedes dividir la duración entre las criaturas tocadas"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Contagio ",
+                "englishname": "(Contagion)",
+                "desc": " infecta al objetivo con la enfermedad elegida"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Convocar monstruo III ",
+                "englishname": "(Summon Monster III)",
+                "desc": " convoca a una criatura extraplanar para que luche por ti"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Crear comida y bebida ",
+                "englishname": "(o un caballo)/nivel",
+                "desc": " alimenta a tres humanos "
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Curar heridas graves ",
+                "englishname": "(máx.+15)",
+                "desc": " cura 3d8 de daño +1/nivel "
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Disipar magia ",
+                "englishname": "(Dispel Magic)",
+                "desc": " cancela un conjuro o efecto mágico"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Estrella guía ",
+                "englishname": "(Guiding star)",
+                "desc": " conoces la distancia aproximada a la que estás del punto en que lanzaste este conjuro"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Fortuna prestada ",
+                "englishname": "(Borrow fortune)",
+                "desc": " sólo Oráculo. repites ataque o prueba, pero lo haces peor en los dos siguientes"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Fundirse con la piedra ",
+                "englishname": "(Meld into Stone)",
+                "desc": " te fundes junto con tu equipo con la piedra"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Glifo custodio ",
+                "englishname": "(Glyph of Warding)",
+                "desc": " incripción que daña a quien lo traspasa"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Habla elemental ",
+                "englishname": "(Elemental speech)",
+                "desc": " te permite hablar con elementales y algunas criaturas"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Hablar con los muertos ",
+                "englishname": "(Speak with Dead)",
+                "desc": " un cadáver contesta a una pregunta/dos niveles"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Infligir heridas graves ",
+                "englishname": "(max +15)",
+                "desc": " ataque de toque, 3d8 de daño + 1/nivel "
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Juggernaut mortal ",
+                "englishname": "(Deadly Juggernaut)",
+                "desc": " tu poder aumenta con cada muerte"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Lanzar maldición ",
+                "englishname": "( Bestow Curse)",
+                "desc": " -6 a una característica; -4 a las tiradas de ataque, salvaciones y pruebas; o 50% de posibilidades de perder cada acción"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Llama continua ",
+                "englishname": "(Continual Flame)",
+                "desc": " crea una luz fría permanente"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Localizar objeto ",
+                "englishname": "(específico o genérico)",
+                "desc": " sientes la dirección hacia un objeto "
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Luz abrasadora ",
+                "englishname": "(más contra muertos vivientes)",
+                "desc": " rayo que causa 1d8/dos niveles de daño "
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Luz del día ",
+                "englishname": "(Daylight)",
+                "desc": " luz brillante de 60' de radio"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Mano auxiliadora ",
+                "englishname": "(Helping Hand)",
+                "desc": " mano fantasmal dirige al objetivo hacia ti"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Muro de viento ",
+                "englishname": "(Wind Wall)",
+                "desc": " desvía flechas, pequeñas criaturas y gases"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Obscurecer objeto ",
+                "englishname": "(Obscure Object)",
+                "desc": " enmascara un objeto contra escudriñamiento"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Oscuridad profunda ",
+                "englishname": "(Deeper Darkness)",
+                "desc": " un objeto irradia sombra sobrenatural en 60' de radio"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Penetrar imagen ",
+                "englishname": "(Enter image)",
+                "desc": " transfieres tu consciencia a un objeto que se te parezca"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Plegaria ",
+                "englishname": "(Prayer)",
+                "desc": " los aliados ganan +1 a las tiradas, los enemigos tienen un penalizador -1"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Protección contra la energía ",
+                "englishname": "(Protection from Energy)",
+                "desc": " absorbe 12 puntos/nivel de daño de un tipo de energía"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Purgar invisibilidad ",
+                "englishname": "(Invisibility Purge)",
+                "desc": " disipa la invisibilidad en 5'/nivel"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Quitar ceguera/sordera ",
+                "englishname": "(Remove Blindness/Deafness)",
+                "desc": " cura cegera y sordera normal o mágica"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Quitar enfermedad ",
+                "englishname": "(Remove Disease)",
+                "desc": " cura todas las enfermedades que afecten a un objetivo"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Quitar maldición ",
+                "englishname": "(Remove Curse)",
+                "desc": " libera a un objeto o persona de una maldición"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Reanimar a los muertos ",
+                "englishname": "(Animate Dead)",
+                "desc": " crea esqueletos y zombies muertos vivientes"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Resistir energía comunitario ",
+                "englishname": "(Resist energy, communal)",
+                "desc": " como <em>resistir energía</em>, pero puedes dividir la duración entre las criaturas tocadas"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Respiración acuática ",
+                "englishname": "(Water Breathing)",
+                "desc": " el receptor puede respirar bajo el agua"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Transformar piedra ",
+                "englishname": "(Stone Shape)",
+                "desc": " esculpe piedra en cualquier forma"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Vestidura mágica ",
+                "englishname": "(Magic Vestment)",
+                "desc": " armadura o escudo gana +1 de mejora por cada 4 niveles"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Vínculo sagrado ",
+                "englishname": "(Sacred bond)",
+                "desc": " lanzas a distancia conjuros de curación de toque"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Acumular siesta ",
+                "englishname": "(Nap Stack)",
+                "desc": " Subjects only need 2 hours for a night’s sleep, and can sleep even longer for more benefits."
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Manto iracundo ",
+                "englishname": "(Wrathful Mantle)",
+                "desc": " Subject gets +1/four levels on all saves."
+            }
+        ]
+    },
+    {
+        "level": "4",
+        "spells": [
+            {
+                "clase": "clérigo",
+                "nombre": "Adaptación planaria ",
+                "englishname": "(Planar adaptation)",
+                "desc": " resiste efectos dañinos de otro plano"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Adivinación ",
+                "englishname": "(Divination)",
+                "desc": " proporciona consejo últil para acciones específicas"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Aliado menor de los planos ",
+                "englishname": "(Planar Ally, Lesser)",
+                "desc": " intercambia servicios con una criatura extraplanar de 6 DG"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Ancla dimensional ",
+                "englishname": "(Dimensional Anchor)",
+                "desc": " bloquea el movimiento extradimensional"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Arma mágica mayor ",
+                "englishname": "(máx +5)",
+                "desc": " el arma gana +1/cuatro niveles "
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Azote sacrílego ",
+                "englishname": "(1d8 de daño/2 niveles)",
+                "desc": " daña e indispone a las criaturas buenas "
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Caminar por el aire ",
+                "englishname": "(trepa o desciende en un ángulo de 45 grados)",
+                "desc": " el receptor camina por el aire como si fuera sólido "
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Castigo divino ",
+                "englishname": "(1d8 daño/2 niveles)",
+                "desc": " daña y posiblemente ciega a criaturas malignas "
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Controlar las aguas ",
+                "englishname": "(Control Water)",
+                "desc": " sube o baja masas de agua"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Convocar monstruo IV ",
+                "englishname": "(Summon Monster IV)",
+                "desc": " convoca a una criatura extraplanar para que luche por ti"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Curar heridas críticas ",
+                "englishname": "(máx +20)",
+                "desc": " cura 4d8 de daño +1/nivel "
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Custodia contra la muerte ",
+                "englishname": "(Death Ward)",
+                "desc": " concede bonificadores contra conjuros de muerte y energía negativa"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Discernir mentiras ",
+                "englishname": "(Discern Lies)",
+                "desc": " revela falsedades deliberadas"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Don de lenguas ",
+                "englishname": "(Tongues)",
+                "desc": " hablas y comprendes cualquier idioma"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Exorcismo ",
+                "englishname": "(Dismissal)",
+                "desc": " obliga a una criatura a volver a su plano natal"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Imbuir aptitud para los conjuros ",
+                "englishname": "(Imbue with Spell Ability)",
+                "desc": " transfiere conjuros al receptor "
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Infligir heridas críticas ",
+                "englishname": "(máx +20)",
+                "desc": " ataque de toque, 4d8 de daño +1/nivel "
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Inmunidad a los conjuros ",
+                "englishname": "(Spell Immunity)",
+                "desc": " el receptor es inmune a un conjuro por cada 4 niveles"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Ira del orden ",
+                "englishname": "(1d8 de daño/2 niveles)",
+                "desc": " daña y atonta a las criaturas caóticas "
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Libertad de movimiento ",
+                "englishname": "(Freedom of Movement)",
+                "desc": " el objetivo se mueve normalmente a pesar de impedimentos que limiten el movimiento"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Martillo del caos ",
+                "englishname": "(1d8 daño/2 niveles)",
+                "desc": " daña y ralentiza a criaturas legales "
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Neutralizar veneno ",
+                "englishname": "(Neutralize Poison)",
+                "desc": " inmuniza al receptor contra el veneno, desintoxica  venenos en un objetivo"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Poder divino ",
+                "englishname": "(Divine Power)",
+                "desc": " obtienes bonificadores de ataque y 1 pg/nivel"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Recado ",
+                "englishname": "(Sending)",
+                "desc": " envía un mensaje corto a cualquier lugar instantáneamente"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Repeler sabandijas ",
+                "englishname": "(Repel Vermin)",
+                "desc": " insectos, arañas y otras sabandijas permanecen a 10 pies de distancia"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Restablecimiento ",
+                "englishname": "(Restoration)",
+                "desc": " restaura niveles y puntuaciones de característica consumidos"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Sabandijas gigantes ",
+                "englishname": "(Giant Vermin)",
+                "desc": " convierte ciempiés, escorpiones o arañas en sabandijas gigantes"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Veneno ",
+                "englishname": "(Poison)",
+                "desc": " toque causa 1d3 de daño de Con 1/asalto durante 6 asaltos"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Bendición de fervor ",
+                "englishname": "(Blessing of fervor)",
+                "desc": " Gives allies a choice of benefits"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Descanso eterno ",
+                "englishname": "(Rest eternal)",
+                "desc": " ..."
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Aliado espiritual ",
+                "englishname": "(Spiritual ally)",
+                "desc": " ..."
+            }
+        ]
+    },
+    {
+        "level": "5",
+        "spells": [
+            {
+                "clase": "clérigo",
+                "nombre": "Aliento de vida ",
+                "englishname": "(Breath of Life)",
+                "desc": " cura 5d8 de daño + 1/nivel y restaura la vida a criaturas muertas recientemente"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Arma disruptora ",
+                "englishname": "(Disrupting Weapon)",
+                "desc": " arma cuerpo a cuerpo que destruye a los muertos vivientes"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Comunión ",
+                "englishname": "(Commune)",
+                "desc": " la deidad responde a una sí o no a una pregunta/nivel"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Convocar monstruo V ",
+                "englishname": "(Summon Monster V)",
+                "desc": " convoca a una criatura extraplanar para que luche por ti"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Coser tesoros ",
+                "englishname": "(Treasure stitching)",
+                "desc": " los objetos en una tela se vuelven bordados"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Curar heridas leves en grupo ",
+                "englishname": "(Cure Light Wounds, Mass)",
+                "desc": " cura 1d8 de daño +1/nivel, afecta a 1 receptor/nivel"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Desacralizar ",
+                "englishname": "(Unhallow)",
+                "desc": " designa un lugar como sacrílego"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Descarga flamígera ",
+                "englishname": "(1d6/nivel de daño)",
+                "desc": " castiga a tus enemigos con fuego divino "
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Desplazamiento de plano ",
+                "englishname": "(Plane Shift)",
+                "desc": " hasta ocho sujetos viajan a otro plano"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Disipar el Bien/Caos/Ley/Mal ",
+                "englishname": "(Dispel Chaos/Evil/Good/Law)",
+                "desc": " bonificador +4 contra ataques"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Endecha azote de fantasmas en grupo ",
+                "englishname": "(Ghostbane dirge, mass)",
+                "desc": " como <em>endecha azote de fantasmas</em>, pero afecta a varias criaturas"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Escudriñamiento ",
+                "englishname": "(Scrying)",
+                "desc": " espía a un objetivo desde lejos"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Expiación ",
+                "englishname": "(Atonement)",
+                "desc": " elimina la carga de las fechorías del sujeto y revierte el cambio de alineación mágica"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Infligir heridas leves en grupo ",
+                "englishname": "(Inflict Light Wounds, Mass)",
+                "desc": " Inflige 1d8 de daño +1/nivel, afecta a 1 objetivo/nivel"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Marca de la justicia ",
+                "englishname": "(Mark of Justice)",
+                "desc": " designa la acción que desencadena la maldición en el objetivo"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Muro de piedra ",
+                "englishname": "(Wall of Stone)",
+                "desc": " crea un muro de piedra que puede ser modelado "
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Orden imperiosa mayor ",
+                "englishname": "(Command, Greater)",
+                "desc": " como <em>orden imperiosa</em> pero afecta un objetivo/nivel"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Plaga de insectos ",
+                "englishname": "(Insect Plague)",
+                "desc": " enjambres de avispas atacan a las criaturas"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Poder de la justicia ",
+                "englishname": "(Righteous Might)",
+                "desc": " tu tamaño se incrementa, y ganas bonificadores al combate"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Rematar a los vivos ",
+                "englishname": "(Slay Living)",
+                "desc": " ataque de toque inflige 12d6 +1 por nivel"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Resistencia a los conjuros ",
+                "englishname": "(Spell Resistance)",
+                "desc": " el objetivo gana RC 12 + nivel"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Revivir a los muertos ",
+                "englishname": "(Raise Dead)",
+                "desc": " restaura la vida a un objetivo que haya muerto como mucho hasta un día/nivel"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Romper encantamiento ",
+                "englishname": "(Break Enchantment)",
+                "desc": " libera al objetivo de encantamientos, transmutaciones y maldiciones"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Sacralizar ",
+                "englishname": "(Hallow)",
+                "desc": " designa un lugar como sagrado"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Símbolo de dolor ",
+                "englishname": "(Symbol of Pain)",
+                "desc": " la runa desencadenada asola a las criaturas con dolor"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Símbolo de sueño ",
+                "englishname": "(Symbol of Sleep)",
+                "desc": " la runa desencadenada pone a las criaturas cercanas en un sueño catatónico"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Visión verdadera ",
+                "englishname": "(True Seeing)",
+                "desc": " permite que veas todas las cosas como son en realidad              "
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Bastón de serpiente ",
+                "englishname": "(Snake staff)",
+                "desc": " Transforms staff or other wood into snakes to fight for you"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Burbuja de vida ",
+                "englishname": "(Life bubble)",
+                "desc": " protege de los efectos del entorno"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Don de lenguas comunitario ",
+                "englishname": "(Tongues, communal)",
+                "desc": " ..."
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Pilar de vida ",
+                "englishname": "(max +20)",
+                "desc": " Created pillar heals 2d8 +1/level "
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Purificar ",
+                "englishname": "(max +25) and also removes several afflictions",
+                "desc": " Cures 4d8 damage +1/level "
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Caminar por el aire comunitario ",
+                "englishname": "(Air walk, communal)",
+                "desc": " ..."
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Inmunidad a los conjuros comunitario ",
+                "englishname": "(Spell immunity, communal)",
+                "desc": " ..."
+            }
+        ]
+    },
+    {
+        "level": "6",
+        "spells": [
+            {
+                "clase": "clérigo",
+                "nombre": "Adaptación planaria en grupo ",
+                "englishname": "(Planar adaptation, mass)",
+                "desc": " como adaptación planaria, pero afecta a múltiples criaturas"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Aliado de los planos ",
+                "englishname": "(Planar Ally)",
+                "desc": " como <em>aliado menor de los planos</em>, pero hasta 12 DG "
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Animar los objetos ",
+                "englishname": "(Animate Objects)",
+                "desc": " objetos atacan a tus enemigos "
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Barrera de cuchillas ",
+                "englishname": "(Blade Barrier)",
+                "desc": " muro de cuchillas inflige 1d6/nivel de daño"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Caminar con el viento ",
+                "englishname": "(Wind Walk)",
+                "desc": "  tus aliados y tú os volvéis vaporosos y viajáis rápido"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Caparazón antivida ",
+                "englishname": "(Antilife Shell)",
+                "desc": " esfera de 10 pies de radio que mantiene a raya a las criaturas vivas. "
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Convocar monstruo VI ",
+                "englishname": "(Summon Monster VI)",
+                "desc": " convoca a una criatura extraplanar para que luche por ti"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Crear muertos vivientes ",
+                "englishname": "(Create Undead)",
+                "desc": " crea ghasts, gules, mohrgs, o momias"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Curar heridas moderadas en grupo ",
+                "englishname": "(Cure Moderate Wounds, Mass)",
+                "desc": " cura 2d8 daño +1/nivel, afecta 1 objetivo/nivel "
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Dañar ",
+                "englishname": "(Harm)",
+                "desc": " inflige 10 puntos/nivel de daño a un objetivo"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Destierro ",
+                "englishname": "(Banishment)",
+                "desc": " destierra 2 DG/nivel de criaturas extraplanares"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "disipar magia</em>, pero con varios objetivos"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Encontrar la senda ",
+                "englishname": "(Find the Path)",
+                "desc": " muestra el camino más directo a una localización "
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Esplendor de águila en grupo ",
+                "englishname": "(Eagle's Splendor, Mass)",
+                "desc": " como <em>esplendor de águila</em>, afecta a un objetivo/nivel "
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Festín de los héroes ",
+                "englishname": "(Heroes' Feast)",
+                "desc": " comida para una criatura/nivel cura y otorga bonificadores de combate"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Fuerza de toro en grupo  ",
+                "englishname": "(Bull's Strength, Mass)",
+                "desc": " como <em>fuerza de toro </em>, afecta un sujeto por nivel "
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Geas/empeño ",
+                "englishname": "(Geas/Quest)",
+                "desc": " como <em>geas menor, </em>pero afecta a cualquier criatura"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Glifo custodio mayor ",
+                "englishname": "(Glyph of Warding, Greate)",
+                "desc": " como <em>glifo custodio</em>, pero hasta 10d8 de daño o conjuro de nivel 6"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Infligir heridas moderadas en grupo ",
+                "englishname": "(Inflict Moderate Wounds, Mass)",
+                "desc": " Inflige 2d8 de daño +1/nivel, afecta 1 objetivo/nivel"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Interdicción ",
+                "englishname": "(Forbiddance)",
+                "desc": " impide el viaje planar, daña a las criaturas de diferente alineamiento"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Matar muertos vivientes ",
+                "englishname": "(máx 20d4)",
+                "desc": " destruye 1d4/nivel DG de muertos vivientes "
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Palabra de regreso ",
+                "englishname": "(Word of Recall)",
+                "desc": " te teletransporta de vuelta a un lugar designado"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Resistencia de oso en grupo   ",
+                "englishname": "(Bear's Endurance, Mass)",
+                "desc": " como <em>resistencia de oso</em>, afecta 1 objetivo/nivel"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Sabiduría de buho en grupo ",
+                "englishname": "(Owl's Wisdom, Mass)",
+                "desc": " como <em>sabiduría de buho</em>, afecta a 1 objetivo/nivel "
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Sanar ",
+                "englishname": "(Heal)",
+                "desc": " cura 10 puntos/nivel de daño, todas las enfermedades y condiciones mentales"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Símbolo de miedo ",
+                "englishname": "(Symbol of Fear)",
+                "desc": " la runa desencadenada induce el pánico en criaturas cercanas "
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "  Símbolo de persuasión ",
+                "englishname": "(Symbol of Persuasion)",
+                "desc": " la runa desencadenada encanta criaturas.              "
+            }
+        ]
+    },
+    {
+        "level": "7",
+        "spells": [
+            {
+                "clase": "clérigo",
+                "nombre": "Blasfemia ",
+                "englishname": "(Blasphemy)",
+                "desc": " mata, paraliza, debilita o atonta objetivos no malignos"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Controlar el clima ",
+                "englishname": "(Control Weather)",
+                "desc": " cambia el clima en un área local "
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Convocar monstruo VII ",
+                "englishname": "(Summon Monster VII)",
+                "desc": "  convoca a una criatura extraplanar para que luche por ti"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Curar heridas graves en grupo ",
+                "englishname": "(Cure Serious Wounds, Mass)",
+                "desc": " cura 3d8 daño +1/nivel, afecta 1 objetivo/nivel "
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Destrucción ",
+                "englishname": "(Destruction)",
+                "desc": " mata al objetivo y destruye los restos "
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Escudriñamiento mayor ",
+                "englishname": "(Scrying, Greater)",
+                "desc": " como <em>escudriñamiento</em>, pero más rápido y duradero"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Excursión etérea  ",
+                "englishname": "(Ethereal Jaunt)",
+                "desc": " te haces etéreo durante 1 asalto/nivel "
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Infligir heridas graves en grupo ",
+                "englishname": "(Inflict Serious Wounds, Mass)",
+                "desc": " inflige 3d8 daño +1/nivel, afecta a 1 objetivo/nivel "
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Máxima ",
+                "englishname": "(Dictum)",
+                "desc": " mata, paraliza, deja grogui o ensordece a objetivo no legales"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Palabra del caos ",
+                "englishname": "(Word of Chaos)",
+                "desc": " mata, confunde, aturde o ensordece objetivos no caóticos"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Palabra sagrada ",
+                "englishname": "(Holy Word)",
+                "desc": " mata, paraliza, ciega o ensordece objetivos no buenos "
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Rechazo ",
+                "englishname": "(Repulsion)",
+                "desc": " las criaturas no pueden aproximarse a ti"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Refugio ",
+                "englishname": "(Refuge)",
+                "desc": " altera un objeto para que transporte a su dueño hasta ti "
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Regenerar ",
+                "englishname": "(máx. +35)",
+                "desc": " los miembros amputados del receptor vuelven a crecer, cura 4d8 de daño +1/nivel "
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Restablecimiento mayor ",
+                "englishname": "(Restoration, Greater)",
+                "desc": " como restablecimiento, además restablece todos los niveles y puntuaciones de caracteristica "
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Resurrección ",
+                "englishname": "(Resurrection)",
+                "desc": " restablece completamente a un objetivo muerto "
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Símbolo de aturdimiento ",
+                "englishname": "(Symbol of Stunning)",
+                "desc": " la runa desencadenada aturde a las criaturas "
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "              Símbolo de debilidad ",
+                "englishname": "(Symbol of Weakness)",
+                "desc": " la runa desencadenada debilita criaturas              "
+            }
+        ]
+    },
+    {
+        "level": "8",
+        "spells": [
+            {
+                "clase": "clérigo",
+                "nombre": "Aliado mayor de los planos ",
+                "englishname": "(Planar Ally, Greater)",
+                "desc": " Como aliado menor de los planos, pero hasta 18 DG "
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Aura sacrílega ",
+                "englishname": "(Unholy Aura)",
+                "desc": " +4 a CA, +4 resistencia y RC 25 contra conjuros buenos"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Aura sagrada ",
+                "englishname": "(Holy Aura)",
+                "desc": " +4 a la CA, +4 resistencia y RC 25 contra conjuros malignos "
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Campo antimagia ",
+                "englishname": "(Antimagic Field)",
+                "desc": " niega la magia en 10 pies"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Capa del caos ",
+                "englishname": "(Cloak of Chaos)",
+                "desc": " +4 a la CA, +4 resistencia, y RC 25 contra conjuros legales "
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Centellas ",
+                "englishname": "(max 20d8) a los objetivos",
+                "desc": " 1d8 de daño/nivel "
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Cerradura dimensional ",
+                "englishname": "(Dimensional Lock)",
+                "desc": " teletransporte y viaje interplanar bloqueado durante 1 día/nivel. "
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Convocar monstruo VIII ",
+                "englishname": "(Summon Monster VIII)",
+                "desc": " convoca a una criatura extraplanar para que luche por ti"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Crear muertos vivientes mayores ",
+                "englishname": "(Create Greater Undead)",
+                "desc": " crea devoradores, incorpóreos, espectros o sombras "
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Discernir ubicación ",
+                "englishname": "(Discern Location)",
+                "desc": " revela la localización exacta de una criatura u objeto "
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Escudo de la ley ",
+                "englishname": "(Shield of Law)",
+                "desc": " +4 a CA, +4 resistencia y RC 25 contra conjuros caóticos "
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Inmunidad a conjuros mayor ",
+                "englishname": "(Spell Immunity, Greater)",
+                "desc": " como <em>inmunidad a conjuros</em> pero hasta conjuros de nivel 8 "
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Símbolo de locura ",
+                "englishname": "(Symbol of Insanity)",
+                "desc": " la runa desencadenada hace que las criaturas cercanas enloquezcan"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Símbolo de muerte ",
+                "englishname": "(Symbol of Death)",
+                "desc": " la runa desencadenada mata las criaturas cercanas "
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Terremoto ",
+                "englishname": "(Earthquake)",
+                "desc": " intenso temblor sacude 80 pies de radio "
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Tormenta de fuego ",
+                "englishname": "(Fire Storm)",
+                "desc": " inflige 1d6/nivel de daño de fuego"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Receptáculo divino ",
+                "englishname": "(Divine Vessel)",
+                "desc": " sólo oráculo. Te conviertes en una enorme criatura de otro mundo."
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Tranquilidad eufórica ",
+                "englishname": "(Euphoric tranquility)",
+                "desc": " Makes a single creature peaceful and friendly"
+            }
+        ]
+    },
+    {
+        "level": "9",
+        "spells": [
+            {
+                "clase": "clérigo",
+                "nombre": "Convocar monstruo IX ",
+                "englishname": "(Summon Monster IX)",
+                "desc": " convoca a una criatura extraplanar para que luche por ti"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Consumir energía ",
+                "englishname": "(Energy Drain)",
+                "desc": " el objetivo gana 2d4 niveles negativos"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Curar heridas críticas en grupo ",
+                "englishname": "(Cure Critical Wounds, Mass)",
+                "desc": " cura 4d8 de daño +1/nivel a varias criaturas"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Etereidad ",
+                "englishname": "(Etherealness)",
+                "desc": " viajas hasta el plano etéreo con acompañantes"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Falange de madera ",
+                "englishname": "(Wooden phalanx)",
+                "desc": " tres o más golems de madera te obedecen "
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Implosión ",
+                "englishname": "(Implosion)",
+                "desc": " Inflige 10 de daño/nivel a una criatura/asalto"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Infligir heridas críticas en grupo ",
+                "englishname": "(Inflict Critical Wounds, Mass)",
+                "desc": " causa 4d8 de daño +1/nivel a varias criaturas"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Ligadura del alma ",
+                "englishname": "(Soul Bind)",
+                "desc": " atrapa un alma recién muerta para evitar su resurrección"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Milagro ",
+                "englishname": "(Miracle)",
+                "desc": " solicita la intercesión de una deidad"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Proyección astral ",
+                "englishname": "(Astral Projection)",
+                "desc": " os envía a ti y a otros hasta el plano astral"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Resurrección verdadera ",
+                "englishname": "(True Resurrection)",
+                "desc": " como <em>resurrección</em>, pero no hacen falta los restos"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Sanar en grupo ",
+                "englishname": "(Heal, Mass)",
+                "desc": " como <em>sanar</em>, pero afecta a 1 objetivo/nivel"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Tormenta de venganza ",
+                "englishname": "(Storm of Vengeance)",
+                "desc": " tormenta de lluvia ácida, rayos y granizo"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Umbral ",
+                "englishname": "(Gate)",
+                "desc": " conecta dos planos para viajar o convocar"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Vientos de venganza ",
+                "englishname": "(Winds of vengeance)",
+                "desc": " obtienes la aptitud de volar y atacar con viento"
+            },
+            {
+                "clase": "clérigo",
+                "nombre": "Inmunidad a los conjuros mayor comunitario ",
+                "englishname": "(Spell immunity, greater communal)",
+                "desc": " ..."
+            }
+        ]
+    }
+]

@@ -1,5 +1,5 @@
 (function(){
-    var module = angular.module("personajes",[]);
+    var module = angular.module("personajes",["checklist-model"]);
 
     module.directive('personajes', function($uibModal) {
       return {
@@ -44,6 +44,7 @@
             $scope.getMaxPuntosHabilidad = getMaxPuntosHabilidad;
             $scope.agregarClaseConjurador = agregarClaseConjurador;
             $scope.detalleConjuro = detalleConjuro;
+            $scope.verListas = verListas;
             $scope.niveles = [];
             $scope.nummodificadores = [];
             $scope.nivelesConjuro = [];
@@ -429,6 +430,65 @@
                 $scope.$parent.$parent.$parent.command = "caracteristicas";
                 $scope.$parent.$parent.$parent.ejecutaComando();
 
+            }
+
+            function verListas(){
+                var instance = $uibModal.open({
+                     animation: true,
+                     ariaLabelledBy: 'modal-title-bottom',
+                     ariaDescribedBy: 'modal-body-bottom',
+                     templateUrl: 'modalListasConjuros.html',
+                     size: "sm",
+
+
+                     controller: function($uibModalInstance,$scope,$http) {
+
+                         // $scope.personaje = personaje;
+                         // $scope.campaniaseleccionada = campania;
+                         //
+                         // $scope.dismiss = function(){
+                         //      $uibModalInstance.dismiss('cancel');
+                         // }
+                        $scope.selectedSpells = [];
+
+                         $http.get("resources/spells_cls.json").then(function(res){
+                             $scope.levels = res.data;
+
+                             for(var level in $scope.levels){
+                                 for(var spell in $scope.levels[level].spells){
+                                     $scope.levels[level].spells[spell].nivel = $scope.levels[level].level;
+                                }
+                            }
+
+
+                         });
+
+                         $scope.dismiss = function(){
+                              $uibModalInstance.close($scope.selectedSpells);
+                         }
+
+
+
+                     },resolve: {
+                      //   personaje: function () {
+                      //     return personaje;
+                      // },
+                      // campania: function () {
+                      //   return $scope.campania;
+                      // }
+                     }
+                 });
+
+                 instance.result.then(function(submitVar) {
+                    console.log(submitVar);
+
+                    if($scope.personajeseleccionado.listaconjuros === undefined) $scope.personajeseleccionado.listaconjuros = [];
+                    for(var i in submitVar){
+                        $scope.personajeseleccionado.listaconjuros.push(submitVar[i]);
+                    }
+                    // $scope.conjuroSeleccionado = {nombre:"Sin nombre",nivel: nivel, clase:clase};
+
+                 });
             }
 
             function detalleConjuro(conjuro){

@@ -506,6 +506,7 @@
                             </td>
                             <td>
                                 <a  class="button" ng-click="agregaConjuro(nivelAgregar, claseConjuro)">Agregar</a>
+                                <a  class="button" ng-click="verListas()">Listas</a>
                             </td>
                         </tr>
                     </table>
@@ -562,5 +563,29 @@
         <h4>Descripcion</h4>
         <textarea ckeditor="options" ng-model="conjuro.descripcion" class="cajaNotas" rows="100" ></textarea>
 
+    </div>
+</script>
+
+<script type="text/ng-template" id="modalListasConjuros.html">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" ng-click="dismiss()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    </div>
+    <div class="modal-body" id="modal-body-{{name}}" >
+        <div class="desbordable" style="height:300px">
+            <ul>
+                <li ng-repeat="level in levels">
+                    {{level.level}}
+                    <ul>
+                        <li ng-repeat="spell in level.spells">
+                            <label><input type="checkbox"  checklist-model="selectedSpells" checklist-value="spell"><strong>{{spell.nombre}}</strong>: </label><span>{{spell.desc}}</span>
+                        </li>
+                    </ul>
+
+                </li>
+            </ul>
+        </div>
+        <!-- <p>{{selectedSpells}}</p> -->
+        <hr/>
+        <p><a class="button" ng-click="dismiss()">Agregar</a></p>
     </div>
 </script>
