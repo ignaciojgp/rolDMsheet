@@ -41,7 +41,7 @@ var salvacion = [
 
 var caracteristicas = [
     {nombre:"Fuerza", tipo:1, id:"frz"},
-    {nombre:"Destresa", tipo:1, id:"des"},
+    {nombre:"Destreza", tipo:1, id:"des"},
     {nombre:"Constitución", tipo:1, id:"con"},
     {nombre:"Inteligencia", tipo:1, id:"int"},
     {nombre:"Sabiduría", tipo:1, id:"sab"},

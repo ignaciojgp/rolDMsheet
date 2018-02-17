@@ -49,8 +49,8 @@
                 <table class="oponentes" ng-show="encuentroseleccionado.oponentes.length > 0" style="min-width:100%">
                     <tr>
                         <th></th>
-                        <th colspan="2">personajes</th>
-                        <th ng-show="detalles">tipo</th>
+                        <th colspan="1">personajes</th>
+                        <th colspan="2" ng-show="detalles">tipo</th>
                         <th></th>
                         <th ng-show="detalles"></th>
                         <th ng-repeat="valor in campos" ng-show="detalles || valor.id == 'PG' ||  valor.id == 'Daño' ||  valor.id == 'Atenuado' ">
@@ -67,9 +67,6 @@
 
                              <span class="typcn typcn-arrow-right-thick" ng-show="encuentroseleccionado.oponenteseleccionado == $index"></span>
                          </td>
-                         <td >
-                             <span class="typcn typcn-info-large-outline" ng-click="detallePersonaje(campania.personajes[oponente.tipo])"></span>
-                         </td>
                         <td>
                             <input type="text" ng-model="oponente.nombre" class="sinborde alLeft" style="min-width:250px">
                         </td>
@@ -81,6 +78,9 @@
 
                         </td>
 
+                        <td ng-show="detalles">
+                            <span class="typcn typcn-info-large-outline" ng-click="detallePersonaje(campania.personajes[oponente.tipo])"></span>
+                        </td>
                         <td ng-show="detalles">
                             <a class="pointer hover" ng-click="eliminaOponente($index)">
                                 <span class="typcn typcn-trash"></span>

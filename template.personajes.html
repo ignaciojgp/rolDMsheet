@@ -65,6 +65,10 @@
                     <td>Iniciativa</td>
                     <td>{{getTotalModsCaracteristica('iniciativa') + getCharMod(getTotalCaracteristica('des'))}}</td>
                 </tr>
+                <tr>
+                    <td>Movimiento</td>
+                    <td><input type="text" ng-model="personajeseleccionado.mov" class="sinborde" calculadora placeholder="0"></td>
+                </tr>
 
 
                 <!-- <tr ng-repeat="char in principales" ng-class="{'sep':char.id!='-'}">
@@ -99,12 +103,14 @@
                 <tr>
                     <th> </th>
                     <th class="alCenter"  width="80">Base</th>
+                    <th class="alCenter"  width="80">Mod</th>
                     <th class="alCenter"  width="80">+Mod</th>
                 </tr>
                 <tr ng-repeat="char in salvacion" >
                     <td >{{char.nombre}}</td>
                     <td >{{ getTS(char.id)}}</td>
-                    <td ><b>{{ getTS(char.id)+getCharMod(getTotalCaracteristica(char.charId))  }}</b></td>
+                    <td >{{ getTotalModsCaracteristica(char.id)}}</td>
+                    <td ><b>{{ getTS(char.id)+getCharMod(getTotalCaracteristica(char.charId))+getTotalModsCaracteristica(char.id)  }}</b></td>
                 </tr>
 
             </table>
@@ -132,6 +138,49 @@
         </div>
 
         <div class="cajadoble" ng-init="paginaActiva = 1">
+            <h3>Armas y ataques</h3>
+            <div class="desbordable">
+                <table style="min-width:500px">
+                    <tr>
+                        <td>nombre</td>
+                        <td>tipo de ataque</td>
+                        <td>modificador</td>
+                        <td colspan="2">tirada</td>
+                        <td colspan="1">crítico</td>
+                        <td colspan="2">Daño</td>
+                        <td>alcance</td>
+                        <td></td>
+                    </tr>
+                    <tr ng-repeat="arma in personajeseleccionado.armas track by $index">
+                        <td><input type="text" ng-model="arma.nombre" class="sinborde fill" placeholder="nombre"></td>
+                        <td>
+                            <select ng-model="arma.tipo" >
+                                <option value="melee">Melee</option>
+                                <option value="rango">Rango</option>
+                            </select>
+                        </td>
+                        <td width="10">
+                            <select ng-model="arma.mod">
+                                <option value="{{num}}" ng-repeat="num in nummodificadores">{{num}}</option>
+                            </select>
+                        </td>
+                        <td><b>{{getTiradaAtaque(arma).join('/')}}</b></td>
+                        <td><span class="typcn typcn-arrow-forward pointer" ng-click="ejecutaTiradaDeAtaque(arma)" ></span></td>
+                        <td><input type="text" ng-model="arma.critico" class="sinborde fill" placeholder="x2"></td>
+                        <td><b><input type="text" ng-model="arma.danio" class="sinborde fill" placeholder="daño"></b></td>
+                        <td><span class="typcn typcn-arrow-forward" ng-click="ejecutaTiradaDeDanio(arma)"></span></td>
+                        <td width="70"><input type="text" ng-model="arma.alcance" class="fill sinborde" placeholder="0"></td>
+                        <td><a class="pointer hover" ng-click="eliminaArma($index)"> <span class="typcn typcn-trash"></span> </a></td>
+                    </tr>
+                </table>
+            </div>
+            <br>
+            <p class="opciones">
+                <a ng-click="agregarArma()" class="button">agregar arma</a>
+            </p>
+            <hr>
+
+
             <ul class="menu">
                 <li ng-class="{'active':paginaActiva === 1}" ng-click="paginaActiva = 1">Clases y Mods</li>
                 <li ng-class="{'active':paginaActiva === 2}" ng-click="paginaActiva = 2">Habilidades</li>
@@ -147,6 +196,18 @@
                             <td>Raza:</td>
                             <td>
                                 <input type="text" ng-model="personajeseleccionado.raza">
+                            </td>
+                            <td>Alineamiento:</td>
+                            <td class="s1">
+                                <input  type="text" ng-model="personajeseleccionado.alineamiento">
+                            </td>
+                            <td>Tamaño:</td>
+                            <td class="s1">
+                                <input  type="text" ng-model="personajeseleccionado.tamanio">
+                            </td>
+                            <td>Sexo:</td>
+                            <td class="s1">
+                                <input  type="text" ng-model="personajeseleccionado.sexo">
                             </td>
                             <td>Experiencia:</td>
                             <td>
@@ -268,7 +329,8 @@
                             <th width="25"></th>
                             <th width="200"></th>
                             <th class="alCenter">Puntos</th>
-                            <th class="alCenter">MChar</th>
+                            <th class="alCenter">Base</th>
+                            <th class="alCenter">Mods</th>
                             <th class="alCenter">Total</th>
                         </tr>
                     </thead>
@@ -278,6 +340,7 @@
                             <td  class="alLeft">{{char.nombre}} <small>({{char.charId}})</small></td>
                             <td ><input type="number" ng-model="personajeseleccionado[char.id]" class="sinborde" placeholder="0"></td>
                             <td >{{ getCharMod(getTotalCaracteristica(char.charId)) }}</td>
+                            <td >{{ getTotalModsCaracteristica(char.id) }}</td>
                             <th class="alCenter" ><b>{{ getTotalHabilidad(char) }}</b></th>
                         </tr>
                     </tbody>
@@ -289,7 +352,9 @@
                             <th width="25"> </th>
                             <th width="200"> </th>
                             <th class="alCenter">Puntos</th>
-                            <th class="alCenter">MChar</th>
+                            <th class="alCenter">Base</th>
+                            <th class="alCenter">Mods</th>
+
                             <th class="alCenter">Total</th>
                         </tr>
                     </thead>
@@ -299,6 +364,7 @@
                             <td  class="alLeft">{{char.nombre}} <small>({{char.charId}})</small></td>
                             <td ><input type="number" ng-model="personajeseleccionado[char.id]" class="sinborde" placeholder="0"></td>
                             <td >{{ getCharMod(getTotalCaracteristica(char.charId)) }}</td>
+                            <td >{{ getTotalModsCaracteristica(char.id) }}</td>
                             <th class="alCenter"><b>{{ getTotalHabilidad(char) }}</b></th>
                         </tr>
                     </tbody>
@@ -320,45 +386,6 @@
                         </tr>
                     </table>
                 </div>
-                <hr>
-                <h3>Armas y ataques</h3>
-                <div class="desbordable">
-                    <table style="min-width:500px">
-                        <tr>
-                            <td>nombre</td>
-                            <td>tipo de ataque</td>
-                            <td>modificador</td>
-                            <td colspan="2">tirada</td>
-                            <td colspan="2">Daño</td>
-                            <td>alcance</td>
-                            <td></td>
-                        </tr>
-                        <tr ng-repeat="arma in personajeseleccionado.armas track by $index">
-                            <td><input type="text" ng-model="arma.nombre" class="sinborde fill" placeholder="nombre"></td>
-                            <td>
-                                <select ng-model="arma.tipo" >
-                                    <option value="melee">Melee</option>
-                                    <option value="rango">Rango</option>
-                                </select>
-                            </td>
-                            <td width="10">
-                                <select ng-model="arma.mod">
-                                    <option value="{{num}}" ng-repeat="num in nummodificadores">{{num}}</option>
-                                </select>
-                            </td>
-                            <td>{{getTiradaAtaque(arma).join('/')}}</td>
-                            <td><span class="typcn typcn-arrow-forward pointer" ng-click="ejecutaTiradaDeAtaque(arma)" ></span></td>
-                            <td><input type="text" ng-model="arma.danio" class="sinborde fill" placeholder="daño"></td>
-                            <td><span class="typcn typcn-arrow-forward" ng-click="ejecutaTiradaDeDanio(arma)"></span></td>
-                            <td width="70"><input type="text" ng-model="arma.alcance" class="fill sinborde" placeholder="0"></td>
-                            <td><a class="pointer hover" ng-click="eliminaArma($index)"> <span class="typcn typcn-trash"></span> </a></td>
-                        </tr>
-                    </table>
-                </div>
-                <br>
-                <p class="opciones">
-                    <a ng-click="agregarArma()" class="button">agregar arma</a>
-                </p>
                 <hr>
 
                 <textarea ng-model="personajeseleccionado.equipo" rows="17" class="fill sinborde" placeholder="objetos"></textarea>
@@ -425,7 +452,7 @@
 
 
 
-                        <tr class="pointer n{{conjuro.nivel}}" ng-repeat="conjuro in personajeseleccionado.listaconjuros | orderBy: ['clase','nivel','nombre'] track by $index" >
+                        <tr class="pointer n{{conjuro.nivel}}" ng-repeat="conjuro in personajeseleccionado.listaconjuros | orderBy: ['clase','nivel'] track by $index" >
 
 
 

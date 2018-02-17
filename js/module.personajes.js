@@ -181,7 +181,7 @@
             }
 
             function getCAToque(){
-                return 10+ getTotalModsCaracteristica('CAbase')+getTotalModsCaracteristica('CAesquiva')+getCharMod(getTotalCaracteristica("des"));
+                return 10+ getTotalModsCaracteristica('CAesquiva')+getCharMod(getTotalCaracteristica("des"));
             }
 
             function getCADesprevenido(){
