@@ -54,7 +54,7 @@
                 $scope.niveles.push(i);
             }
 
-            for(var j = -10; j<=10;j++){
+            for(var j = -20; j<=20;j++){
                 $scope.nummodificadores.push(j);
             }
 
@@ -182,7 +182,7 @@
             }
 
             function getCAToque(){
-                return 10+ getTotalModsCaracteristica('CAesquiva')+getCharMod(getTotalCaracteristica("des"));
+                return 10+ getTotalModsCaracteristica('CAesquiva')+getCharMod(getTotalCaracteristica("des"))+Math.ceil(getTotalModsCaracteristica('CAnat')/2);
             }
 
             function getCADesprevenido(){
@@ -199,6 +199,8 @@
                         if(o.ataquebase) n += ataqueBase[o.ataquebase][o.nivel];
                     });
                 }
+
+                n+=getTotalModsCaracteristica('baseAtk');
 
                 return n;
 
