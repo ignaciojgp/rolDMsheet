@@ -37,6 +37,11 @@
 
         $scope.$watch("campanias",guardar,true);
 
+
+        $scope.$on('ejecutaComando', function(event, command) {
+            $scope.command = command;
+            $scope.ejecutaComando();
+        });
         function agregaCampania(){
             $scope.campanias.push({titulo:"sin titulo",historia:{titulo:"raiz", nodos:[]}});
             $scope.nuevaCampania = null;

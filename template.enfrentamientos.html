@@ -1,117 +1,118 @@
 <div class="enfrentamientos" >
 
 
-    <div class="lista">
-        <ul>
-            <li ng-repeat="encuentro in campania.encuentros track by $index" ng-class="{'active':encuentro == encuentroseleccionado}" >
+  <div class="lista" >
+    <ul>
+      <li ng-repeat="encuentro in campania.encuentros track by $index" ng-class="{'active':encuentro == encuentroseleccionado}" >
 
-                <a  ng-click="selecciona(encuentro)" class="pointer">
-                    <span class="circulo">{{$index+1}} </span>
-                    {{encuentro.nombre}}
-                </a>
-            </li>
-            <li >
-                <a ng-click="agregaEncuentro()" class="button">Agregar encuentro</a>
-            </li>
-        </ul>
+        <a  ng-click="selecciona(encuentro)" class="pointer">
+          <span class="circulo">{{$index+1}} </span>
+          {{encuentro.nombre}}
+        </a>
+      </li>
+      <li >
+        <a ng-click="agregaEncuentro()" class="button">Agregar encuentro</a>
+      </li>
+    </ul>
+  </div>
+
+  <div ng-if="!encuentroseleccionado" class="instruccion1">
+    <span class="typcn typcn-arrow-up-outline instructionIcon"></span>
+    Selecciona un encuentro
+  </div>
+
+  <div class="detalle" ng-if="encuentroseleccionado">
+
+    <div class="opciones">
+      <div class="alRight">
+        <a class="button" ng-click="detalles = !detalles" title="mostrar detalles">
+          <span class="typcn typcn-eye-outline"></span> Detalles
+        </a>
+        <a class="button bred" ng-click="eliminaEncuentro()"><span class="typcn typcn-trash" ng-click="eliminarCampania($index,$event)"></span><span class="noCell">eliminar</span></a>
+      </div>
+      <div class="alLeft">
+        <input type="text" ng-model="encuentroseleccionado.nombre" class="fill sinborde principal" >
+      </div>
     </div>
+    <hr/>
 
-    <div ng-if="!encuentroseleccionado" class="instruccion1">
-        <span class="typcn typcn-arrow-up-outline instructionIcon"></span>
-        Selecciona un encuentro
-    </div>
-
-    <div class="detalle" ng-if="encuentroseleccionado">
-
-        <div class="opciones">
-            <div class="alRight">
-
-                <a class="button bred" ng-click="eliminaEncuentro()"><span class="typcn typcn-trash" ng-click="eliminarCampania($index,$event)"></span><span class="noCell">eliminar encuentro</span></a>
-            </div>
-            <div class="alLeft">
-                <input type="text" ng-model="encuentroseleccionado.nombre" class="fill sinborde principal" >
-            </div>
-        </div>
-        <hr/>
-
-        <div class="tabla">
-
-            <div class="options">
-                <a class="button" ng-click="agregarOponente()" title="nuevo oponente"><span class="typcn typcn-user-add"></span></a>
-                <a class="button" ng-click="detalles = !detalles" title="mostrar detalles">
-                    <span class="typcn typcn-eye-outline"></span>
-                </a>
-                <a class="button" ng-click="pegarOponente()" title="pegar" ng-show="hayClipboard"><span class="typcn typcn-pin"></span></a>
-            </div>
-            <div style=" overflow:auto; position:absolute; top:100px; left:0; bottom:0; right:0; padding:0 20px 100px 20px">
+    <div class="tabla">
 
 
-                <table class="oponentes" ng-show="encuentroseleccionado.oponentes.length > 0" style="min-width:100%">
-                    <tr>
-                        <th></th>
-                        <th colspan="1">personajes</th>
-                        <th colspan="2" ng-show="detalles">tipo</th>
-                        <th></th>
-                        <th ng-show="detalles"></th>
-                        <th ng-repeat="valor in campos" ng-show="detalles || valor.id == 'PG' ||  valor.id == 'Daño' ||  valor.id == 'Atenuado' ">
-                            {{valor.nombre}}
-                        </th>
-                    </tr>
+      <div style=" overflow:auto; position:absolute; top:100px; left:0; bottom:0; right:50%; padding:0 20px 100px 20px">
 
-                    <tr
-                         ng-repeat="oponente in encuentroseleccionado.oponentes track by $index"
-                         ng-click="encuentroseleccionado.oponenteseleccionado = $index"
-                         ng-class="{'active':encuentroseleccionado.oponenteseleccionado === $index, 'muerto': isDead(oponente) }"
-                         >
-                         <td >
 
-                             <span class="typcn typcn-arrow-right-thick" ng-show="encuentroseleccionado.oponenteseleccionado == $index"></span>
-                         </td>
-                        <td>
-                            <input type="text" ng-model="oponente.nombre" class="sinborde alLeft" style="min-width:250px">
-                        </td>
-                        <td ng-show="detalles">
+      <ul class="oponentes"
+        ng-show="encuentroseleccionado.oponentes.length > 0"
+        style="min-width:100%"
+        ui-sortable
+        ng-model="encuentroseleccionado.oponentes"
+        >
 
-                            <select placeholder="tipo" ng-model="oponente.tipo" style="width:100px">
-                                <option value="{{$index}}"  ng-repeat="personaje in campania.personajes track by $index">{{personaje.nombre}}</option>
-                            </select>
 
-                        </td>
+    <li
+      ng-repeat="oponente in encuentroseleccionado.oponentes track by $index"
+      ng-click="encuentroseleccionado.oponenteseleccionado = $index; detallePersonaje(campania.personajes[oponente.tipo]);"
+      ng-class="{'active':encuentroseleccionado.oponenteseleccionado === $index, 'muerto': isDead(oponente) }"
 
-                        <td ng-show="detalles">
-                            <span class="typcn typcn-info-large-outline" ng-click="detallePersonaje(campania.personajes[oponente.tipo])"></span>
-                        </td>
-                        <td ng-show="detalles">
-                            <a class="pointer hover" ng-click="eliminaOponente($index)">
-                                <span class="typcn typcn-trash"></span>
-                            </a>
-                        </td>
-                        <td class="separador"></td>
-                        <td ng-repeat="valor in campos" class="val" ng-class="{'separador':valor.id == '-'}" ng-show="detalles || valor.id == 'PG' ||  valor.id == 'Daño' ||  valor.id == 'Atenuado'  ">
+      >
+      <div class="index">
+        <span class="typcn typcn-arrow-right-thick" ng-show="encuentroseleccionado.oponenteseleccionado == $index"></span>
+      </div>
 
-                            <input class="sinborde" type="text" ng-if="valor.id != '-'" ng-model="oponente[valor.id]" placeholder="0" calculadora style="min-width:50px" />
-                        </td>
+      <select placeholder="tipo" ng-model="oponente.tipo">
+        <option value="{{$index}}"  ng-repeat="personaje in campania.personajes track by $index">{{personaje.nombre}}</option>
+      </select><br/>
+      <input type="text" ng-model="oponente.nombre" class="nombre sinborde alLeft">
 
-                    </tr>
 
-                </table>
-            </div>
+
+      <a ng-show="detalles" class="pointer hover" ng-click="eliminaOponente($index)">
+        <span class="typcn typcn-trash"></span>
+      </a>
+
+
+      <div class="attributes">
+        <table width="100%">
+          <tr>
+            <td ng-repeat="valor in campos" class="val" ng-class="{'separador':valor.id == '-'}" ng-show="detalles || valor.id == 'PG' ||  valor.id == 'Daño' ||  valor.id == 'Atenuado'  ">
+               {{valor.nombre}}:<input class="sinborde" type="text" ng-if="valor.id != '-'" ng-model="oponente[valor.id]" placeholder="0" calculadora style="min-width:50px" />
+            </td>
+          </tr>
+        </table>
+      </div>
+
+
+    </li>
+</ul>
+  <!-- </table> -->
+
+  <div class="options">
+    <a class="button" ng-click="agregarOponente()" title="nuevo oponente"><span class="typcn typcn-user-add"></span> agregar oponente</a>
+
+    <a class="button" ng-click="pegarOponente()" title="pegar" ng-show="hayClipboard"><span class="typcn typcn-pin"></span></a>
+  </div>
+</div>
+
+<div class="detallePersonaje">
+  <div personajes id="directivaPersonaje" campania="campania" personaje="personajeSeleccionadoDetalle"></div>
+</div>
 
 
 
 
 
-        </div>
+</div>
 
 
-    </div>
+</div>
 </div>
 
 <script type="text/ng-template" id="modalPersonaje.html">
-    <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" ng-click="dismiss()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-    </div>
-    <div class="modal-body" id="modal-body-{{name}}" >
-        <div personajes id="directivaPersonaje" campania="campaniaseleccionada" personaje="personaje"></div>
-    </div>
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" ng-click="dismiss()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  </div>
+  <div class="modal-body" id="modal-body-{{name}}" >
+    <div personajes id="directivaPersonaje" campania="campaniaseleccionada" personaje="personaje"></div>
+  </div>
 </script>

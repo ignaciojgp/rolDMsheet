@@ -1,7 +1,7 @@
 (function(){
     var module = angular.module("personajes",["checklist-model"]);
 
-    module.directive('personajes', function($uibModal) {
+    module.directive('personajes', function($uibModal,$rootScope) {
       return {
         templateUrl: 'template.personajes.html',
         link: function($scope, el, attrs){
@@ -79,6 +79,11 @@
             $scope.habilidades = habilidades;
             $scope.caracteristicas = caracteristicas;
             $scope.salvacion = salvacion;
+
+            $scope.$on('personajeseleccionado', function(event, args) {
+
+                $scope.selecciona(args);
+            });
 
             function agregaPersonaje(){
                 if($scope.campania.personajes === undefined) $scope.campania.personajes =[];
@@ -386,8 +391,10 @@
             }
 
             function ejecutaTiradaDeDanio(arma){
-                $scope.$parent.$parent.$parent.command = arma.danio;
-                $scope.$parent.$parent.$parent.ejecutaComando();
+                // $scope.$parent.$parent.$parent.command = arma.danio;
+                // $scope.$parent.$parent.$parent.ejecutaComando();
+
+                $rootScope.$broadcast("ejecutaComando",arma.danio);
             }
 
             function ejecutaTiradaDeAtaque(arma){
@@ -398,8 +405,11 @@
                     comando += "1d20+"+tirada[i]+" ";
                 }
 
-                $scope.$parent.$parent.$parent.command = comando;
-                $scope.$parent.$parent.$parent.ejecutaComando();
+                $rootScope.$broadcast("ejecutaComando",comando);
+
+
+                // $scope.$parent.$parent.$parent.command = comando;
+                // $scope.$parent.$parent.$parent.ejecutaComando();
             }
             function eliminaClase(index){
                 if(confirm("¿estás seguro?")){
@@ -429,8 +439,9 @@
 
             function generarCaracteristicas(){
 
-                $scope.$parent.$parent.$parent.command = "caracteristicas";
-                $scope.$parent.$parent.$parent.ejecutaComando();
+
+                $rootScope.$broadcast("ejecutaComando","caracteristicas");
+
 
             }
 

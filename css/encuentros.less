@@ -10,19 +10,19 @@
 
     .tabla{
         padding-top: 1em;
-        .options{
-            position: absolute;
-            bottom: 20px;
-            right: 1.5em;
-            z-index: 100;
-            .button{
-                padding: 0.1em 0.3em;
-                display: inline-block;
-                font-size: 2em;
-                border-radius: 2em;
-                margin-bottom: 0.3em;
-            }
-        }
+        // .options{
+        //     position: absolute;
+        //     bottom: 20px;
+        //     right: 1.5em;
+        //     z-index: 100;
+        //     .button{
+        //         padding: 0.1em 0.3em;
+        //         display: inline-block;
+        //         font-size: 2em;
+        //         border-radius: 2em;
+        //         margin-bottom: 0.3em;
+        //     }
+        // }
 
         .separador{
             background: white !important;
@@ -93,37 +93,68 @@
             }
         }
         .oponentes{
+                margin: 0;
+                padding: 2px 0 ;
 
-                tr{
-                        border-bottom: #ccc solid 1px;
-                        th{
-                            text-align: center;
+
+                >li{
+                  background: white;
+                  list-style: none;
+                        border: #ccc solid 1px;
+                        padding: 10px 10px 10px 10px;
+                        margin-bottom: 10px;
+                        border-left-width: 35px;
+
+                        position: relative;
+
+                        .nombre{
+                          font-size: 1.2em;
+                          font-weight: bold;
+                          padding: 5px;
                         }
-                        td{
-                            padding: 0.3em;
-                            input{
-                                text-align: center;
-                            }
-                            select{
-                                padding:0.15em 0.3em;
-                                text-align: center;
-                            }
+                        .select{
+                          color: gray;
+                        }
+                        .detailIcon{
+                          position: absolute;
+                          right: 0;bottom: 0;
+                          font-size: 18px;
+                          cursor: pointer;
                         }
 
-                        .separador{
-                            background-color: #ededed !important;
-                        }
+                        .attributes{
+                          width: 100%;
+                          overflow: auto;
+                          padding-top: 10px;
+                          font-size: 0.9em;
+                          td{
+                            min-width: 100px;
+                          }
+                          input{
+                            font-weight: bold;
+                          }
 
+                          .separador{
+                            min-width: 10px;
+                            color: transparent;
+                          }
+                        }
                         &.active{
-                            td,th{
-                                background-color: #ededed;
-                            }
-                            .separador{
-                                background-color: #ccc !important;
-                            }
+                          border-color: green;
+
                         }
                         &.muerto{
                             opacity: 0.3;
+                            border-color: red;
+                        }
+
+                        .index{
+                          position: absolute;
+                          left: -30px;
+                          top: 50%;
+                          margin-top: -15px;
+                          font-size: 2em;
+                          color: white;
                         }
                 }
 
@@ -256,6 +287,41 @@
 
         }
     }
+
+
+    .detallePersonaje{
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      top: 100px;
+      padding-right: 25px;
+      overflow: auto;
+      width:50%;
+      box-sizing: border-box;
+      border-left: gray solid 1px;
+      .lista{
+        display: none;
+      }
+      .detalle{
+        left: auto;
+        width: 100%;
+        box-sizing: border-box;
+
+        .opciones .alRight{
+          display: none;
+        }
+        .opciones .alLeft{
+          margin-right:auto;
+        }
+      }
+
+      .personajes .caja, .personajes .cajadoble{
+        width: 100%;
+      }
+      .personajes .pagina .c1{
+        width: 100%;
+      }
+    }
 }
 .modal-dialog {
     width: 90%;
@@ -280,6 +346,9 @@
 
         .lista{
             display: none;
+        }
+        .detalle{
+          left: auto;
         }
     }
 }

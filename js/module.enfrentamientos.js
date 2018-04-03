@@ -1,7 +1,7 @@
 (function(){
-    var module = angular.module("enfrentamientos",['utils']);
+    var module = angular.module("enfrentamientos",['utils','ui.sortable']);
 
-    module.directive('enfrentamientos', function($uibModal) {
+    module.directive('enfrentamientos', function($uibModal,$rootScope) {
       return {
         templateUrl: 'template.enfrentamientos.html',
         controller: function($scope){
@@ -14,12 +14,11 @@
             $scope.selecciona = selecciona;
             $scope.tiradaMultiple = tiradaMultiple;
             $scope.detallePersonaje = detallePersonaje;
-            $scope.algo = "asdasad";
 
             $scope.hayClipboard = sessionStorage.personajeCopiado ? true:false;
 
             $scope.$watch("encuentroseleccionado",calculaAncho,true);
-
+            $scope.detallePersonaje(null);
 
             var tiradas = [].concat(principales);
 
@@ -117,33 +116,10 @@
             }
 
             function detallePersonaje(personaje){
-                $uibModal.open({
-                     animation: true,
-                     ariaLabelledBy: 'modal-title-bottom',
-                     ariaDescribedBy: 'modal-body-bottom',
-                     templateUrl: 'modalPersonaje.html',
-                     size: "lg",
+
+                $rootScope.$broadcast("personajeseleccionado",personaje);
 
 
-                     controller: function($uibModalInstance,$scope,personaje, campania) {
-
-                         $scope.personaje = personaje;
-                         $scope.campaniaseleccionada = campania;
-
-                         $scope.dismiss = function(){
-                              $uibModalInstance.dismiss('cancel');
-                         }
-
-
-                     },resolve: {
-                        personaje: function () {
-                          return personaje;
-                      },
-                      campania: function () {
-                        return $scope.campania;
-                      }
-                     }
-                 });
             }
 
         },
